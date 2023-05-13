@@ -1,0 +1,37 @@
+[
+    {
+        "feature" : "register",
+        "actor" : [
+            "employee",
+            "recruiter"
+        ]
+
+    },
+    {
+        "feature" : "login",
+        "actor" : [
+            "employee",
+            "recruiter"
+        ]
+
+    },
+
+    {
+        "feature" : "publish offer",
+        "actor" : [
+            
+            "recruiter"
+        ]
+
+    },
+
+    {
+        "feature" : "check potential employee list",
+        "actor" : [
+            
+            "recruiter"
+        ]
+
+    }
+
+]

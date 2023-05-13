@@ -8,31 +8,35 @@ $cleanRoute = explode('?', $_SERVER['REQUEST_URI']);
 $route = $cleanRoute[0]; // Get the request URI
 
 if ($route === '/') {
-   require_once 'app/core/views/home.php';
-}
+    require_once 'app/core/views/home.php';
+} else if ($route === '/register') {
+    if ($_GET['actor'] == 'company') {
+        require_once 'app/core/views/register_employer.php';
+    } else {
+        require_once 'app/core/views/register_candidat.php';
+    }
 
-else if ($route === '/register') {
-    require_once 'app/core/views/register.php';
-}
+} else if ($route === '/choice') {
+    require_once 'app/core/views/choice.php';
 
-else if ($route === '/add-post') {
-    require_once 'app/core/views/add_post.php';
-}
+} else if ($route === '/info') {
+    if ($_GET['actor'] == 'company') {
+        require_once 'app/core/views/info_recruteur.php';
+    } else {
+        require_once 'app/core/views/info_candidat.php';
+    }
 
-else if ($route === '/login') {
+} else if ($route === '/login') {
     require_once 'app/core/views/login.php';
-}
-
-else if ($route === '/logout') {
+    
+} else if ($route === '/logout') {
     require_once 'app/core/controllers/user.php';
     $user = new User();
-    $user -> logout();
-}
-else if ($route === '/post') {
+    $user->logout();
+} else if ($route === '/post') {
     require_once 'app/core/views/post.php';
-    
-}
-else {
+
+} else {
     echo '404 vous etes perdue ;(';
 }
 
