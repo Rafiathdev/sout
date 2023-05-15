@@ -3,7 +3,8 @@
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     require 'app/core/controllers/user.php';
     $user = new User();
-    $user-> add_info_candidat($_POST['nom_c'], $_POST['prenom_c'], $_POST['date_n'], $_POST['sexe'], $_POST['niveau'], $_POST['nationalite'], $_POST['adresse'], $_POST['qualification'], 'pdf_cv', 'photo');
+    $new_user = $_GET['u'];
+    $user-> add_info_candidat($_POST['nom_c'], $_POST['prenom_c'], $_POST['date_n'], $_POST['sexe'], $_POST['niveau'], $_POST['nationalite'], $_POST['adresse'], $_POST['qualification'], 'pdf_cv', 'photo', $new_user);
 // Les variables pour récupérer les infos envoyées
 }
 ?>

@@ -33,11 +33,12 @@ if ($route === '/') {
     require_once 'app/core/controllers/user.php';
     $user = new User();
     $user->logout();
-} else if ($route === '/post') {
-    require_once 'app/core/views/post.php';
+
+} else if ($route === '/offer') {
+    require_once 'app/core/views/offer.php';
 
 } else {
     echo '404 vous etes perdue ;(';
 }
 
-// author : @ptahemdjehuty
+// author : kemi

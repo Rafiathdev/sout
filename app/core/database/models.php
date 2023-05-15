@@ -67,7 +67,11 @@ class Model
 			return $read_request;
 		}
 	}
-
+	public function get_last_row($table, $sfield){
+		$db = $this->conn();
+		$read_request = $db->query('SELECT * FROM '. $table .' WHERE '.$sfield.'=(SELECT max('.$sfield.') FROM '.$table.')');
+		return $read_request;
+	}
 	public function delete($table, $field1, $field2 = '', $values)
 	{
 		$db = $this->conn();

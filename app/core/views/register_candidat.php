@@ -3,8 +3,8 @@
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     require 'app/core/controllers/user.php';
     $user = new User();
-    $user-> register($_POST['email'], $_POST['phone'], 2, $_POST['password'], $_POST['confirm']);
-    header('Location: /info');
+    $new_user=$user-> register($_POST['email'], $_POST['phone'], 2, $_POST['password'], $_POST['confirm']);
+    header('Location: /info?u='.$new_user);
 // Les variables pour récupérer les infos envoyées
 }
 ?>

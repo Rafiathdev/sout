@@ -215,7 +215,7 @@
 							<ul>
 								<li><a href="/choice"><i class="fa fa-user"></i>&nbsp; INSCRIPTION</a>
 								</li>
-								<li ><a href="login.php"><i class="fa fa-sign-in"></i>&nbsp; CONNEXION</a>
+								<li ><a href="/login"><i class="fa fa-sign-in"></i>&nbsp; CONNEXION</a>
 								</li>
 							</ul>
 						</div>

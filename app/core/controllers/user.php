@@ -32,6 +32,12 @@ class User
 
                 $database->add($table, $fields, $values, $data);
 
+                $temp = $database->get_last_row('user','id');
+
+                $new_user = $temp->fetch();
+
+                return $new_user['id'];
+
                 echo '<script>alert("Votre compte a été crée avec succes")</script>';
             } else {
                 echo '<script>alert("Erreur ! Les mots de passe doivent être identiques ")</script>';
@@ -77,10 +83,9 @@ class User
                         $query = $database->read_filter_once($table, $fields, $sfield, $data);
                         $user_info =  $query->fetch();
                         require_once 'app/utils/methods.php';
-                        $info = array('email' => $email, 'id' => $pass['id'], 'name'=>$user_info['nom_e'], 'type'=>$pass['type']);
+                        $info = array('email' => $email, 'id' => $pass['id'], 'name' => $user_info['nom_e'], 'type' => $pass['type']);
                         authenticate($info);
-                    }
-                    else{
+                    } else {
                         $table = 'candidat';
                         $fields = 'nom_c, prenom_c';
                         $sfield = 'user_id';
@@ -88,7 +93,7 @@ class User
                         $query = $database->read_filter_once($table, $fields, $sfield, $data);
                         $user_info =  $query->fetch();
                         require_once 'app/utils/methods.php';
-                        $info = array('email' => $email, 'id' => $pass['id'], 'name'=>$user_info['prenom_c'].' '.$user_info['nom_c'], $pass['type']);
+                        $info = array('email' => $email, 'id' => $pass['id'], 'name' => $user_info['prenom_c'] . ' ' . $user_info['nom_c'], 'type' => $pass['type']);
                         authenticate($info);
                     }
 
@@ -114,7 +119,7 @@ class User
         header('location : /login');
     }
 
-    public function add_info_recruteur($nom_u, $nom_e, $ifu, $rccm, $site_web)
+    public function add_info_recruteur($nom_u, $nom_e, $ifu, $rccm, $site_web, $user)
     {
         if (
             isset($nom_u) && !empty($nom_u)
@@ -132,9 +137,9 @@ class User
 
             $database = new Model();
             $table = 'employeur';
-            $fields = 'nom_u, nom_e, ifu, rccm, site_web';
-            $values = '?,?,?,?,?';
-            $data = array($nom_u, $nom_e, $ifu, $rccm, $site_web);
+            $fields = 'nom_u, nom_e, ifu, rccm, site_web, user_id';
+            $values = '?,?,?,?,?,?';
+            $data = array($nom_u, $nom_e, $ifu, $rccm, $site_web, $user);
 
             $database->add($table, $fields, $values, $data);
 
@@ -144,7 +149,7 @@ class User
         }
     }
 
-    public function add_info_candidat($nom_c, $prenom_c, $date_n, $sexe, $niveau, $nationnalite, $adresse, $qualification, $pdf_cv, $photo)
+    public function add_info_candidat($nom_c, $prenom_c, $date_n, $sexe, $niveau, $nationnalite, $adresse, $qualification, $pdf_cv, $photo, $user)
     {
         if (
             isset($nom_c) && !empty($nom_c)
@@ -173,11 +178,11 @@ class User
 
             $database = new Model();
             $table = 'candidat';
-            $fields = 'nom_c, prenom_c, sexe, date_n, niveau, nationnalite, adresse, qualification, pdf_cv, photo';
-            $values = '?,?,?,?,?,?,?,?,?,?';
+            $fields = 'nom_c, prenom_c, sexe, date_n, niveau, nationnalite, adresse, qualification, pdf_cv, photo, user_id';
+            $values = '?,?,?,?,?,?,?,?,?,?,?';
             $pdf = cv_upload('app/media/', $pdf_cv);
             $photoo = file_upload('app/media/', $photo);
-            $data = array($nom_c, $prenom_c, $sexe, $date_n, $niveau, $nationnalite, $adresse, $qualification, $pdf, $photoo);
+            $data = array($nom_c, $prenom_c, $sexe, $date_n, $niveau, $nationnalite, $adresse, $qualification, $pdf, $photoo, $user);
 
             $database->add($table, $fields, $values, $data);
 
