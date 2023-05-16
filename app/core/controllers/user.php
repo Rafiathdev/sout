@@ -26,7 +26,7 @@ class User
 
                 $database = new Model();
                 $table = 'user';
-                $fields = 'email, telephone, password, type_compte';
+                $fields = 'email, telephone, password, type';
                 $values = '?,?,?,?';
                 $data = array($email, $phone, sha1($password), $type);
 
@@ -61,7 +61,7 @@ class User
             require_once 'app/core/database/models.php';
             $database = new Model();
             $table = 'user';
-            $fields = 'id, password, type';
+            $fields = 'id, password, type, telephone';
             $sfield = 'email';
             $data = array($email);
 
@@ -83,8 +83,10 @@ class User
                         $query = $database->read_filter_once($table, $fields, $sfield, $data);
                         $user_info =  $query->fetch();
                         require_once 'app/utils/methods.php';
-                        $info = array('email' => $email, 'id' => $pass['id'], 'name' => $user_info['nom_e'], 'type' => $pass['type']);
+                        $info = array('email' => $email, 'phone' => $pass['telephone'],  'id' => $pass['id'], 'name' => $user_info['nom_e'], 'type' => $pass['type']);
                         authenticate($info);
+                        header('Location: /profile?actor=company');
+                        echo '<script>alert("Bienvenue '.$user_info['nom_e'].'")</script>';
                     } else {
                         $table = 'candidat';
                         $fields = 'nom_c, prenom_c';
@@ -93,15 +95,16 @@ class User
                         $query = $database->read_filter_once($table, $fields, $sfield, $data);
                         $user_info =  $query->fetch();
                         require_once 'app/utils/methods.php';
-                        $info = array('email' => $email, 'id' => $pass['id'], 'name' => $user_info['prenom_c'] . ' ' . $user_info['nom_c'], 'type' => $pass['type']);
+                        $info = array('email' => $email, 'phone' => $pass['telephone'], 'id' => $pass['id'], 'name' => $user_info['prenom_c'] . ' ' . $user_info['nom_c'], 'type' => $pass['type']);
                         authenticate($info);
+                        header('Location: /profile');
+                        echo '<script>alert("Bienvenue '.$user_info['prenom_c'].'")</script>';
                     }
 
 
 
 
-                    echo '<script>alert("Bienvenue")</script>';
-                    header('location: /');
+                    
                 } else {
                     echo '<script>alert("Nom d\'utilisateur ou mot de passe incorrect")</script>';
                 }
@@ -116,10 +119,10 @@ class User
         session_start(); // demarrer la session
         session_destroy(); // supprimer les informations en session
         session_abort();
-        header('location : /login');
+        header('location: /login');
     }
 
-    public function add_info_recruteur($nom_u, $nom_e, $ifu, $rccm, $site_web, $user)
+    public function add_info_recruteur($nom_u, $nom_e, $ifu, $rccm, $site_web, $photo,$user)
     {
         if (
             isset($nom_u) && !empty($nom_u)
@@ -130,6 +133,8 @@ class User
             &&
             isset($rccm) && !empty($rccm)
             &&
+            isset($photo) && !empty($photo)
+            &&
             isset($site_web) && !empty($site_web)
 
         ) {
@@ -137,9 +142,14 @@ class User
 
             $database = new Model();
             $table = 'employeur';
-            $fields = 'nom_u, nom_e, ifu, rccm, site_web, user_id';
-            $values = '?,?,?,?,?,?';
-            $data = array($nom_u, $nom_e, $ifu, $rccm, $site_web, $user);
+            $fields = 'nom_u, nom_e, ifu, rccm, site_web,photo, user_id';
+            $values = '?,?,?,?,?,?,?';
+            $photo = $_FILES['photo']['name'];
+            $tmp = $_FILES['photo']['tmp_name'];
+            $dossier = 'app/media/'.$photo;
+            //file_upload($tmp, "$dossier");
+            move_uploaded_file($tmp, "$dossier");
+            $data = array($nom_u, $nom_e, $ifu, $rccm, $site_web, $dossier, $user);
 
             $database->add($table, $fields, $values, $data);
 

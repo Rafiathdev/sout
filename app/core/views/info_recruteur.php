@@ -4,7 +4,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     require 'app/core/controllers/user.php';
     $user = new User();
     $new_user = $_GET['u'];
-    $user-> add_info_recruteur($_POST['nom_u'], $_POST['nom_e'], $_POST['ifu'], $_POST['rccm'], $_POST['site_web'], $new_user);
+    $user-> add_info_recruteur($_POST['nom_u'], $_POST['nom_e'], $_POST['ifu'], $_POST['rccm'], $_POST['site_web'], $_FILES['photo'] , $new_user);
 // Les variables pour récupérer les infos envoyées
 }
 ?>
@@ -22,6 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	 require 'app/core/views/import/top.php';
      
 	?> 
+
 
 </head>
 <body>
@@ -92,17 +93,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     <div class="col-md-10 col-md-offset-1">
                         <div role="tabpanel">
 
-                            <!-- Nav tabs
-                            <ul id="tabOne" class="nav register-tabs">
-                                <li class="active"><a href="#contentOne-1" data-toggle="tab">Entreprise <br>
-                                        <span>Recherche un employé</span></a>
-                                </li>
-                               
-                                
-                            </ul>-->
-
-
-                            
 
                             <!-- Tab panes -->
                             <div class="tab-content">
@@ -111,7 +101,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                         <h1><center><p>Completer vos informations </p></center></h1>
                                     </div>
                                     <div class="row ">
-                                        <form action="" data-toggle="validator"  method="POST">
+                                        <form action="" data-toggle="validator"  method="POST" enctype="multipart/form-data">
                                           <!-- Form Group---->
                                             <div class="form-group col-md-6 col-sm-6 col-xs-12">
                                             <label> Nom utilisateur </label>
@@ -152,6 +142,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                             <label>Site Web</label>
                                             <input type="text" name="site_web" id="site_web" 
                                                     placeholder="entrez votre site">
+                                            </div>
+
+                                            <div class="form-group col-md-6 col-sm-6 col-xs-12 custom_input" required>
+                                                <label for="">Profil</label>
+                                                <input type='file' name="photo" id="photo" onchange="readURL(this);" />
+                                                <div class="img-upload">
+                                                    <img id="blah" src="/public/assets/images/content/base.png" alt="your logo" />
+                                                </div>
                                             </div>
 
                                             <!-- Form Group
@@ -218,10 +216,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
  require 'app/core/views/import/bottom.php';
  
     ?>
-    <script src="js/jquery.magnific-popup.js"></script>
-    <script src="js/custom_II.js"></script>
+    <script src="public/assets/js/jquery.magnific-popup.js"></script>
+    <script src="public/assets/js/custom_II.js"></script>
     
-   
 
 </body>
 </html>

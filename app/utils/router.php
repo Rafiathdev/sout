@@ -26,7 +26,27 @@ if ($route === '/') {
         require_once 'app/core/views/info_candidat.php';
     }
 
-} else if ($route === '/login') {
+
+} 
+ else if ($route === '/profile') {
+    if ($_GET['actor'] == 'company') {
+        require_once 'app/core/views/profile_recruteur.php';
+    } else {
+        require_once 'app/core/views/profile_candidat.php';
+    }
+
+}
+
+else if ($route === '/liste') {
+    require_once 'app/core/views/liste.php';
+
+} 
+
+else if ($route === '/decrire') {
+    require_once 'app/core/views/decrire.php';
+
+} 
+else if ($route === '/login') {
     require_once 'app/core/views/login.php';
     
 } else if ($route === '/logout') {

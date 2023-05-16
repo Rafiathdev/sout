@@ -6,7 +6,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     require 'app/core/controllers/user.php';
     $user = new User();
     $user-> login($_POST['email'], $_POST['password']);
-    header('Location: /');
+  
 // Les variables pour récupérer les infos envoyées
 }
 ?><!DOCTYPE html>
@@ -98,12 +98,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                             <form method="POST">
                             <div class="formsix-pos">
 								<div class="form-group i-email">
-									<input type="email" class="form-control" required="" id="email2" placeholder="email">
+									<input type="email" class="form-control" required="" id="email2" name="email" placeholder="email">
 								</div>
 							</div>
 							<div class="formsix-e">
 								<div class="form-group i-password">
-									<input type="password" class="form-control" required="" id="password2" placeholder="Password *">
+									<input type="password" class="form-control" required="" id="password2" name="password" placeholder="Password *">
 								</div>
 							</div>
 							<div class="login_remember_box">
@@ -119,7 +119,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 								<input type="submit" class="btn btn-primary login_btn" value="Connexion"> 
 							</div>
 							<div class="login_message">
-								<p>Vous n'aviez de compte ? <a href="inscription.php"> Inscrivez-vous </a> </p>
+								<p>Vous n'aviez de compte ? <a href="/choice"> Inscrivez-vous </a> </p>
 							</div>
                             </form>
 							

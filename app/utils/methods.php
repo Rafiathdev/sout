@@ -92,12 +92,13 @@ function cv_upload($dir, $file)
 
 
 function authenticate($data){
-    session_start();
+ 
     $_SESSION['user_info'] = $data;
 }
 
 function is_authenticate(){
-    session_start();
+  
+   
     if(isset($_SESSION['user_info'] )){
         return true;
     }
@@ -113,6 +114,6 @@ function generate_slug($urlString)
 }
 
 
-// author : @ptahemdjehuty
+// author : @kemi
 ?>
 

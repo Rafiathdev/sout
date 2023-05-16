@@ -145,13 +145,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                             <div class="form-group col-md-6 col-sm-6 col-xs-12">
                                                 <label for="">Niveau</label>
                                                 <select name="niveau" id="niveau">
-                                                    <option value="C">CEP</option>
-                                                    <option value="B">BEPC</option>
-                                                    <option value="Ca">CAP</option>
-                                                    <option value="Ba">BAC</option>
-                                                    <option value="L">Licence</option>
-                                                    <option value="M">Master</option>
-                                                    <option value="A">Autres</option>
+                                                    <option value="CEP">CEP</option>
+                                                    <option value="BEPC">BEPC</option>
+                                                    <option value="CAP">CAP</option>
+                                                    <option value="BAC">BAC</option>
+                                                    <option value="Licence">Licence</option>
+                                                    <option value="Master">Master</option>
+                                                    <option value="Autres">Autres</option>
                                                 </select>
                                             </div>
                                             <!--Form Group-->

@@ -2,7 +2,7 @@
 // reformatage du code dans le fichier offer.php
 class Offer{
 
-    public function publish($_type, $_titre, $_adresse, $_date_exp, $_annee_exp, $_diplome, $_nbr_post, $_act_principal, $_description, $_comp_req) 
+    public function publish($type, $titre, $adresse, $date_exp, $annee_exp, $diplome, $nbr_post, $act_principal, $description, $comp_req, $cat) 
     {
     
             if(
@@ -33,14 +33,14 @@ class Offer{
                  $database = new Model();
                  
                  $table = 'offre';
-                 $fields = 'type, titre, adresse, date_exp, annee_exp, diplome, nbr_post, act_principal, description, comp_req';
-                 $values = '?,?,?,?,?,?,?,?,?,?';
-                $slug = generate_slug($title);
-                $author = $_SESSION['user_info'][0]['id'];
+                 $fields = 'type, titre, adresse, date_exp, annee_exp, diplome, nbr_post, act_principal, description, comp_req, author, categories_id';
+                 $values = '?,?,?,?,?,?,?,?,?,?,?,?';
+                // $slug = generate_slug($title);
+                // $author = $_SESSION['user_info'][0]['id'];
     
                 
     
-                $data = array($type, $titre, $adresse, $date_exp, $annee_exp, $diplome, $nbr_post, $act_principal, $description, $comp_req);
+                $data = array($type, $titre, $adresse, $date_exp, $annee_exp, $diplome, $nbr_post, $act_principal, $description, $comp_req, $_SESSION['user_info']['id'], $cat);
                 $database -> add($table, $fields, $values, $data);
                 echo '<script>alert("Succes")</script>';
     
@@ -50,6 +50,73 @@ class Offer{
             }
     
     }
+
+    public function recupCategorie() 
+    {
+                require_once 'app/core/database/models.php';
+               // require_once 'app/utils/methods.php';
+                
+                 $database = new Model();
+                 $table = 'categories';
+                 $fields = '*';
     
+                 $result = $database -> read($table, $fields);
+                return $result;
+                //echo '<script>alert("Succes")</script>';
+    
+            }
+
+            public function recupOffer_user() 
+            {
+                require_once 'app/core/database/models.php';
+               // require_once 'app/utils/methods.php';
+                
+                 $database = new Model();
+                 
+                 $table = 'offre';
+                 $fields = '*';
+    
+                 $result = $database -> read($table, $fields);
+                return $result;
+    
+            }
+
+            public function recup_CV() 
+            {
+                require_once 'app/core/database/models.php';
+               // require_once 'app/utils/methods.php';
+                
+                 $database = new Model();
+                 
+                 $table = 'candidat';
+                 $fields = '*';
+    
+                 $result = $database -> read($table, $fields);
+                return $result;
+    
+            }
+
+            // public function recupOffer($id) 
+            // {
+            //             require_once 'app/core/database/models.php';
+            //            // require_once 'app/utils/methods.php';
+                        
+            //              $database = new Model();
+                         
+            //              $table = 'offre';
+            //              $field = '*';
+            //              $sfield = 'id';
+            //              $value = array($id);
+            //              //select * from user s, offre o, employeur e WHERE s.id = e.user_id and s.id = o.author and o.id = 8
+            //              $temp = $database -> read_filter_once($table, $field, $sfield, $value);
+            //             // $data = $temp->fetch();
+            
+            //             return $temp;
+
+
+                       
+            //             //echo '<script>alert("Succes")</script>';
+            
+            //         }
     }
 ?>

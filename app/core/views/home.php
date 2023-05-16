@@ -72,44 +72,23 @@
 		</div>
 		<!-- jp tittle slider Wrapper Start -->
 	</div>
+	<?php 
+                        require 'app/core/controllers/offer.php'; 
+                        $offre = new Offer() ;
+                        $categories = $offre-> recupCategorie();
+                    
+                        ?>
 	<div class="jp_banner_jobs_categories_wrapper">
 		<div class="container">
+		<?php foreach($categories as $categorie): ?>
 			<div class="jp_top_jobs_category_wrapper jp_job_cate_left_border jp_job_cate_left_border_bottom">
 				<div class="jp_top_jobs_category"> <i class="fa fa-code"></i>
-					<h3><a href="#">Devellopeur</a></h3>
+					<h3><a href="#"><?= $categorie['libelle'] ?></a></h3>
 					<p>(240 offres)</p>
 				</div>
 			</div>
-			<div class="jp_top_jobs_category_wrapper jp_job_cate_left_border_bottom">
-				<div class="jp_top_jobs_category"> <i class="fa fa-laptop"></i>
-					<h3><a href="#">Science technologie</a></h3>
-					<p>(504 offres)</p>
-				</div>
-			</div>
-			<div class="jp_top_jobs_category_wrapper jp_job_cate_left_border_bottom">
-				<div class="jp_top_jobs_category"> <i class="fa fa-bar-chart"></i>
-					<h3><a href="#">Comptable</a></h3>
-					<p>(1250 offres)</p>
-				</div>
-			</div>
-			<div class="jp_top_jobs_category_wrapper jp_job_cate_left_border_res">
-				<div class="jp_top_jobs_category"> <i class="fa fa-medkit"></i>
-					<h3><a href="#">Medical</a></h3>
-					<p>(202 offres)</p>
-				</div>
-			</div>
-			<div class="jp_top_jobs_category_wrapper">
-				<div class="jp_top_jobs_category"> <i class="fa fa-university"></i>
-					<h3><a href="#">Assistante</a></h3>
-					<p>(1457 offres)</p>
-				</div>
-			</div>
-			<div class="jp_top_jobs_category_wrapper">
-				<div class="jp_top_jobs_category"> <i class="fa fa-th-large"></i>
-					<h3><a href="#">Toutes les offres</a></h3>
-					<p>(+2000 offres)</p>
-				</div>
-			</div>
+			<?php endforeach; ?>  
+			
 		</div>
 	</div>
 	<!-- map Wrapper End -->
@@ -126,9 +105,9 @@
 							<h2>Les offres récentes</h2>
 						</div>
 						<div class="jp_recent_job_main_wrapper">
-		
+						
 						<ul class="nav nav-tabs" role="tablist">
-							<li role="presentation" class="active"><a href="#best" aria-controls="best" role="tab" data-toggle="tab">Featured</a>
+							<li role="presentation" class="active"><a href="best.php?mot=Par quinzaine" aria-controls="best" role="tab" data-toggle="tab">Par Quinzaine</a>
 							</li>
 							<li role="presentation"><a href="#hot" aria-controls="hot" role="tab" data-toggle="tab">A distance</a>
 							</li>
@@ -141,25 +120,35 @@
 				
 					</div>
 					<div class="tab-content">
+					<?php
+								require_once 'app/core/controllers/offer.php';
+									$profile = new Offer();
+									$company_infos = $profile->recupOffer_user();
+								?>
 						<div role="tabpanel" class="tab-pane fade in active" id="best">
 							<div class="ss_featured_products">
 								<div class="owl-carousel owl-theme">
 									<div class="item" data-hash="zero">
+									<?php foreach($company_infos as $company_info): ?>
 										<div class="jp_job_post_main_wrapper_cont">
 											<div class="jp_job_post_main_wrapper">
 												<div class="row">
+												
 													<div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+													
 														<div class="jp_job_post_side_img">
-															<img src="public/assets/images/content/job_post_img1.jpg" alt="post_img" />
+															<img src="<?php echo $company_info['photo']?>" alt="post_img" />
 														</div>
 														<div class="jp_job_post_right_cont">
-															<h4>Developpeur(1 - 2 ans d'expérience)</h4>
-															<p> Centre e4Afrika</p>
+															<h4><?php echo $company_info['titre']?> (<?php echo $company_info['annee_exp']?> ans d'expérience)</h4>
+															<p> <?php echo $company_info['nom_u']?></p>
+															<p>Date d'expiration : <?php echo $company_info['date_exp']?></p>
 															<ul>
 																
-																<li><i class="fa fa-map-marker"></i>&nbsp; Cotonou , Cadjehoun</li>
+																<li><i class="fa fa-map-marker"></i>&nbsp; <?php echo $company_info['adresse']?></li>
 															</ul>
 														</div>
+														
 													</div>
 													<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
 														<div class="jp_job_post_right_btn_wrapper">
@@ -168,110 +157,16 @@
 																</li>
 								
 																<li><a href="login.php">Postuler</a>
-																<li><a href="login.php">Voir</a></li>
+																<li><a href="/decrire?id=<?php echo $company_info['id']?>">Voir</a></li>
 																</li>
 															</ul>
 														</div>
 													</div>
 												</div>
 											</div>
-											
+											<?php endforeach ;?>
 										</div>
-										<div class="jp_job_post_main_wrapper_cont jp_job_post_main_wrapper_cont2">
-											<div class="jp_job_post_main_wrapper">
-												<div class="row">
-													<div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
-														<div class="jp_job_post_side_img">
-															<img src="public/assets/images/content/LCS.jpg" alt="post_img" />
-														</div>
-														<div class="jp_job_post_right_cont">
-															<h4>Comptable</h4>
-															<p>Cours Sonou</p>
-															<ul>
-																
-																<li><i class="fa fa-map-marker"></i>&nbsp; Cotonou , Caboma</li>
-															</ul>
-														</div>
-													</div>
-													<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-														<div class="jp_job_post_right_btn_wrapper">
-															<ul>
-																<li><a href="#"><i class="fa fa-heart-o"></i></a>
-																
-																<li><a href="login.php">Postuler</a>
-																<li><a href="login.php">Voir</a></li>
-																</li>
-															</ul>
-														</div>
-													</div>
-												</div>
-											</div>
-											
-										</div>
-										<div class="jp_job_post_main_wrapper_cont jp_job_post_main_wrapper_cont2">
-											<div class="jp_job_post_main_wrapper">
-												<div class="row">
-													<div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
-														<div class="jp_job_post_side_img">
-															<img src="public/assets/images/content/career_img2.jpg" alt="post_img" />
-														</div>
-														<div class="jp_job_post_right_cont">
-															<h4>Gestionnaire de boutique</h4>
-															<p>Esprit Béni</p>
-															<ul>
-																
-																<li><i class="fa fa-map-marker"></i>&nbsp; Akpakpa , Dego</li>
-															</ul>
-														</div>
-													</div>
-													<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-														<div class="jp_job_post_right_btn_wrapper">
-															<ul>
-																<li><a href="#"><i class="fa fa-heart-o"></i></a>
-																</li>
-																
-																<li><a href="login.php">Postuler</a>
-																<li><a href="login.php">Voir</a></li>
-																</li>
-															</ul>
-														</div>
-													</div>
-												</div>
-											</div>
-											
-										</div>
-										<div class="jp_job_post_main_wrapper_cont jp_job_post_main_wrapper_cont2">
-											<div class="jp_job_post_main_wrapper">
-												<div class="row">
-													<div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
-														<div class="jp_job_post_side_img">
-															<img src="public/assets/images/content/job_post_img1.jpg" alt="post_img" />
-														</div>
-														<div class="jp_job_post_right_cont">
-															<h4>Technicien de laboratoire</h4>
-															<p>SiL Bénin</p>
-															<ul>
-																
-																<li><i class="fa fa-map-marker"></i>&nbsp; Akpakpa  , cité</li>
-															</ul>
-														</div>
-													</div>
-													<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-														<div class="jp_job_post_right_btn_wrapper">
-															<ul>
-																<li><a href="#"><i class="fa fa-heart-o"></i></a>
-																</li>
-																
-																<li><a href="login.php">Postuler</a>
-																<li><a href="login.php">Voir</a></li>
-																</li>
-															</ul>
-														</div>
-													</div>
-												</div>
-											</div>
-											
-										</div>
+										
 									</div>
 									
 										
@@ -288,10 +183,36 @@
 	</div>
 	<!-- jp recent jobs Wrapper End -->
 	<!-- jp best deal Wrapper Start -->
+	<?php
+		require_once 'app/core/controllers/offer.php';
+		$CV = new Offer();
+		$CV_infos = $CV->recup_CV();
+	?>
 	<div class="jp_best_deal_main_wrapper">
 		<div class="jp_counter_loverlay"></div>
 		<div class="container">
-			
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="jp_hiring_slider_main_wrapper">
+						<div class="jp_hiring_slider_wrapper">
+							<div class="owl-carousel owl-theme">
+
+								<?php foreach($CV_infos as $CV): ?>
+									<div class="item">
+										<div class="jp_hiring_content_main_wrapper">
+											<div class="jp_hiring_content_wrapper">
+												<img src="<?php echo $CV['pdf_cv']?>" alt="hiring_img" />
+											</div>
+											
+										</div>
+									</div>
+								<?php endforeach ;?>
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 	<!-- jp best deal Wrapper End -->
@@ -300,61 +221,7 @@
 	<!-- jp counter Wrapper End -->
 	<!-- jp Newsletter Wrapper Start -->
 	<!-- jp downlord Wrapper Start -->
-	<div class="jp_downlord_main_wrapper">
-		<div class="jp_downlord_img_overlay"></div>
-		<div class="container">
-		<div class="jp_hiring_com_slider_main_wrapper">
-		<div class="jp_hiring_img_overlay"></div>
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-					<div class="jp_hiring_slider_main_wrapper">
-						
-						<div class="jp_hiring_slider_wrapper">
-							<div class="owl-carousel owl-theme">
-								<div class="item">
-									<div class="jp_hiring_content_main_wrapper">
-										<div class="jp_hiring_content_wrapper">
-											<img src="public/assets/images/content/c.jpeg" alt="hiring_img" />
-											
-											
-										</div>
-									</div>
-								</div>
-								<div class="item">
-									<div class="jp_hiring_content_main_wrapper">
-										<div class="jp_hiring_content_wrapper">
-											<img src="public/assets/images/content/v.jpeg" alt="hiring_img" />
-									
-										</div>
-									</div>
-								</div>
-								<div class="item">
-									<div class="jp_hiring_content_main_wrapper">
-										<div class="jp_hiring_content_wrapper">
-											<img src="public/assets/images/content/images.jpeg" alt="hiring_img" />
-											
-										</div>
-									</div>
-								</div>
-								<div class="item">
-									<div class="jp_hiring_content_main_wrapper">
-										<div class="jp_hiring_content_wrapper">
-											<img src="public/assets/images/content/v.jpeg" alt="hiring_img" />
-											
-											
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-		</div>
-	</div>
+	
 	<!-- jp downlord Wrapper End -->
 	<!-- jp career Wrapper Start -->
 	<div class="container">

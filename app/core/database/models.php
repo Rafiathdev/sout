@@ -31,7 +31,7 @@ class Model
 		return $read_request;
 	}
 
-	public function read_filter_once($table, $field, $sfield, $value)
+public function read_filter_once($table, $field, $sfield, $value)
 	{
 		// get and return a database object
 		$db = $this->conn();
@@ -88,6 +88,16 @@ class Model
 
 			$query->execute($values);
 		}
+	}
+
+
+	public function read_join($id)
+	{
+		// get and return a database object
+		$db = $this->conn();
+		$read_request = $db->prepare('SELECT * FROM user s, offre o, employeur e WHERE s.id = e.user_id AND s.id = o.author AND o.id = ? ');
+		$read_request->execute(array($id));
+		return $read_request;
 	}
 }
 // author @ptahemdjehuty
