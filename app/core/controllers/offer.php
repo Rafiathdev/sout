@@ -96,6 +96,64 @@ class Offer{
     
             }
 
+            function read_offre($id){
+                require_once 'app/core/database/models.php';
+               // require_once 'app/utils/methods.php';
+                
+                 $database = new Model();
+                 
+                 $table = 'offre';
+                 $field = '*';
+                 $sfield = 'author';
+                 $value = array($id);
+    
+                 $result = $database -> read_filter_once($table, $field, $sfield, $value);
+                return $result;
+            }
+
+
+            public function candidature($lettre_motiv, $id_cand, $id_offre) 
+            {
+            
+                    if(
+                        
+                        isset($lettre_motiv) && !empty($lettre_motiv)
+                        
+                        
+                        
+                    ){
+            
+                        require_once 'app/core/database/models.php';
+                        require_once 'app/utils/methods.php';
+                        
+                         $database = new Model();
+                         
+                         $table = 'candidature';
+                         $fields = 'lettre_motiv, id_candidat, id_offre';
+                         $values = '?,?,?';
+                         $photo = $_FILES['lettre_motiv']['name'];
+                        $tmp = $_FILES['lettre_motiv']['tmp_name'];
+                        $dossier = 'app/media/'.$photo;
+                        //file_upload($tmp, "$dossier");
+                        move_uploaded_file($tmp, "$dossier");
+                        // $slug = generate_slug($title);
+                        // $author = $_SESSION['user_info'][0]['id'];
+            
+                        
+            
+                        $data = array($dossier, $id_cand, $id_offre);
+                        $database -> add($table, $fields, $values, $data);
+                        echo '<script>alert("Succes")</script>';
+            
+                    }
+                    else {
+                        echo '<script>alert("Tous les champs sont requis")</script>';
+                    }
+            
+            }
+        
+            
+
             // public function recupOffer($id) 
             // {
             //             require_once 'app/core/database/models.php';

@@ -46,6 +46,32 @@ else if ($route === '/decrire') {
     require_once 'app/core/views/decrire.php';
 
 } 
+
+else if ($route === '/offre') {
+    require_once 'app/core/views/offer_list.php';
+
+} 
+
+else if ($route === '/candidature') {
+    require_once 'app/core/views/candidature.php';
+
+} 
+
+else if ($route === '/entretien') {
+    require_once 'app/core/views/entretien.php';
+
+} 
+
+else if ($route === '/voirModifie') {
+    require_once 'app/core/views/voir_modifier.php';
+
+} 
+
+else if ($route === '/delete') {
+    require_once 'app/core/views/delete.php';
+
+} 
+
 else if ($route === '/login') {
     require_once 'app/core/views/login.php';
     

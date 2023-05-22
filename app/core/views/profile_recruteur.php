@@ -27,11 +27,11 @@
 </head>
 
 <body>
-    <!-- preloader Start -->
+    <!-- preloader Start --
     <div id="preloader">
         <div id="status"><img src="public/assets/images/header/loadinganimation.gif" id="preloader_image" alt="loader">
         </div>
-    </div>
+    </div> -->
     <!-- Top Scroll End -->
     <!-- Top Header Wrapper Start -->
     <div class="jp_top_header_main_wrapper">
@@ -58,9 +58,29 @@
     </div>
 	<!-- Top Header Wrapper End -->
 	<!-- Header Wrapper Start -->
+	<?php require 'partial/header.php'; ?>
 	<?php
- require 'app/core/views/partial/header.php'
-    ?>
+			
+		require_once 'app/utils/methods.php';
+
+
+		is_authenticate();
+		
+
+		if (is_authenticate() && $_SESSION['user_info']['type'] == 1) {
+			
+			echo $table1; 
+
+		} else if (is_authenticate() && $_SESSION['user_info']['type'] == 2) {
+
+			echo $table2;
+			
+		} else {
+
+			echo $table3;
+		}
+
+	?>
     <!-- Header Wrapper End -->
 	  <!-- jp Tittle Wrapper Start -->
     <div class="jp_tittle_main_wrapper">
@@ -139,8 +159,9 @@
                                         <td class="td-w10">:</td>
                                         <td class="td-w65"><?php echo $_SESSION['user_info']['phone']?></td>
                                     </tr>
-                                   
+									<tr>
                                     
+									</tr>
                                 </tbody>
                             </table>
 						</div>
@@ -149,7 +170,7 @@
 			</div>
 		
 				<br><br>
-				<div  style="text-align: center; margin-top:25px">
+				<div id="candidature1" style="text-align: center; margin-top:25px; display: none;">
 					
 					<style>
 						table {
@@ -172,16 +193,23 @@
 						  margin-right: 10px;
 						}
 					  </style>
-					<h1 class="" style="text-align: center; margin-top:25px; background-color: burlywood;">Gestion des candidatures</h1>
-    
-					<table id="gestion" >
+					<h1 style="text-align: center; margin-top:25px; background-color: burlywood;">Candidatures en attente</h1>
+					<?php
+								require_once 'app/core/database/models.php';
+									$profile = new Model();
+									$offre = $profile->read_joie();
+									//$data = $offre->fetch();http://127.0.0.1:9000
+									//var_dump($data);
+								?>
+					<table id="gestion">
 						<thead></thead>
 					  <tr>
 						<th>Nom</th>
 						<th>Prénom</th>
-						<th>Adresse e-mail</th>
-						<th>Numéro de téléphone</th>
+						<th>Adresse</th>
+						<th>Lettre de motivation</th>
 						<th>Offre d'emploi</th>
+						<th>Date de candidature</th>
 						<th>État de la candidature</th>
 						<th></th>
 						<th>Action
@@ -189,26 +217,29 @@
 							
 						</th>
 					  </tr>
-					  
+					  <?php foreach($offre as $company_info): ?>
 					  <tr>
-						<td>Pierre</td>
-						<td>Leblanc</td>
-						<td>pierre.leblanc@gmail.com</td>
-						<td>06 11 22 33 44</td>
-						<td>Ingénieur logiciel</td>
-						<td>Acceptée</td>
-						<td> <a href="entretien.html"><input type="submit" value="Interview" ></a></td>
-							<td> <input type="submit" value="Programmer interview" ></td>
-                            <td> <input type="submit" value="Discuter" ></td>
+					 
+						<td><?php echo $company_info['nom_c']?></td>
+						<td><?php echo $company_info['prenom_c']?></td>
+						<td><?php echo $company_info['adresse']?></td>
+						<td><?php echo $company_info['lettre_motiv']?></td>
+						<td><?php echo $company_info['titre']?></td>
+						<td><?php echo $company_info['date_cand']?></td>
+						<td>En attente</td>
+						<td> <input type="submit" value="Consulter"></td>
+							<td> <input type="submit" value="Accepter"></td>
 
-							  
+							<td> <input type="submit" value="Refuser"></td>
 						
+							  
+							
 					  </tr>
-					  
+					  <?php endforeach; ?>
 					</table>
 				</div>
 				<br><br>
-                <div  style="text-align: center; margin-top:25px">
+                <div id="candidature" style="text-align: center; margin-top:25px; display: none;">
 					
 					<style>
 						table {
@@ -222,7 +253,7 @@
 						  text-align: left;
 						  border-bottom: 1px solid #ddd;
 						}
-				  
+							
 						th {
 						  background-color: #f2f2f2;
 						}
@@ -231,16 +262,28 @@
 						  margin-right: 10px;
 						}
 					  </style>
-					<h1 class="" style="text-align: center; margin-top:25px; background-color: burlywood;">Candidatures en attente</h1>
-    
-					<table id="candidature">
+					<h1 style="text-align: center; margin-top:25px; background-color: burlywood;">Gestion des candidatures</h1>
+					<?php 
+					
+					require 'modal.php'; 
+					
+					?>
+					<?php
+					require_once 'app/core/database/models.php';
+						$profile = new Model();
+						$offre1 = $profile->read_joie();
+						//$data = $offre->fetch();http://127.0.0.1:9000
+						//var_dump($data);
+					?>
+					<table id="tab-candidature">
 						<thead></thead>
 					  <tr>
-						<th>Nom</th>
+					  <th>Nom</th>
 						<th>Prénom</th>
-						<th>Adresse e-mail</th>
-						<th>Numéro de téléphone</th>
+						<th>Adresse</th>
+						<th>Lettre de motivation</th>
 						<th>Offre d'emploi</th>
+						<th>Date de candidature</th>
 						<th>État de la candidature</th>
 						<th></th>
 						<th>Action
@@ -248,127 +291,32 @@
 							
 						</th>
 					  </tr>
-					  
+					  <?php foreach($offre1 as $company): ?>
 					  <tr>
-						<td>Pierre</td>
-						<td>Leblanc</td>
-						<td>pierre.leblanc@gmail.com</td>
-						<td>06 11 22 33 44</td>
-						<td>Ingénieur logiciel</td>
-						<td>En attente</td>
-						<td> <input type="submit" value="Consulter"></td>
-							<td> <input type="submit" value="Accepter"></td>
-
-							<td> <input type="submit" value="Refuser"></td>
-                            
+					  <td><?php echo $company['nom_c']?></td>
+						<td><?php echo $company['prenom_c']?></td>
+						<td><?php echo $company['adresse']?></td>
+						<td><?php echo $company['lettre_motiv']?></td>
+						<td><?php echo $company['titre']?></td>
+						<td><?php echo $company['date_cand']?></td>
+						<td>Accepte</td>
+						<td> <a href="/entretien"><input type="submit" value="Interview" ></a></td>
+						<td><button type="button" class="modal1" data-ido="<?php echo $company['ido']?>" data-idc="<?php echo $company['idc']?>">Programme</button></td>
+						<td><button data-ido="<?php echo $company['ido']?>" data-idc="<?php echo $company['idc']?>" class="modal">Programmer interview</button></td>
 						
-					  </tr>
-                      <tr>
-						<td>Pierre</td>
-						<td>Leblanc</td>
-						<td>pierre.leblanc@gmail.com</td>
-						<td>06 11 22 33 44</td>
-						<td>Ingénieur logiciel</td>
-						<td>En attente</td>
-						<td> <input type="submit" value="Consulter"></td>
-							<td> <input type="submit" value="Accepter"></td>
-
-							<td> <input type="submit" value="Refuser"></td>
-                            
 						
-					  </tr>
-					  
-					</table>
-				</div>
-
-                <br><br>
-
-                <div  style="text-align: center; margin-top:25px">
-					
-					<style>
-						table {
-						  border-collapse: collapse;
-						  width: 100%;
-						  margin-bottom: 20px;
-						}
-				  
-						th, td {
-						  padding: 8px;
-						  text-align: left;
-						  border-bottom: 1px solid #ddd;
-						}
-				  
-						th {
-						  background-color: #f2f2f2;
-						}
-				  
-						.action-buttons button {
-						  margin-right: 10px;
-						}
-					  </style>
-					<h1 class="" style="text-align: center; margin-top:25px; background-color: burlywood;">Vos offres</h1>
-    
-					<table id="offer">
-						<thead></thead>
-					  <tr>
-						<th>Type</th>
-						<th>Titre</th>
-						<th>Adresse</th>
-						<th>Nombre de poste</th>
-						<th>Diplome</th>
-                        <th>Date d'expiration</th>
-						<th>État de l'offre</th>
-						<th></th>
-						<th>Action
-						
-							
-						</th>
-					  </tr>
-					  
-					  <tr>
-						<td>Plein temps</td>
-						<td>Comptable</td>
-						<td>Akpakpa/degakon</td>
-						<td>06 </td>
-						<td>Licence en Informatique</td>
-						<td>15/08/2023</td>
-						<td> Publier</td>
-							
-						
-					  </tr>
-                      <tr>
-						<td>Plein temps</td>
-						<td>Comptable</td>
-						<td>Akpakpa/degakon</td>
-						<td>06 </td>
-						<td>Licence en Informatique</td>
-						<td>15/08/2023</td>
-						<td>En attente</td>
-                        <td> <input type="submit" value="Modifier"></td>
-							
-							
-						
-					  </tr>
-
-                      <tr>
-						<td>Plein temps</td>
-						<td>Comptable</td>
-						<td>Akpakpa/degakon</td>
-						<td>06 </td>
-						<td>Licence en Informatique</td>
-						<td>15/08/2023</td>
-						<td>Rejeter</td>
-                        <td> <input type="submit" value="Motif du rejet"></td>
-							<td> <input type="submit" value="Modifier"></td>
                         
-							
+
 						
 					  </tr>
+                      <?php endforeach ; ?>
 					  
 					</table>
 				</div>
+
                 <br><br>
-                <div  style="text-align: center; margin-top:25px">
+
+                <div style="text-align: center; margin-top:25px; display: none;">
 					
 					<style>
 						table {
@@ -391,8 +339,40 @@
 						  margin-right: 10px;
 						}
 					  </style>
-					<h1 class="" style="text-align: center; margin-top:25px; background-color: burlywood;">Interview Programmer</h1>
-    
+					
+				</div>
+                <br><br>
+                <div id="interview" style="text-align: center; margin-top:25px; display: none;">
+					
+					<style>
+						table {
+						  border-collapse: collapse;
+						  width: 100%;
+						  margin-bottom: 20px;
+						}
+				  
+						th, td {
+						  padding: 8px;
+						  text-align: left;
+						  border-bottom: 1px solid #ddd;
+						}
+				  
+						th {
+						  background-color: #f2f2f2;
+						}
+				  
+						.action-buttons button {
+						  margin-right: 10px;
+						}
+					  </style>
+					<h1 style="text-align: center; margin-top:25px; background-color: burlywood;">Interview Programmer</h1>
+					<?php
+								require_once 'app/core/database/models.php';
+									$profile = new Model();
+									$offre2 = $profile->read_joie();
+									//$data = $offre->fetch();http://127.0.0.1:9000
+									//var_dump($data);
+								?>
 					<table id="interview">
 						<thead></thead>
 					  <tr>
@@ -400,24 +380,25 @@
 						<th>Prenom</th>
 						<th>offre</th>
 						<th>Date Interview</th>
-					
+						<th>Heure</th>
 						<th>Action
 						
 							
 						</th>
 					  </tr>
-					  
+					  <?php foreach($offre2 as $company_info): ?>
 					  <tr>
-						<td>SAGBO</td>
-						<td>Jean</td>
-						<td>Comptable</td>
+						<td><?php echo $company_info['nom_c']?></td>
+						<td><?php echo $company_info['prenom_c']?></td>
+						<td><?php echo $company_info['titre']?></td>
 						<td>25/06/2023</td>
-						<td> <input type="submit" value="Interview"></td>
+						<td>5h02</td>
+						<td> <a href="/entretien"><input type="submit" value="Interview"></a></td>
 							
 						
 					  </tr>
                       
-					  
+					  <?php endforeach ; ?>
 					</table>
 				</div>
 				
@@ -435,6 +416,48 @@
 	
     <script src="public/assets/js/jquery.magnific-popup.js"></script>
     <script src="public/assets/js/custom_II.js"></script>
+	<script>
+		let candidature1 = document.getElementById('candidature1');
+		let btn_candidature1 = document.querySelector('.candidature1');
+		let candidature = document.getElementById('candidature');
+		let interview = document.getElementById('interview');
+		let btn_interview = document.querySelector('.interview');
+		btn_candidature1.addEventListener('click', function(e) {
+			candidature1.style.display = 'block';
+			candidature.style.display = 'block';
+			interview.style.display = 'none';
+		})
+		btn_interview.addEventListener('click', function(e) {
+			candidature1.style.display = 'none';  
+			candidature.style.display = 'none';
+			interview.style.display = 'block';
+		});
+
+		$(document).on('click', '.modal1', function(e) {
+			$('#addEmployeeModal').modal('show');
+			let ido = $(this).attr('data-ido');
+			let idc = $(this).attr('data-idc');
+			$('#ido').val(ido);
+			$('#idc').val(idc);
+		});
+
+		$(document).on('click', '#btn-add', function(e) {
+			
+			var data = $('#add_form').serialize();
+
+			if ($('#ido').val() == "" || $('#idc').val() == "" || $('#data').val() == "" || $('#time').val() == "") {
+				alert('Veuillez renseigner tous les champs');
+				return;
+			}
+			//alert('ok');
+			$.ajax({
+				data:data,
+				type: 'post',
+				url: '../core/controllers/user.php',
+			});
+		});
+		
+	</script>
     <!--main js file end-->
 </body>
 

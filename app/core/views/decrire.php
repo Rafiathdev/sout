@@ -1,3 +1,6 @@
+<?php
+    session_start();
+?>
 <!DOCTYPE html>
 
 <html lang="en">
@@ -94,11 +97,14 @@
                 
                 if(isset($_GET['id']) && !empty($_GET['id'])) {
                     $id = htmlspecialchars($_GET['id']);
+                    //var_dump($id);
                     require_once 'app/core/database/models.php';
                     $info = new Model();
                     $offre_info = $info->read_join($id);
                     $data = $offre_info->fetch();
-                   // var_dump($data);
+                    $g = $_SESSION['id'] = $data['id'];
+                   var_dump($g);
+                   var_dump($_SESSION['id_cand']);
                 }
                 ?>
                 <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">

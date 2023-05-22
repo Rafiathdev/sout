@@ -1,5 +1,5 @@
 <?php
-
+//session_start();
 /**
  * THIS FILE HELP TO MANAGE THE LOGIC UNDER OUR DATABASE ACTIONS
  **/
@@ -99,5 +99,63 @@ public function read_filter_once($table, $field, $sfield, $value)
 		$read_request->execute(array($id));
 		return $read_request;
 	}
+
+	public function get_candidat($id)
+	{
+		// get and return a database object
+		$db = $this->conn();
+		$read_request = $db->prepare('SELECT nom_c, prenom_c, email, telephone, qualification, photo, candidat.id FROM candidat, user WHERE candidat.user_id = user.id AND candidat.user_id = ?');
+		$read_request->execute(array($id));
+		return $read_request;
+	}
+
+
+	public function update($date_exp, $act_principal, $des, $comp, $id)
+	{
+		// get and return a database object
+		$db = $this->conn();
+		$read_request = $db->prepare("UPDATE offre  SET date_exp = ?, act_principal = ?,  description = ?, comp_req = ?  WHERE  id = ? ");
+		$read_request->execute(array($date_exp, $act_principal, $des, $comp, $id));
+		return $read_request;
+	}
+
+	public function read_joind()
+	{
+		// get and return a database object
+		$db = $this->conn();
+		$read_request = $db->query('SELECT o.id, e.photo, o.titre, o.annee_exp, e.nom_e, o.type, o.adresse, o.date_exp FROM  offre o, employeur e WHERE o.author = e.user_id');
+		//$read_request->execute(array());
+		return $read_request;
+	}
+
+	public function read_joie()
+	{
+		// get and return a database object
+		$db = $this->conn();
+		$read_request = $db->query('SELECT o.id as ido, c.id as idc, c.nom_c, c.prenom_c, c.adresse, c.pdf_cv, o.titre, p.date_cand, p.lettre_motiv FROM candidat c, offre o, candidature p WHERE c.id=p.id_candidat AND o.id = p.id_offre');
+		//$read_request->execute(array());
+		return $read_request;
+	}
+
+	
+
+	// public function update($table, $field, $values, $data, $id)
+	// {
+	// 	// get and return a database object
+	// 	$db = $this->conn();
+	// 	$read_request = $db->prepare("UPDATE '.$table.'  SET '.$field.' = '.$values.'  WHERE  id = $id ");
+	// 	$read_request->execute(array($data));
+	// 	return $read_request;
+	// }
+
+	// public function read_offre($id)
+	// {
+	// 	// get and return a database object
+	// 	$db = $this->conn();
+	// 	$read_request = $db->prepare('SELECT * FROM offre WHERE id =? ');
+	// 	$read_request->execute(array($id));
+	// 	return $read_request;
+	// }
+
 }
 // author @ptahemdjehuty

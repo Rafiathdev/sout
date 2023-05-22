@@ -1,4 +1,6 @@
-
+<?php
+session_start();									
+?>
 <!DOCTYPE html>
 
 <html lang="en">
@@ -23,15 +25,15 @@
     <link rel="stylesheet" type="text/css" href="public/assets/css/style_II.css" />
     <link rel="stylesheet" type="text/css" href="public/assets/css/responsive2.css" />
     <!-- favicon links -->
-    <link rel="shortcut icon" type="image/png" href="images/header/favicon.ico" />
+    <link rel="shortcut icon" type="image/png" href="public/assets/images/header/favicon.ico" />
 </head>
 
 <body>
-    <!-- preloader Start -->
+    <!-- preloader Start
     <div id="preloader">
         <div id="status"><img src="public/assets/images/header/loadinganimation.gif" id="preloader_image" alt="loader">
         </div>
-    </div>
+    </div> -->
     <!-- Top Scroll End -->
     <!-- Top Header Wrapper Start -->
     <div class="jp_top_header_main_wrapper">
@@ -50,9 +52,29 @@
 			</div>
 		</div>
 	</div>
+	<?php require 'partial/header.php'; ?>
 	<?php
- require 'app/core/views/partial/header.php'
-    ?>
+			
+		require_once 'app/utils/methods.php';
+
+
+		is_authenticate();
+		
+
+		if (is_authenticate() && $_SESSION['user_info']['type'] == 1) {
+			
+			echo $table1; 
+
+		} else if (is_authenticate() && $_SESSION['user_info']['type'] == 2) {
+
+			echo $table2;
+			
+		} else {
+
+			echo $table3;
+		}
+
+	?>
     <!-- Header Wrapper End -->
 	  <!-- jp Tittle Wrapper Start -->
     <div class="jp_tittle_main_wrapper">
@@ -85,10 +107,20 @@
 			<div class="row">
 				<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
 					<div class="jp_cp_left_side_wrapper">
+					<?php
+									require_once 'app/core/database/models.php';
+										$profile = new Model();
+										$candidat_info = $profile->get_candidat($_SESSION['user_info']['id']);
+										$data = $candidat_info->fetch();
+										
+										$_SESSION['id_cand'] = $data['id'];
+										//var_dump($query)
+									?>
 						<div class="jp_cp_left_pro_wallpaper">
-							<img src="public/assets/images/content/cp1.png" alt="profile_img">
-							<h2>John Doe</h2>
-							<p>UI/UX Designer in Dewas</p>
+
+							<img src="<?php echo $data['photo']?>" alt="profile_img">
+							<h2><?php echo $data['nom_c']?></h2>
+							
 							
 						</div>
 						
@@ -102,35 +134,37 @@
 							<table>
                                 <tbody>
 								<?php
-									require_once 'app/core/controllers/profile.php';
-										$profile = new Profile();
-										$candidat_info = $profile->get_candidat_info($_SESSION['user_info']['id']);
+									require_once 'app/core/database/models.php';
+										$profile = new Model();
+										$candidat_info = $profile->get_candidat($_SESSION['user_info']['id']);
+										$data = $candidat_info->fetch();
+										//var_dump($data)
 									?>
                                     <tr>
                                         <td class="td-w25">Nom </td>
                                         <td class="td-w10">:</td>
-                                        <td class="td-w65"><?php echo $candidat_info['nom_c']?></td>
+                                        <td class="td-w65"><?php echo $data['nom_c']?></td>
                                     </tr>
                                     <tr>
                                         <td class="td-w25">Prénom</td>
                                         <td class="td-w10">:</td>
-                                        <td class="td-w65"><?php echo $candidat_info['prenom_c']?></td>
+                                        <td class="td-w65"><?php echo $data['prenom_c']?></td>
                                     </tr>
                                     <tr>
                                         <td class="td-w25">Email</td>
                                         <td class="td-w10">:</td>
-                                        <td class="td-w65"><a href="<?php echo $_SESSION['user_info']['email']?>">[email&#160;protected]</a></td>
+                                        <td class="td-w65"><?php echo $data['email']?></td>
                                     </tr>
                                     <tr>
                                         <td class="td-w25">Phone</td>
                                         <td class="td-w10">:</td>
-                                        <td class="td-w65"><?php echo $candidat_info['telephone']?></td>
+                                        <td class="td-w65"><?php echo $data['telephone']?></td>
                                     </tr>
                                    
                                     <tr>
                                         <td class="td-w25">Qualification</td>
                                         <td class="td-w10">:</td>
-                                        <td class="td-w65"><?php echo $candidat_info['qualification']?></td>
+                                        <td class="td-w65"><?php echo $data['qualification']?></td>
                                     </tr>
                                  
                                 </tbody>

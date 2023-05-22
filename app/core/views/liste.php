@@ -44,17 +44,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                    <div class="jp_top_header_right_wrapper">
-                        <div class="jp_top_header_right_cont">
-                            <ul>
-                                <li><a href="/choice"><i class="fa fa-user"></i>&nbsp; INSCRIPTION</a></li>
-                                <li><a href="/login"><i class="fa fa-sign-in"></i>&nbsp; CONNEXION</a></li>
-                            </ul>
-                        </div>
-                       
-                    </div>
-                </div>
+                
             </div>
         </div>
     </div>
@@ -99,7 +89,7 @@
                                     <div class="gc_causes_view_tabs_wrapper">
                                         <div class="gc_causes_view_tabs">
                                             <ul class="nav nav-pills">
-                                                <li class="active"><a data-toggle="pill" href="#grid"><i class="fa fa-th-large"></i></a></li>
+                                                
                                                 <li><a data-toggle="pill" href="#list"><i class="fa fa-list"></i></a></li>
                                             </ul>
                                         </div>
@@ -110,35 +100,39 @@
                         </div>
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div class="tab-content">
-                                <div id="grid" class="tab-pane fade in active">
-                                    <div class="row">
-                                     
-                                        
-                                        
-                                            
-                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <?php
+								require_once 'app/core/database/models.php';
+									$profile = new Model();
+									$company_infos = $profile->read_joind();
+								?>
+                               
+                             <div id="list" class="tab-pane fade">
+                                <div class="row">
+                                    <?php foreach($company_infos as $company_info): ?>
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                             <div class="jp_job_post_main_wrapper_cont jp_job_post_grid_main_wrapper_cont">
-                                                <div class="jp_job_post_main_wrapper jp_job_post_grid_main_wrapper">
+                                                <div class="jp_job_post_main_wrapper">
                                                     <div class="row">
-                                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
                                                             <div class="jp_job_post_side_img">
-                                                                <img src="images/content/job_post_img3.jpg" alt="post_img" />
+                                                                <img src="<?php echo $company_info['photo']?>" style = 'width:70%' alt="post_img" />
                                                             </div>
-                                                            <div class="jp_job_post_right_cont jp_job_post_grid_right_cont">
-                                                                <h4>HTML Developer (1 - 2 Yrs Exp.)</h4>
-                                                                <p>Webstrot  Ltd</p>
+                                                            <div class="jp_job_post_right_cont">
+                                                                <h4><?php echo $company_info['titre']?> (<?php echo $company_info['annee_exp']?> ans d'expérience)</h4>
+                                                                <p><?php echo $company_info['nom_e']?></p>
+                                                                <p><?php echo $company_info['type']?></p>
                                                                 <ul>
                                                                     
-                                                                    <li><i class="fa fa-map-marker"></i>&nbsp; Ouidah , Covè</li>
+                                                                    <li><i class="fa fa-map-marker"></i>&nbsp;<?php echo $company_info['adresse']?></li>
                                                                 </ul>
                                                             </div>
                                                         </div>
-                                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                                            <div class="jp_job_post_right_btn_wrapper jp_job_post_grid_right_btn_wrapper">
+                                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                                            <div class="jp_job_post_right_btn_wrapper">
                                                                 <ul>
-                                                                    <li><a href="#"><i class="fa fa-heart-o"></i></a></li>
-                                                                    <li><a href="listing_right.php">Voir plus</a></li>
-                                                                    <li><a href="candidature.html">Postuler</a></li>
+                                                                    <li><a href="#"><i class=""></i></a></li>
+                                                                    <li><a href="/decrire?id=<?php echo $company_info['id']?>">Voir plus</a></li>
+                                                                    <li><a href="/candidature">Postuler</a></li>
                                                                 </ul>
                                                             </div>
                                                         </div>
@@ -148,321 +142,7 @@
                                             </div>
                                         </div>
                                         
-                                    </div>
-                                </div>
-                                <div id="list" class="tab-pane fade">
-                                    <div class="row">
-                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                            <div class="jp_job_post_main_wrapper_cont jp_job_post_grid_main_wrapper_cont">
-                                                <div class="jp_job_post_main_wrapper">
-                                                    <div class="row">
-                                                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
-                                                            <div class="jp_job_post_side_img">
-                                                                <img src="images/content/job_post_img5.jpg" alt="post_img" />
-                                                            </div>
-                                                            <div class="jp_job_post_right_cont">
-                                                                <h4>HTML Developer (1 - 2 ans d'expérience)</h4>
-                                                                <p>Webstrot Technology Pvt</p>
-                                                                <ul>
-                                                                    
-                                                                    <li><i class="fa fa-map-marker"></i>&nbsp; Caliphonia, PO 455001</li>
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                                            <div class="jp_job_post_right_btn_wrapper">
-                                                                <ul>
-                                                                    
-                                                                    <li><a href="listing_right.php">Voir plus</a></li>
-                                                                    <li><a href="candidature.html">Postuler</a></li>
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                               
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                            <div class="jp_job_post_main_wrapper_cont jp_job_post_grid_main_wrapper_cont">
-                                                <div class="jp_job_post_main_wrapper">
-                                                    <div class="row">
-                                                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
-                                                            <div class="jp_job_post_side_img">
-                                                                <img src="images/content/job_post_img1.jpg" alt="post_img" />
-                                                            </div>
-                                                            <div class="jp_job_post_right_cont">
-                                                                <h4>HTML Developer (1 - 2 Yrs Exp.)</h4>
-                                                                <p>Webstrot Technology Pvt. Ltd.</p>
-                                                                <ul>
-                                                                    <li><i class="fa fa-cc-paypal"></i>&nbsp; $12K - 15k P.A.</li>
-                                                                    <li><i class="fa fa-map-marker"></i>&nbsp; Caliphonia, PO 455001</li>
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                                            <div class="jp_job_post_right_btn_wrapper">
-                                                                <ul>
-                                                                    <li><a href="#"><i class="fa fa-heart-o"></i></a></li>
-                                                                    <li><a href="listing_single.html">Voir plus</a></li>
-                                                                    <li><a href="candidature.html">Postuler</a></li>
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                               
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                            <div class="jp_job_post_main_wrapper_cont jp_job_post_grid_main_wrapper_cont">
-                                                <div class="jp_job_post_main_wrapper">
-                                                    <div class="row">
-                                                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
-                                                            <div class="jp_job_post_side_img">
-                                                                <img src="images/content/job_post_img3.jpg" alt="post_img" />
-                                                            </div>
-                                                            <div class="jp_job_post_right_cont">
-                                                                <h4>HTML Developer (1 - 2 Yrs Exp.)</h4>
-                                                                <p>Webstrot Technology Pvt. Ltd.</p>
-                                                                <ul>
-                                                                    <li><i class="fa fa-cc-paypal"></i>&nbsp; $12K - 15k P.A.</li>
-                                                                    <li><i class="fa fa-map-marker"></i>&nbsp; Caliphonia, PO 455001</li>
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                                            <div class="jp_job_post_right_btn_wrapper">
-                                                                <ul>
-                                                                    <li><a href="#"><i class="fa fa-heart-o"></i></a></li>
-                                                                    <li><a href="listing_single.html">Voir plus</a></li>
-                                                                    <li><a href="gestion_offre.html">Postuler</a></li>
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                               
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                            <div class="jp_job_post_main_wrapper_cont jp_job_post_grid_main_wrapper_cont">
-                                                <div class="jp_job_post_main_wrapper">
-                                                    <div class="row">
-                                                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
-                                                            <div class="jp_job_post_side_img">
-                                                                <img src="images/content/job_post_img5.jpg" alt="post_img" />
-                                                            </div>
-                                                            <div class="jp_job_post_right_cont">
-                                                                <h4>HTML Developer (1 - 2 Yrs Exp.)</h4>
-                                                                <p>Webstrot Technology Pvt. Ltd.</p>
-                                                                <ul>
-                                                                    <li><i class="fa fa-cc-paypal"></i>&nbsp; $12K - 15k P.A.</li>
-                                                                    <li><i class="fa fa-map-marker"></i>&nbsp; Caliphonia, PO 455001</li>
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                                            <div class="jp_job_post_right_btn_wrapper">
-                                                                <ul>
-                                                                    <li><a href="#"><i class="fa fa-heart-o"></i></a></li>
-                                                                    <li><a href="#">Part Time</a></li>
-                                                                    <li><a href="#">Apply</a></li>
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                            <div class="jp_job_post_main_wrapper_cont jp_job_post_grid_main_wrapper_cont">
-                                                <div class="jp_job_post_main_wrapper">
-                                                    <div class="row">
-                                                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
-                                                            <div class="jp_job_post_side_img">
-                                                                <img src="images/content/job_post_img3.jpg" alt="post_img" />
-                                                            </div>
-                                                            <div class="jp_job_post_right_cont">
-                                                                <h4>HTML Developer (1 - 2 Yrs Exp.)</h4>
-                                                                <p>Webstrot Technology Pvt. Ltd.</p>
-                                                                <ul>
-                                                                    <li><i class="fa fa-cc-paypal"></i>&nbsp; $12K - 15k P.A.</li>
-                                                                    <li><i class="fa fa-map-marker"></i>&nbsp; Caliphonia, PO 455001</li>
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                                            <div class="jp_job_post_right_btn_wrapper">
-                                                                <ul>
-                                                                    <li><a href="#"><i class="fa fa-heart-o"></i></a></li>
-                                                                    <li><a href="listing_right.php">Voir plus</a></li>
-                                                                    <li><a href="#">Postuler</a></li>
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                               
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                            <div class="jp_job_post_main_wrapper_cont jp_job_post_grid_main_wrapper_cont">
-                                                <div class="jp_job_post_main_wrapper">
-                                                    <div class="row">
-                                                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
-                                                            <div class="jp_job_post_side_img">
-                                                                <img src="images/content/job_post_img1.jpg" alt="post_img" />
-                                                            </div>
-                                                            <div class="jp_job_post_right_cont">
-                                                                <h4>HTML Developer (1 an d'expérience)</h4>
-                                                                <p>Webstrot Technology Pvt. Ltd.</p>
-                                                                <ul>
-                                                                    
-                                                                    <li><i class="fa fa-map-marker"></i>&nbsp; Tokpa , Aga</li>
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                                            <div class="jp_job_post_right_btn_wrapper">
-                                                                <ul>
-                                                                    
-                                                                    <li><a href="listing_right.php">Voir plus</a></li>
-                                                                    <li><a href="#">Postuler</a></li>
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                            <div class="jp_job_post_main_wrapper_cont jp_job_post_grid_main_wrapper_cont">
-                                                <div class="jp_job_post_main_wrapper">
-                                                    <div class="row">
-                                                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
-                                                            <div class="jp_job_post_side_img">
-                                                                <img src="images/content/job_post_img5.jpg" alt="post_img" />
-                                                            </div>
-                                                            <div class="jp_job_post_right_cont">
-                                                                <h4>HTML Developer ( 2 ans d'expérience)</h4>
-                                                                <p>Webstrot  Ltd.</p>
-                                                                <ul>
-                                                                    
-                                                                    <li><i class="fa fa-map-marker"></i>&nbsp; Calavi , Tankpê</li>
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                                            <div class="jp_job_post_right_btn_wrapper">
-                                                                <ul>
-                                                                    
-                                                                    <li><a href="listing_right.php">Voir plus</a></li>
-                                                                    <li><a href="#">Postuler</a></li>
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                               
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                            <div class="jp_job_post_main_wrapper_cont jp_job_post_grid_main_wrapper_cont">
-                                                <div class="jp_job_post_main_wrapper">
-                                                    <div class="row">
-                                                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
-                                                            <div class="jp_job_post_side_img">
-                                                                <img src="images/content/job_post_img3.jpg" alt="post_img" />
-                                                            </div>
-                                                            <div class="jp_job_post_right_cont">
-                                                                
-                                                                <p>Webstrot Technology Pvt. Ltd.</p>
-                                                                <ul>
-                                                                    
-                                                                    <li><i class="fa fa-map-marker"></i>&nbsp; Calavi , Zopa</li>
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                                            <div class="jp_job_post_right_btn_wrapper">
-                                                                <ul>
-                                                                    
-                                                                    <li><a href="listing_right.php">Voir plus</a></li>
-                                                                    <li><a href="#">Postuler</a></li>
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                               
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                            <div class="jp_job_post_main_wrapper_cont jp_job_post_grid_main_wrapper_cont">
-                                                <div class="jp_job_post_main_wrapper">
-                                                    <div class="row">
-                                                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
-                                                            <div class="jp_job_post_side_img">
-                                                                <img src="images/content/job_post_img1.jpg" alt="post_img" />
-                                                            </div>
-                                                            <div class="jp_job_post_right_cont">
-                                                                <h4>Asistant de Direction (1-2 ans d'experience)</h4>
-                                                                <p>Webstrot Technology </p>
-                                                                <ul>
-                                                                    
-                                                                    <li><i class="fa fa-map-marker"></i>&nbsp;  Cotonou, kpondehou</li>
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                                            <div class="jp_job_post_right_btn_wrapper">
-                                                                <ul>
-                                                                    
-                                                                    <li><a href="listing_single.php">voir profil</a></li>
-                                                                    <li><a href="#">Postuler</a></li>
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                            <div class="jp_job_post_main_wrapper_cont jp_job_post_grid_main_wrapper_cont">
-                                                <div class="jp_job_post_main_wrapper">
-                                                    <div class="row">
-                                                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
-                                                            <div class="jp_job_post_side_img">
-                                                                <img src="images/content/job_post_img5.jpg" alt="post_img" />
-                                                            </div>
-                                                            <div class="jp_job_post_right_cont">
-                                                                <h4>Web Disigner (1 - 2 ans d'experience.)</h4>
-                                                                <p>Webstrot </p>
-                                                                <ul>
-                                                                    
-                                                                    <li><i class="fa fa-map-marker"></i>&nbsp;  Cotonou, Degakon</li>
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                                            <div class="jp_job_post_right_btn_wrapper">
-                                                                <ul>
-                                                                    
-                                                                    <li><a href="listing_single.php">Voir Profil</a></li>
-                                                                    <li><a href="#">Postuler</a></li>
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                
-                                            </div>
-                                        </div>
-                                       
+                                    <?php endforeach ;?>
                                     </div>
                                 </div>
                             </div>

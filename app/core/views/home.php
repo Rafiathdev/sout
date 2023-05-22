@@ -37,9 +37,29 @@
 			</div>
 		</div>
 	</div>
+	<?php require 'partial/header.php'; ?>
 	<?php
- require 'app/core/views/partial/header.php'
-    ?>
+			
+		require_once 'app/utils/methods.php';
+
+
+		is_authenticate();
+		
+
+		if (is_authenticate() && $_SESSION['user_info']['type'] == 1) {
+			
+			echo $table1; 
+
+		} else if (is_authenticate() && $_SESSION['user_info']['type'] == 2) {
+
+			echo $table2;
+			
+		} else {
+
+			echo $table3;
+		}
+
+	?>
 	<!-- map Wrapper Start -->
 	<div class="jp_map_indx_wrapper">
 		<div class="jb_indexvi_img_overlay"></div>
@@ -121,9 +141,9 @@
 					</div>
 					<div class="tab-content">
 					<?php
-								require_once 'app/core/controllers/offer.php';
-									$profile = new Offer();
-									$company_infos = $profile->recupOffer_user();
+								require_once 'app/core/database/models.php';
+									$profile = new Model();
+									$company_infos = $profile->read_joind();
 								?>
 						<div role="tabpanel" class="tab-pane fade in active" id="best">
 							<div class="ss_featured_products">
@@ -156,7 +176,7 @@
 																<li><a href="#"><i class="fa fa-heart-o"></i></a>
 																</li>
 								
-																<li><a href="login.php">Postuler</a>
+																<li><a href="/login">Postuler</a>
 																<li><a href="/decrire?id=<?php echo $company_info['id']?>">Voir</a></li>
 																</li>
 															</ul>
@@ -201,7 +221,7 @@
 									<div class="item">
 										<div class="jp_hiring_content_main_wrapper">
 											<div class="jp_hiring_content_wrapper">
-												<img src="<?php echo $CV['pdf_cv']?>" alt="hiring_img" />
+												<img src="<?php echo $CV['pdf_cv']?>">
 											</div>
 											
 										</div>

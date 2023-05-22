@@ -18,21 +18,20 @@ class Profile{
 
         }
 
-        function get_candidat_info($id){
+        // function get_candidat($nom_c, $prenom_c, $email, $telephone, $qualification, $photo){
 
-            require_once 'app/core/database/models.php';
-            $database = new Model();
-            $table = 'candidat';
-            $field = '*';
-            $value = array($id);
-            $sfield = 'user_id';
-
-            $temp = $database->read_filter_once($table, $field, $sfield, $value);
-            $data = $temp->fetch();
+        //     require_once 'app/core/database/models.php';
+        //     $database = new Model();
+        //     $table = 'candidat';
+        //     $field = '?,?,?,?,?,?';
+        //     $value = array($nom_c, $prenom_c, $email, $telephone, $qualification, $photo);
             
-            return $data;
+        //     $temp = $database->read_filter_once($table, $field, $sfield, $value);
+        //     $data = $temp->fetch();
+            
+        //     return $data;
 
-        }
+        // }
 
 
 }

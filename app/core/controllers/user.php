@@ -201,4 +201,78 @@ class User
             echo '<script>alert("Tous les champs sont requis")</script>';
         }
     }
+
+    public function update_offer($date_exp, $act_principal, $description, $comp_req, $id)
+    {
+        if (
+            isset($date_exp) && !empty($date_exp)
+            &&
+            isset($act_principal) && !empty($act_principal)
+            &&
+            isset($description) && !empty($description)
+            &&
+            isset($comp_req) && !empty($comp_req)
+            &&
+            isset($id) && !empty($id)
+
+        ) {
+            require_once 'app/core/database/models.php';
+            require_once 'app/utils/methods.php';
+
+            $database = new Model();
+            
+
+            $database->update($date_exp, $act_principal, $description, $comp_req, $id);
+
+            echo '<script>alert("Bien modifie")</script>';
+        } else {
+            echo '<script>alert("Tous les champs sont requis")</script>';
+        }
+    }
+
+    public function delete_offre($id)
+    {
+        if(true){
+            require_once 'app/core/database/models.php';
+            $database = new Model();
+            $table = 'offre';
+            $field1 = 'id';
+            $values = array($id);
+            $field2 = '';
+            $database->delete($table, $field1, $field2 = '', $values);
+
+        
+            echo '<script>alert("Bien supprime")</script>';
+        } else {
+            echo '<script>alert("Erreur de suppression")</script>';
+        }
+    }
+
+    //public function add_info_entretien($_POST['ido'], $_POST['ido'],$_POST['ido'], $_POST['ido'])
+    public function add_info_entretien($date, $time, $id_offre, $id_candidat)
+    {
+       
+
+         
+            require_once 'app/core/database/models.php';
+
+            $database = new Model();
+            $table = 'entretien';
+            $fields = 'date_entretien, heure, id_offre, id_candidat';
+            $values = '?,?,?,?';
+            
+           
+            //file_upload($tmp, "$dossier");
+           
+            $data = array($date, $time, $id_offre, $id_candidat);
+
+            $database->add($table, $fields, $values, $data);
+
+           
+        
+    }
+
+
+
+    
 }
