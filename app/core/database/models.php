@@ -132,10 +132,20 @@ public function read_filter_once($table, $field, $sfield, $value)
 	{
 		// get and return a database object
 		$db = $this->conn();
-		$read_request = $db->query('SELECT o.id as ido, c.id as idc, c.nom_c, c.prenom_c, c.adresse, c.pdf_cv, o.titre, p.date_cand, p.lettre_motiv FROM candidat c, offre o, candidature p WHERE c.id=p.id_candidat AND o.id = p.id_offre');
+		$read_request = $db->query('SELECT o.id as ido, c.id as idc, c.nom_c, c.prenom_c, c.adresse, c.pdf_cv, o.titre, p.date_cand, p.lettre_motiv, en.date_entretien, en.heure FROM candidat c, offre o, candidature p, entretien en WHERE c.id=p.id_candidat AND o.id = p.id_offre AND c.id = en.id_candidat');
 		//$read_request->execute(array());
+		//SELECT o.id as ido, c.id as idc, c.nom_c, c.prenom_c, c.adresse, c.pdf_cv, o.titre, p.date_cand, p.lettre_motiv, en.date_entretien, en.heure FROM candidat c, offre o, candidature p, entretien en WHERE c.id=p.id_candidat AND o.id = p.id_offre AND c.id = en.id_candidat and o.author = 8
 		return $read_request;
 	}
+
+	/*public function read_jo()
+	{
+		// get and return a database object
+		$db = $this->conn();
+		$read_request = $db->query('SELECT  en.date_entretien, en.time, c.id as idc,o.id as ido, p.date_cand FROM candidat c, offre o, entretien en WHERE c.id=p.id_candidat AND o.id = p.id_offre');
+		//$read_request->execute(array());
+		return $read_request;
+	}*/
 
 	
 

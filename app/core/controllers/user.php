@@ -249,28 +249,28 @@ class User
     }
 
     //public function add_info_entretien($_POST['ido'], $_POST['ido'],$_POST['ido'], $_POST['ido'])
-    public function add_info_entretien($date, $time, $id_offre, $id_candidat)
+    /*public function add_info_entretien($post)
     {
        
 
          
-            require_once 'app/core/database/models.php';
+       require_once 'app/core/database/models.php';
+       
 
             $database = new Model();
             $table = 'entretien';
-            $fields = 'date_entretien, heure, id_offre, id_candidat';
+            $fields = 'date_entretien, time, id_offre, id_candidat';
             $values = '?,?,?,?';
             
-           
-            //file_upload($tmp, "$dossier");
-           
-            $data = array($date, $time, $id_offre, $id_candidat);
+            $data = array($post['date'], $post['time'], $post['ido'], $post['idc']);
 
-            $database->add($table, $fields, $values, $data);
+            $result = $database->add($table, $fields, $values, $data);
+
+            return $result;
 
            
         
-    }
+    }*/
 
 
 

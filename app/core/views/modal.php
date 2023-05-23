@@ -22,7 +22,7 @@
 				<div class="modal-footer">
 					<!-- <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel"> -->
 					<button type="button" class="btn btn-default" data-dismiss="modal" value="Cancel"><i class="fa fa-close"></i> Cancel</button>
-					<button type="submit" name="add" class="btn btn-success" id="btn-add"><i class="fa fa-plus"></i> Add</button>
+					<button type="button" name="btn-add" class="btn btn-success" id="btn-add"><i class="fa fa-plus"></i> Add</button>
 				</div>
 			</form>
 		</div>

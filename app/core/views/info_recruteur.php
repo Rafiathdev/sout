@@ -42,8 +42,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     <div class="jp_top_header_right_wrapper">
                         <div class="jp_top_header_right_cont">
                             <ul>
-                                <li><a href="register.html"><i class="fa fa-user"></i>&nbsp; SIGN UP</a></li>
-                                <li><a href="login.html"><i class="fa fa-sign-in"></i>&nbsp; LOGIN</a></li>
+                                <li><a href="/register"><i class="fa fa-user"></i>&nbsp; SIGN UP</a></li>
+                                <li><a href="/login"><i class="fa fa-sign-in"></i>&nbsp; LOGIN</a></li>
                             </ul>
                         </div>
                         

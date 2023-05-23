@@ -302,7 +302,6 @@
 						<td>Accepte</td>
 						<td> <a href="/entretien"><input type="submit" value="Interview" ></a></td>
 						<td><button type="button" class="modal1" data-ido="<?php echo $company['ido']?>" data-idc="<?php echo $company['idc']?>">Programme</button></td>
-						<td><button data-ido="<?php echo $company['ido']?>" data-idc="<?php echo $company['idc']?>" class="modal">Programmer interview</button></td>
 						
 						
                         
@@ -385,14 +384,17 @@
 						
 							
 						</th>
+
 					  </tr>
+
+
 					  <?php foreach($offre2 as $company_info): ?>
 					  <tr>
 						<td><?php echo $company_info['nom_c']?></td>
 						<td><?php echo $company_info['prenom_c']?></td>
 						<td><?php echo $company_info['titre']?></td>
-						<td>25/06/2023</td>
-						<td>5h02</td>
+						<td><?php echo $company_info['date_entretien']?></td>
+						<td><?php echo $company_info['heure']?></td>
 						<td> <a href="/entretien"><input type="submit" value="Interview"></a></td>
 							
 						
@@ -445,15 +447,28 @@
 			
 			var data = $('#add_form').serialize();
 
-			if ($('#ido').val() == "" || $('#idc').val() == "" || $('#data').val() == "" || $('#time').val() == "") {
+			if ($('#date').val() == "" || $('#time').val() == "" || $('#ido').val() == "" || $('#idc').val() == "") {
 				alert('Veuillez renseigner tous les champs');
 				return;
 			}
 			//alert('ok');
 			$.ajax({
-				data:data,
-				type: 'post',
-				url: '../core/controllers/user.php',
+				data: data,
+				type: "post",
+				//url: 'app/core/controllers/ajax.php',
+				url: "app/core/controllers/ajax.php",
+				//dataType: 'json',
+				success: function(response){
+					
+					//var data = JSON.parse(response);
+					//if(data){
+						alert('success');
+						location.reload();
+				    /*}else {
+						alert('mal enregistrer');
+					}*/
+			    }
+
 			});
 		});
 		

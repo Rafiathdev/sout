@@ -57,13 +57,21 @@ else{
 				<div class="col-lg-6 col-md-6 col-sm-8 col-xs-12 hidden-xs">
 					<div class="jp_top_header_left_wrapper">
 						<div class="jp_top_header_left_cont">
-							<p><i class="fa fa-phone"></i> &nbsp;Phone &nbsp;+229 00 00 00 00</p>
-							<p class=""><i class="fa fa-envelope"></i> &nbsp;Email :&nbsp;<a href="#"><span class="__cf_email__" data-cfemail="9cd9f1fdf5f0dcf9e4fdf1ecf0f9b2fff3f1">Ishede@gmail.com</span></a>
-							</p>
+                        <p><i class="fa fa-phone"></i> &nbsp;Phone &nbsp;+229 00 00 00 00</p>
+                            <p class=""><i class="fa fa-envelope"></i> &nbsp;Email :&nbsp;&nbsp;ishede@gmail.com<a
+                       href="#"><span class="__cf_email__" ></span></a></p>
 						</div>
 					</div>
 				</div>
-				
+
+                <div class="col-lg-6 col-md-6 col-sm-8 col-xs-12 hidden-xs">
+					<div class="jp_top_header_right_wrapper">
+						<div class="jp_top_header_left_cont">
+							<a href="/profile?actor=company"><input type="submit" value="Retour" style="background-color:white ;"></a>
+							
+						</div>
+					</div>
+                </div>
 			</div>
 		</div>
 	</div>
@@ -87,7 +95,7 @@ else{
                         <div class="jp_tittle_breadcrumb_main_wrapper">
                             <div class="jp_tittle_breadcrumb_wrapper">
                                 <ul>
-                                    <li><a href=" /">Acceuil</a> <i class="fa fa-angle-right"></i></li>
+                                    <li><a href="/">Acceuil</a> <i class="fa fa-angle-right"></i></li>
                                     <li>Ajout_Offre</li>
                                 </ul>
                             </div>
@@ -116,11 +124,11 @@ else{
                              <label for="">Type d'offre</label>
                                         <select name="type" id="type"> 
 
-                                        <option value="medical">Select type</option>
-                                        <option value="medical">Par Quinzaine</option>
-                                        <option value="medical">A distance</option>
-                                        <option value="medical">A temps partiel</option>
-                                        <option value="medical">A temps plein </option>
+                                        <option value="Select type">Select type</option>
+                                        <option value="Par Quinzaine">Par Quinzaine</option>
+                                        <option value="A distance">A distance</option>
+                                        <option value="A temps partiel">A temps partiel</option>
+                                        <option value="A temps plein ">A temps plein </option>
 
                                             
                                             

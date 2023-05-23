@@ -127,9 +127,8 @@ $table2 .= '<!-- Header Wrapper Start -->
 								<li class="has-mega gc_main_navigation"><a href="#" class="gc_main_navigation">  Offres&nbsp;<i class="fa fa-angle-down"></i></a>
 									<!-- mega menu start -->
 									<ul>
-										<li class="parent"><a href="listing_right.html">Liste doffres</a></li>
-										<li class="parent"><a href="listing_single.html">Information sur loffre</a></li>
-
+										<li class="parent"><a href="/liste">Liste doffres</a></li>
+										
 									</ul>
 								</li>
 								<li class="parent gc_main_navigation"><a href="#" class="gc_main_navigation">Menu &nbsp;<i class="fa fa-angle-down"></i></a>

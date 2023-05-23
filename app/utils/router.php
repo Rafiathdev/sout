@@ -47,6 +47,11 @@ else if ($route === '/decrire') {
 
 } 
 
+else if ($route === '/responsive') {
+    require_once 'app/dashioo/responsive.php';
+
+} 
+
 else if ($route === '/offre') {
     require_once 'app/core/views/offer_list.php';
 
