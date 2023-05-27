@@ -63,7 +63,7 @@
 						<div class="gc_header_wrapper">
 							<div class="gc_logo">
 								<a href="index.html">
-									<img src="public/assets/images/index_vi/logo.png" alt="Logo" title="Job Pro" class="img-responsive">
+									<img src="public/assets/images/index_vi/logo.png" alt="" title="" class="img-responsive">
 								</a>
 							</div>
 						</div>
@@ -288,31 +288,40 @@
 	<?php
                 
                 if(isset($_POST['send'])) {
+
+
+                    $nomFichierLettreMotivation = $_FILES['lettre_motiv']['name'];
+                    $id_offre = $_GET['id'];
+                   /*   echo "<pre>";
+                   // print_r($_SESSION['id_cand']);
+                    print_r($_SESSION['id_offre']);
+                   
+                    print_r($_SERVER);
+                    print_r($_SERVER['QUERY_STRING']);
+                  <?php echo $_SERVER['PHP_SELF']?>
+                    echo "</pre>";
+                    die();*/
+
                         //$id = $_SESSION['id'];
                         //$id_cand = $_SESSION['id_cand'];
                     require 'app/core/controllers/offer.php';
                         //$_SESSION['id'];
                         //$_SESSION['id_cand'];
                         $user = new Offer();
-                        $user-> candidature($_FILES['lettre_motiv'], $_SESSION['id_cand'], $_SESSION['id']);
+                        $user-> candidature($_FILES['lettre_motiv'], $_SESSION['id_cand'], $id_offre);
+
+                       // $user-> candidature($_FILES['lettre_motiv'], $_SESSION['id_cand'], $_SESSION['id']);
+                       // echo $_SESSION["id"]." ".$_SESSION["id_cand"];
                     //echo "<h1>".$_SESSION["id"]." ".$_SESSION["id_cand"]."</h1>";
                 }
                 ?>
 	<h1>Formulaire de candidature</h1>
-    <h1><?php  echo $_SESSION["id"]." ".$_SESSION["id_cand"] ?></h1>
+   
+   
+  
 	<form action="" method="POST" enctype="multipart/form-data">
-		<label for="nom">Nom :</label>
-		<input type="text" id="nom" name="nom" >
-		<br>
-		<label for="prenom">Prénom :</label>
-		<input type="text" id="prenom" name="prenom" >
-		<br>
-		<label for="email">Email :</label>
-		<input type="email" id="email" name="email" >
-		<br>
-		<label for="cv">CV :</label>
-		<input type="file" id="cv" name="cv" accept=".pdf" >
-		<br>
+        
+		
 		<label for="lettre">Lettre de motivation (pdf requise) :</label>
 		<input type="file" name="lettre_motiv" accept=".pdf" >
 		<br>

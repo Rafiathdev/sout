@@ -103,8 +103,8 @@
                     $offre_info = $info->read_join($id);
                     $data = $offre_info->fetch();
                     $g = $_SESSION['id'] = $data['id'];
-                   var_dump($g);
-                   var_dump($_SESSION['id_cand']);
+                  // var_dump($g);
+                  // var_dump($_SESSION['id_cand']);
                 }
                 ?>
                 <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
@@ -161,7 +161,7 @@
                                         <div class="jp_listing_right_bar_btn">
                                             <ul>
                                                 
-                                                <li><a href="#"><i class="fa fa-plus-circle"></i> &nbsp;Postuler</a></li>
+                                                <li><a href="/candidature"><i class="fa fa-plus-circle"></i> &nbsp;Postuler</a></li>
                                             </ul>
                                         </div>
                                     </div>

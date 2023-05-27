@@ -1,6 +1,5 @@
 <?php
-$table1 = '';
-$table1 .= '<!-- Header Wrapper Start -->
+$table1 = '<!-- Header Wrapper Start -->
 <div class="jp_top_header_img_wrapper" >
 	<div class="gc_main_menu_wrapper">
 		<div class="container-fluid">
@@ -50,8 +49,8 @@ $table1 .= '<!-- Header Wrapper Start -->
 									<ul>
 									   
 										<li class="parent"><a href="/offre?id='.$_SESSION['user_info']['id'].'">Mes offres</a></li>
-										<li class="parent"><a href="#gestion" class="candidature1">Voir candidature</a>
-										<li class="parent"><a href="#interview" class="interview">Entretien Programmer</a></li>
+										<li class="parent"><a href="/profile?actor=company&action=gestion" >Voir candidature</a>
+										<li class="parent"><a href="/profile?actor=company&action=interview" class="interview">Entretien Programmer</a></li>
 										<li class="parent"><a href="candidate_profile.html">Mise a jour</a></li>
 									   
 										   
@@ -85,7 +84,7 @@ $table1 .= '<!-- Header Wrapper Start -->
 	</div>
 </div>';
 
-$table2 = '';
+
 $table2 .= '<!-- Header Wrapper Start -->
 <div class="jp_top_header_img_wrapper" >
 	<div class="gc_main_menu_wrapper">
@@ -171,7 +170,7 @@ $table2 .= '<!-- Header Wrapper Start -->
 	</div>
 </div>';
 
-$table3 = '';
+
 $table3 .= '<div class="jp_navi_right_btn_wrapper">
 <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12 hidden-xs hidden-sm full_width">
 	<div class="gc_header_wrapper">

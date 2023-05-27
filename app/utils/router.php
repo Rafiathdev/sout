@@ -30,11 +30,12 @@ if ($route === '/') {
 } 
  else if ($route === '/profile') {
     if ($_GET['actor'] == 'company') {
-        require_once 'app/core/views/profile_recruteur.php';
+         require_once 'app/core/controllers/user1.php';
+         $recruteur = new User();
+         $recruteur->add_info_entretien();
     } else {
         require_once 'app/core/views/profile_candidat.php';
     }
-
 }
 
 else if ($route === '/liste') {
@@ -88,8 +89,35 @@ else if ($route === '/login') {
 } else if ($route === '/offer') {
     require_once 'app/core/views/offer.php';
 
-} else {
+}
+
+else if ($route === '/consulter') {
+    require_once 'app/core/controllers/offer.php';
+    $offer = new Offer();
+    $cv = $_GET ['cv'];
+    $motiv = $_GET ['motiv'];
+    $offer-> get_documents($cv, $motiv);
+
+}else if ($route === '/decision') {
+    require_once 'app/core/controllers/offer.php';
+    $statut = new Offer();
+    $decision = $_GET['action']; // Exemple : récupère la valeur de la décision à partir d'un formulaire POST
+    $target = $_GET['target']; // Exemple : récupère
+    // Appel de la fonction de traitement de la décision
+    $statut->processDecision($decision, $target);
+    header('location: /profile?actor=company&action=gestion');
+
+
+   
+
+
+// Obtention de la décision (vous pouvez la récupérer à partir d'une requête HTTP ou d'une autre source)
+
+
+}else {
     echo '404 vous etes perdue ;(';
 }
+
+
 
 // author : kemi

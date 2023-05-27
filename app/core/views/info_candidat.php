@@ -4,8 +4,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     require 'app/core/controllers/user.php';
     $user = new User();
     $new_user = $_GET['u'];
-    $user-> add_info_candidat($_POST['nom_c'], $_POST['prenom_c'], $_POST['date_n'], $_POST['sexe'], $_POST['niveau'], $_POST['nationalite'], $_POST['adresse'], $_POST['qualification'], 'pdf_cv', 'photo', $new_user);
-// Les variables pour récupérer les infos envoyées
+    $user->add_info_candidat($_POST['nom_c'], $_POST['prenom_c'], $_POST['date_n'], $_POST['sexe'], $_POST['niveau'], $_POST['nationalite'], $_POST['adresse'], $_POST['qualification'], 'pdf_cv', 'photo', $new_user);
+    // Les variables pour récupérer les infos envoyées
 }
 ?>
 
@@ -19,15 +19,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <title>inscription_candidat</title>
 
     <?php
-	 require 'app/core/views/import/top.php';
-	?>
+    require 'app/core/views/import/top.php';
+    ?>
 
     <link rel="stylesheet" type="text/css" href="public/assets/css/style_II.css" />
     <link rel="stylesheet" type="text/css" href="public/assets/css/responsive2.css" />
 </head>
 
 <body>
-  
+
     <!-- Top Scroll End -->
     <!-- Top Header Wrapper Start -->
     <div class="jp_top_header_main_wrapper">
@@ -49,7 +49,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                 <li><a href="/login"><i class="fa fa-sign-in"></i>&nbsp; LOGIN</a></li>
                             </ul>
                         </div>
-                        
+
                     </div>
                 </div>
             </div>
@@ -58,7 +58,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <!-- Top Header Wrapper End -->
     <!-- Header Wrapper Start -->
     <?php
- require 'app/core/views/partial/header.php'
+    require 'app/core/views/partial/header.php'
     ?>
     <!-- Header Wrapper End -->
     <!-- jp Tittle Wrapper Start -->
@@ -109,7 +109,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                             <div class="tab-content">
                                 <div class="tab-pane fade in active register_left_form" id="contentOne-1">
                                     <div class="jp_regiter_top_heading">
-                                    <h1><center><p>Completer vos informations </p></center></h1>
+                                        <h1>
+                                            <center>
+                                                <p>Completer vos informations </p>
+                                            </center>
+                                        </h1>
                                     </div>
                                     <div class="row">
                                         <form action="" data-toggle="validator" method="POST" enctype="multipart/form-data">
@@ -137,14 +141,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                             <!--Form Group-->
                                             <div class="form-group col-md-6 col-sm-6 col-xs-12">
                                                 <label for="">Date de naissance</label>
-                                                <input type="date" name="date_n" id="date_n">
+                                                <input type="date" class="form-control" name="date_n" id="date_n">
 
                                             </div>
 
                                             <!--Form Group-->
                                             <div class="form-group col-md-6 col-sm-6 col-xs-12">
                                                 <label for="">Niveau</label>
-                                                <select name="niveau" id="niveau">
+                                                <select name="niveau" id="niveau" onchange="ajouterChampTexte()">
                                                     <option value="CEP">CEP</option>
                                                     <option value="BEPC">BEPC</option>
                                                     <option value="CAP">CAP</option>
@@ -159,6 +163,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                                 <label for="">Nationalité</label>
                                                 <input type="text" name="nationalite" id="nationalite" placeholder="Votre nationalité" required>
                                             </div>
+                                            <div class="form-group col-md-6 col-sm-6 col-xs-12" id="champTexteContainer" style="display: none;">
+                                                <label for="autresEtudes">Niveau d'etude :</label>
+                                                <input type="text" id="autresEtudes" name="autresEtudes" required>
+                                            </div>
 
                                             <div class="form-group col-md-6 col-sm-6 col-xs-12">
                                                 <label for="">Adresse</label>
@@ -167,21 +175,21 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
                                             <div class="form-group col-md-6 col-sm-6 col-xs-12 custom_input" required>
                                                 <label for="cv"> CV</label>
-                                                <input type="file" name="pdf_cv" id="pdf_cv">
+                                                <input type="file" class="form-control" name="pdf_cv" id="pdf_cv">
                                             </div>
-                                           
-                                            
+
+
                                             <!--Form Group
                                             <div class="form-group col-md-6 col-sm-6 col-xs-12">
                                                 <label for="">Numero </label>
                                                 <input type="tel" name="telephone" id="telephone" placeholder="numero" required>
                                             </div>-->
-                                            
-                                           
+
+
                                             <!--Form Group-->
                                             <div class="form-group col-md-6 col-sm-6 col-xs-12 custom_input" required>
                                                 <label for="">Profil</label>
-                                                <input type='file' name="photo" id="photo" onchange="readURL(this);" />
+                                                <input type='file' class="form-control" name="photo" id="photo" onchange="readURL(this);" />
                                                 <div class="img-upload">
                                                     <img id="blah" src="/public/assets/images/content/base.png" alt="your image" />
                                                 </div>
@@ -191,9 +199,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                                 <label for="">Qualification</label>
                                                 <textarea type="text" name="qualification" id="qualification" placeholder="Vos qualification" required> </textarea>
                                             </div>
-                                            
 
-                                                <!--Form Group
+
+                                            <!--Form Group
                                             <div class="form-group col-md-6 col-sm-6 col-xs-12 custom_input" required>
                                                 <label for="cv"> Email </label>
                                                 <input type="text" name="email" id="email" placeholder="votre mail">
@@ -237,9 +245,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                         <p>Vous avez déjà un compte? <a href="/login"> Connexion </a> </p>
                                     </div>
                                 </div>
-                                
+
                             </div>
-                            
+
                         </div>
                     </div>
                 </div>
@@ -250,12 +258,24 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     <!-- jp Newsletter Wrapper Start -->
     <?php
- require 'app/core/views/partial/footer.php';
- require 'app/core/views/import/bottom.php';
+    require 'app/core/views/partial/footer.php';
+    require 'app/core/views/import/bottom.php';
     ?>
     <script src="public/assets/js/custom_II.js"></script>
     <script src="public/assets/js/jquery.magnific-popup.js"></script>
-    
+    <script>
+  function ajouterChampTexte() {
+    var selectElement = document.getElementById("niveau");
+    var champTexteContainer = document.getElementById("champTexteContainer");
+
+    if (selectElement.value === "Autres") {
+      champTexteContainer.style.display = "block";
+    } else {
+      champTexteContainer.style.display = "none";
+    }
+  }
+</script>
+
 
 </body>
 

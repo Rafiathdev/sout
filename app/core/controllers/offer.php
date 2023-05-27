@@ -112,16 +112,13 @@ class Offer{
             }
 
 
+            /**
+             * 
+             */
             public function candidature($lettre_motiv, $id_cand, $id_offre) 
             {
             
-                    if(
-                        
-                        isset($lettre_motiv) && !empty($lettre_motiv)
-                        
-                        
-                        
-                    ){
+                    if(isset($lettre_motiv) && !empty($lettre_motiv)){
             
                         require_once 'app/core/database/models.php';
                         require_once 'app/utils/methods.php';
@@ -129,15 +126,15 @@ class Offer{
                          $database = new Model();
                          
                          $table = 'candidature';
-                         $fields = 'lettre_motiv, id_candidat, id_offre';
-                         $values = '?,?,?';
+                         $fields = 'lettre_motiv, id_candidat, id_offre,Decision';
+                         $values = '?,?,?,0';
                          $photo = $_FILES['lettre_motiv']['name'];
                         $tmp = $_FILES['lettre_motiv']['tmp_name'];
                         $dossier = 'app/media/'.$photo;
                         //file_upload($tmp, "$dossier");
                         move_uploaded_file($tmp, "$dossier");
                         // $slug = generate_slug($title);
-                        // $author = $_SESSION['user_info'][0]['id'];
+                         //$author = $_SESSION['user_info'][0]['id'];
             
                         
             
@@ -151,30 +148,40 @@ class Offer{
                     }
             
             }
+
+            public function get_documents($cv, $motiv){
+                    require_once 'app/utils/methods.php';
+                    download($cv);
+                    download($motiv);
+            }
         
             
-
-            // public function recupOffer($id) 
-            // {
-            //             require_once 'app/core/database/models.php';
-            //            // require_once 'app/utils/methods.php';
-                        
-            //              $database = new Model();
-                         
-            //              $table = 'offre';
-            //              $field = '*';
-            //              $sfield = 'id';
-            //              $value = array($id);
-            //              //select * from user s, offre o, employeur e WHERE s.id = e.user_id and s.id = o.author and o.id = 8
-            //              $temp = $database -> read_filter_once($table, $field, $sfield, $value);
-            //             // $data = $temp->fetch();
-            
-            //             return $temp;
+            public function decision($accept, $refuse){
+                require_once 'app/utils/methods.php';
+                
+        }
+    
+        
 
 
-                       
-            //             //echo '<script>alert("Succes")</script>';
-            
-            //         }
-    }
+       
+
+
+
+    public function processDecision($decision, $target)
+    {
+        // Vérifie la valeur de la décision
+        require_once 'app/core/database/models.php';
+        $database = new Model();
+      
+	 
+        $database->update_decision($decision,$target);
+}
+
+}
+
+
 ?>
+
+
+    

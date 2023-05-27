@@ -1,8 +1,8 @@
     <?php
-     session_start();
+    session_start();
 
-          require_once 'app/utils/router.php';
+    require_once 'app/utils/router.php';
 
 
-        // author: @ptahemdjehuty
-     ?>
+    // author: @ptahemdjehuty
+    ?>

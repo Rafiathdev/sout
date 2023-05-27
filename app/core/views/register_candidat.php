@@ -155,7 +155,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                         </form>
                                     </div>
                                     <div class="login_message">
-                                        <p>Vous avez déjà un compte? <a href="login.php"> Connexion </a> </p>
+                                        <p>Vous avez déjà un compte? <a href="/login"> Connexion </a> </p>
                                     </div>
                                 </div>
                                 

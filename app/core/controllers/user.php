@@ -196,6 +196,7 @@ class User
 
             $database->add($table, $fields, $values, $data);
 
+            header('Location:login');
             echo '<script>alert("information bien enregistrer")</script>';
         } else {
             echo '<script>alert("Tous les champs sont requis")</script>';

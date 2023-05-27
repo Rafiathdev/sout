@@ -2,7 +2,7 @@
 <div id="addEmployeeModal" class="modal fade">
 	<div class="modal-dialog">
 		<div class="modal-content">
-			<form id="add_form">
+			<form id="add_form" method="post">
 				<div class="modal-header">						
 					<h4 class="modal-title">Entretien</h4>
 					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>

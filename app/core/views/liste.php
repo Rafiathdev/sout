@@ -24,12 +24,12 @@
 
 
 <body>
-   <!-- preloader Start -->
+   <!-- preloader Start 
 	<div id="preloader">
 		<div id="status">
 			<img src="public/assets/images/header/loadinganimation.gif" id="preloader_image" alt="loader">
 		</div>
-	</div>
+	</div>-->
 	<!-- Top Scroll End -->
 	<!-- Top Header Wrapper Start -->
 	<div class="jp_top_header_main_wrapper">
@@ -139,7 +139,9 @@
                                                                 <ul>
                                                                     <li><a href="#"><i class=""></i></a></li>
                                                                     <li><a href="/decrire?id=<?php echo $company_info['id']?>">Voir plus</a></li>
-                                                                    <li><a href="/candidature">Postuler</a></li>
+                                                                    <li><a href="/candidature?id=<?php echo $company_info['id']?>">Postuler</a></li>
+
+                                                    
                                                                 </ul>
                                                             </div>
                                                         </div>

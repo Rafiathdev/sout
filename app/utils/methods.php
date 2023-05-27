@@ -91,6 +91,7 @@ function cv_upload($dir, $file)
 
 
 
+
 function authenticate($data){
  
     $_SESSION['user_info'] = $data;
@@ -112,6 +113,57 @@ function generate_slug($urlString)
     $slug = preg_replace('/[^A-Za-z0-9-]+/', '-', $urlString);
     return $slug;
 }
+
+
+function download($path) // fonction de telechargement d'un ficheier 
+ { 
+     if (isset($path)) { 
+         $q = urldecode($path); // recupéraion du chemin d'accès du fichier 
+         $file = ("$q");  
+         $type = filetype($file); // recupération de l'extention du fichier 
+         $name = basename($file); // récuperation du nom du fichier 
+         header("Content-Type: " . $type); // spécification du tupe de fichier à télécharger  
+         header("Cotent-Length: " . filesize($file)); // spécification de la taille du fichier 
+         header("Content-Disposition: attachment; filename=" . $name); 
+  
+         readfile($file); // telecargement du fichier 
+     } 
+ }
+
+function convert_date($date){
+
+   /*  $dateTime = new DateTime($date);
+    $formattedDate = $dateTime->format('l j F Y');
+    
+    // Remplacer les noms anglais des mois et jours par les noms français
+    $englishMonths = array('January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December');
+    $frenchMonths = array('janvier', 'février', 'mars', 'avril', 'mai', 'juin', 'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre');
+    $formattedDate = str_replace($englishMonths, $frenchMonths, $formattedDate);
+
+    $englishDays = array('Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday');
+    $frenchDays = array('lundi', 'mardi', 'mercredi', 'jeudi', 'vendredi', 'samedi', 'dimanche');
+    $formattedDate = str_replace($englishDays, $frenchDays, $formattedDate);
+
+    return $formattedDate; */
+ 
+
+
+$formatter = new IntlDateFormatter('fr_FR', IntlDateFormatter::LONG, IntlDateFormatter::NONE);
+$formattedDate = $formatter->format(new DateTime($date));
+
+return $formattedDate; 
+
+
+    }
+ function heure(){
+   
+ }
+    
+
+
+
+
+
 
 
 // author : @kemi
