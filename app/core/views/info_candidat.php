@@ -5,6 +5,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $user = new User();
     $new_user = $_GET['u'];
     $user->add_info_candidat($_POST['nom_c'], $_POST['prenom_c'], $_POST['date_n'], $_POST['sexe'], $_POST['niveau'], $_POST['nationalite'], $_POST['adresse'], $_POST['qualification'], 'pdf_cv', 'photo', $new_user);
+    header('Location: /login');
     // Les variables pour récupérer les infos envoyées
 }
 ?>
@@ -165,7 +166,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                             </div>
                                             <div class="form-group col-md-6 col-sm-6 col-xs-12" id="champTexteContainer" style="display: none;">
                                                 <label for="autresEtudes">Niveau d'etude :</label>
-                                                <input type="text" id="autresEtudes" name="autresEtudes" required>
+                                                <input type="text" id="autresEtudes" name="autresEtudes">
                                             </div>
 
                                             <div class="form-group col-md-6 col-sm-6 col-xs-12">
@@ -236,7 +237,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                                 </div>
                                             </div>
                                             <div class="login_btn_wrapper register_btn_wrapper login_wrapper ">
-                                                <button type="submit" name="btnAjouter" class="btn btn-primary login_btn">S'inscrire</button>
+                                                <button type="submit" id="signupButton" name="btnAjouter" class="btn btn-primary login_btn" style="display:none">You cannot see me</button>
+                                                <span class="chipdeals-button btn btn-primary login_btn btn-block" amount="50" style="
+                                                    position: relative;
+                                                    background-color: rgb(2, 123, 253);
+                                                    font-size: 1rem;
+                                                    line-height: 1.125rem;
+                                                    cursor: pointer;
+                                                    text-transform: capitalize;
+                                                    color:white !important;
+                                                    transition: all 0.15s linear 0s;
+                                                    padding: 1rem 2rem;
+                                                    border-radius: 10px;
+                                                    text-decoration: none !important;">S'inscrire</span>
                                                 <!-- <a type="submit" href="javascript:;" class="btn btn-primary login_btn"> register </a> -->
                                             </div>
                                         </form>
@@ -263,18 +276,56 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     ?>
     <script src="public/assets/js/custom_II.js"></script>
     <script src="public/assets/js/jquery.magnific-popup.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/Chipdeals/mobile-money-api-Javascript@1.8.3/lib.min.js" apiKey="test-b8bf0477-34ed-4de9-86f8-0b8f38c98377"></script>
     <script>
-  function ajouterChampTexte() {
-    var selectElement = document.getElementById("niveau");
-    var champTexteContainer = document.getElementById("champTexteContainer");
+        function ajouterChampTexte() {
+            var selectElement = document.getElementById("niveau");
+            var champTexteContainer = document.getElementById("champTexteContainer");
 
-    if (selectElement.value === "Autres") {
-      champTexteContainer.style.display = "block";
-    } else {
-      champTexteContainer.style.display = "none";
+            if (selectElement.value === "Autres") {
+                champTexteContainer.style.display = "block";
+            } else {
+                champTexteContainer.style.display = "none";
+            }
+        }
+    </script>
+    <script>
+        document.addEventListener("chipdealsPaymentSucceeded", (event) => {
+            var signupButton = document.getElementById("signupButton")
+            signupButton.click()
+            console.log(event.detail.description);
+            console.log(event.detail);
+
+            /* event.detail
+  {
+    "status": "success",
+    "message": "Successfully processed transaction",
+    "title": "Paiement effectué",
+    "description": "Paiement a réussi",
+    "code": 200,
+    "fullTransaction": {
+      "reference": "t-66a7879b-2af5-442c-b2ea-caa201c4a039",
+      "senderPhoneNumber": "22951010580",
+      "senderCountryCode": "BJ",
+      "senderOperator": "MTN",
+      "senderFirstName": "Dougbe",
+      "senderLastName": "Dougbe",
+      "status": "success",
+      "statusMessage": "Successfully processed transaction",
+      "statusMessageCode": 200,
+      "startTimestampInSecond": 1685073059,
+      "endTimestampInSecond": 1685073071,
+      "originalCurrency": "USD",
+      "originalAmount": 8,
+      "currency": "XOF",
+      "amount": 4893,
+      "transactionType": "payment",
+      "operatorReference": ""
     }
   }
-</script>
+*/
+        });
+    </script>
 
 
 </body>

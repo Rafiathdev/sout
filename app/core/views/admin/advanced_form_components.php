@@ -10,18 +10,18 @@
   <title>Dashio - Bootstrap Admin Template</title>
 
   <!-- Favicons -->
-  <link href="img/favicon.png" rel="icon">
-  <link href="img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link href="public/admin/assets/img/favicon.png" rel="icon">
+  <link href="public/admin/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Bootstrap core CSS -->
-  <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="public/admin/assets/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <!--external css-->
-  <link href="lib/font-awesome/css/font-awesome.css" rel="stylesheet" />
-  <link rel="stylesheet" type="text/css" href="lib/bootstrap-fileupload/bootstrap-fileupload.css" />
-  <link rel="stylesheet" type="text/css" href="lib/bootstrap-datepicker/css/datepicker.css" />
-  <link rel="stylesheet" type="text/css" href="lib/bootstrap-daterangepicker/daterangepicker.css" />
-  <link rel="stylesheet" type="text/css" href="lib/bootstrap-timepicker/compiled/timepicker.css" />
-  <link rel="stylesheet" type="text/css" href="lib/bootstrap-datetimepicker/datertimepicker.css" />
+  <link href="public/admin/assets/lib/font-awesome/css/font-awesome.css" rel="stylesheet" />
+  <link rel="stylesheet" type="text/css" href="public/admin/assets/lib/bootstrap-fileupload/bootstrap-fileupload.css" />
+  <link rel="stylesheet" type="text/css" href="public/admin/assets/lib/bootstrap-datepicker/css/datepicker.css" />
+  <link rel="stylesheet" type="text/css" href="public/admin/assets/lib/bootstrap-daterangepicker/daterangepicker.css" />
+  <link rel="stylesheet" type="text/css" href="public/admin/assets/lib/bootstrap-timepicker/compiled/timepicker.css" />
+  <link rel="stylesheet" type="text/css" href="public/admin/assets/lib/bootstrap-datetimepicker/datertimepicker.css" />
   <!-- Custom styles for this template -->
   <link href="css/style.css" rel="stylesheet">
   <link href="css/style-responsive.css" rel="stylesheet">
@@ -156,7 +156,7 @@
               </li>
               <li>
                 <a href="index.html#">
-                  <span class="photo"><img alt="avatar" src="img/ui-danro.jpg"></span>
+                  <span class="photo"><img alt="avatar" src="public/admin/assets/img/ui-danro.jpg"></span>
                   <span class="subject">
                   <span class="from">Dan Rogers</span>
                   <span class="time">2 hrs.</span>
@@ -168,7 +168,7 @@
               </li>
               <li>
                 <a href="index.html#">
-                  <span class="photo"><img alt="avatar" src="img/ui-sherman.jpg"></span>
+                  <span class="photo"><img alt="avatar" src="public/admin/assets/img/ui-sherman.jpg"></span>
                   <span class="subject">
                   <span class="from">Dj Sherman</span>
                   <span class="time">4 hrs.</span>
@@ -247,7 +247,7 @@
       <div id="sidebar" class="nav-collapse ">
         <!-- sidebar menu start-->
         <ul class="sidebar-menu" id="nav-accordion">
-          <p class="centered"><a href="profile.html"><img src="img/ui-sam.jpg" class="img-circle" width="80"></a></p>
+          <p class="centered"><a href="profile.html"><img src="public/admin/assets/img/ui-sam.jpg" class="img-circle" width="80"></a></p>
           <h5 class="centered">Sam Soffes</h5>
           <li class="mt">
             <a href="index.html">
@@ -362,9 +362,7 @@
       </div>
     </aside>
     <!--sidebar end-->
-    <!-- **********************************************************************************************************************************************************
-        MAIN CONTENT
-        *********************************************************************************************************************************************************** -->
+
     <!--main content start-->
     <section id="main-content">
       <section class="wrapper">
@@ -595,23 +593,23 @@
     <!--footer end-->
   </section>
   <!-- js placed at the end of the document so the pages load faster -->
-  <script src="lib/jquery/jquery.min.js"></script>
-  <script src="lib/bootstrap/js/bootstrap.min.js"></script>
-  <script class="include" type="text/javascript" src="lib/jquery.dcjqaccordion.2.7.js"></script>
-  <script src="lib/jquery.scrollTo.min.js"></script>
-  <script src="lib/jquery.nicescroll.js" type="text/javascript"></script>
+  <script src="public/admin/assets/lib/jquery/jquery.min.js"></script>
+  <script src="public/admin/assets/lib/bootstrap/js/bootstrap.min.js"></script>
+  <script class="include" type="text/javascript" src="public/admin/assets/lib/jquery.dcjqaccordion.2.7.js"></script>
+  <script src="public/admin/assets/lib/jquery.scrollTo.min.js"></script>
+  <script src="public/admin/assets/lib/jquery.nicescroll.js" type="text/javascript"></script>
   <!--common script for all pages-->
-  <script src="lib/common-scripts.js"></script>
+  <script src="public/admin/assets/lib/common-scripts.js"></script>
   <!--script for this page-->
-  <script src="lib/jquery-ui-1.9.2.custom.min.js"></script>
-  <script type="text/javascript" src="lib/bootstrap-fileupload/bootstrap-fileupload.js"></script>
-  <script type="text/javascript" src="lib/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
-  <script type="text/javascript" src="lib/bootstrap-daterangepicker/date.js"></script>
-  <script type="text/javascript" src="lib/bootstrap-daterangepicker/daterangepicker.js"></script>
-  <script type="text/javascript" src="lib/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js"></script>
-  <script type="text/javascript" src="lib/bootstrap-daterangepicker/moment.min.js"></script>
-  <script type="text/javascript" src="lib/bootstrap-timepicker/js/bootstrap-timepicker.js"></script>
-  <script src="lib/advanced-form-components.js"></script>
+  <script src="public/admin/assets/lib/jquery-ui-1.9.2.custom.min.js"></script>
+  <script type="text/javascript" src="public/admin/assets/lib/bootstrap-fileupload/bootstrap-fileupload.js"></script>
+  <script type="text/javascript" src="public/admin/assets/lib/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+  <script type="text/javascript" src="public/admin/assets/lib/bootstrap-daterangepicker/date.js"></script>
+  <script type="text/javascript" src="public/admin/assets/lib/bootstrap-daterangepicker/daterangepicker.js"></script>
+  <script type="text/javascript" src="public/admin/assets/lib/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js"></script>
+  <script type="text/javascript" src="public/admin/assets/lib/bootstrap-daterangepicker/moment.min.js"></script>
+  <script type="text/javascript" src="public/admin/assets/lib/bootstrap-timepicker/js/bootstrap-timepicker.js"></script>
+  <script src="public/admin/assets/lib/advanced-form-components.js"></script>
 
 </body>
 

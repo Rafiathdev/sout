@@ -4,7 +4,7 @@ class User
 {
 
     public function register($email, $phone, $type, $password, $confirmPassword)
-    {
+   /*{
 
         if (
             isset($email) && !empty($email)
@@ -45,7 +45,53 @@ class User
         } else {
             echo '<script>alert("Erreur ! Tous les champs sont requis")</script>';
         }
+    }*/
+
+    
+{
+    if (
+        isset($email) && !empty($email) &&
+        isset($password) && !empty($password) &&
+        isset($confirmPassword) && !empty($confirmPassword) &&
+        isset($phone) && !empty($phone) &&
+        isset($type) && !empty($type)
+    ) {
+        if ($password === $confirmPassword) {
+            require_once 'app/core/database/models.php';
+            $database = new Model();
+            
+            // Vérifier si l'adresse e-mail est déjà utilisée
+            $table = 'user';
+            $fields = 'COUNT(*) AS count';
+            $sfield = 'email';
+            $data = array($email);
+            $query = $database->read_filter_once($table, $fields, $sfield, $data);
+            $result = $query->fetch();
+            
+            if ($result['count'] > 0) {
+                echo '<script>alert("Cette adresse e-mail est déjà utilisée. Veuillez en choisir une autre.")</script>';
+            } else {
+                $table = 'user';
+                $fields = 'email, telephone, password, type';
+                $values = '?,?,?,?';
+                $data = array($email, $phone, sha1($password), $type);
+                $database->add($table, $fields, $values, $data);
+
+                $temp = $database->get_last_row('user','id');
+                $new_user = $temp->fetch();
+
+                return $new_user['id'];
+
+                echo '<script>alert("Votre compte a été créé avec succès")</script>';
+            }
+        } else {
+            echo '<script>alert("Erreur ! Les mots de passe doivent être identiques")</script>';
+        }
+    } else {
+        echo '<script>alert("Erreur ! Tous les champs sont requis")</script>';
     }
+}
+
 
     public function login($email, $password)
     {
@@ -87,7 +133,7 @@ class User
                         authenticate($info);
                         header('Location: /profile?actor=company');
                         echo '<script>alert("Bienvenue '.$user_info['nom_e'].'")</script>';
-                    } else {
+                    } else if($pass['type'] == 2) {
                         $table = 'candidat';
                         $fields = 'nom_c, prenom_c';
                         $sfield = 'user_id';
@@ -99,7 +145,19 @@ class User
                         authenticate($info);
                         header('Location: /profile');
                         echo '<script>alert("Bienvenue '.$user_info['prenom_c'].'")</script>';
-                    }
+                    }/*else{
+                        $table = 'candidat';
+                        $fields = 'nom_c, prenom_c';
+                        $sfield = 'user_id';
+                        $data = array($pass['id']);
+                        $query = $database->read_filter_once($table, $fields, $sfield, $data);
+                        $user_info =  $query->fetch();
+                        require_once 'app/utils/methods.php';
+                        $info = array('email' => $email, 'phone' => $pass['telephone'], 'id' => $pass['id'], 'name' => $user_info['prenom_c'] . ' ' . $user_info['nom_c'], 'type' => $pass['type']);
+                        authenticate($info);
+                        header('Location: /profile');
+                        echo '<script>alert("Bienvenue '.$user_info['prenom_c'].'")</script>';
+                    }*/
 
 
 

@@ -7,28 +7,37 @@
   <meta name="description" content="">
   <meta name="author" content="Dashboard">
   <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
-  <title>Administrateur</title>
+  <title></title>
 
   <!-- Favicons -->
-  <link href="assets/img/favicon.png" rel="icon">
-  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link href="public/admin/assets/img/favicon.png" rel="icon">
+  <link href="img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Bootstrap core CSS -->
-  <link href="assets/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="public/admin/assets/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <!--external css-->
-  <link href="assets/lib/font-awesome/css/font-awesome.css" rel="stylesheet" />
+  <link href="public/admin/assets/lib/font-awesome/css/font-awesome.css" rel="stylesheet" />
+  <link href="public/admin/assets/lib/advanced-datatable/css/demo_page.css" rel="stylesheet" />
+  <link href="public/admin/assets/lib/advanced-datatable/css/demo_table.css" rel="stylesheet" />
+  <link rel="stylesheet" href="public/admin/assets/lib/advanced-datatable/css/DT_bootstrap.css" />
   <!-- Custom styles for this template -->
-  <link href="assets/css/style.css" rel="stylesheet">
-  <link href="assets/css/style-responsive.css" rel="stylesheet">
-  <link href="assets/css/table-responsive.css" rel="stylesheet">
+  <link href="public/admin/assets/css/style.css" rel="stylesheet">
+  <link href="public/admin/assets/css/style-responsive.css" rel="stylesheet">
 
-
+  <!-- =======================================================
+    Template Name: Dashio
+    Template URL: https://templatemag.com/dashio-bootstrap-admin-template/
+    Author: TemplateMag.com
+    License: https://templatemag.com/license/
+  ======================================================= -->
 </head>
 
 <body>
   <section id="container">
-     <!--header start-->
+    <!-- **********************************************************************************************************************************************************
+        TOP BAR CONTENT & NOTIFICATIONS
+        *********************************************************************************************************************************************************** -->
+    <!--header start-->
     <header class="header black-bg">
       <div class="sidebar-toggle-box">
         <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
@@ -121,7 +130,7 @@
               </li>
               <li>
                 <a href="index.html#">
-                  <span class="photo"><img alt="avatar" src="img/ui-zac.jpg"></span>
+                  <span class="photo"><img alt="avatar" src="public/admin/assets/img/ui-zac.jpg"></span>
                   <span class="subject">
                   <span class="from">Zac Snider</span>
                   <span class="time">Just now</span>
@@ -133,7 +142,7 @@
               </li>
               <li>
                 <a href="index.html#">
-                  <span class="photo"><img alt="avatar" src="asset/img/ui-divya.jpg"></span>
+                  <span class="photo"><img alt="avatar" src="public/admin/assets/img/ui-divya.jpg"></span>
                   <span class="subject">
                   <span class="from">Divya Manian</span>
                   <span class="time">40 mins.</span>
@@ -145,7 +154,7 @@
               </li>
               <li>
                 <a href="index.html#">
-                  <span class="photo"><img alt="avatar" src="asset/img/ui-danro.jpg"></span>
+                  <span class="photo"><img alt="avatar" src="public/admin/assets/img/ui-danro.jpg"></span>
                   <span class="subject">
                   <span class="from">Dan Rogers</span>
                   <span class="time">2 hrs.</span>
@@ -157,7 +166,7 @@
               </li>
               <li>
                 <a href="index.html#">
-                  <span class="photo"><img alt="avatar" src="img/ui-sherman.jpg"></span>
+                  <span class="photo"><img alt="avatar" src="public/admin/assets/img/ui-sherman.jpg"></span>
                   <span class="subject">
                   <span class="from">Dj Sherman</span>
                   <span class="time">4 hrs.</span>
@@ -226,8 +235,7 @@
           <li><a class="logout" href="login.html">Logout</a></li>
         </ul>
       </div>
-    </header>
-    <!--header end-->
+    </header>    <!--header end-->
     <!-- **********************************************************************************************************************************************************
         MAIN SIDEBAR MENU
         *********************************************************************************************************************************************************** -->
@@ -236,7 +244,7 @@
       <div id="sidebar" class="nav-collapse ">
         <!-- sidebar menu start-->
         <ul class="sidebar-menu" id="nav-accordion">
-          <p class="centered"><a href="profile.html"><img src="img/ola.jpg" class="img-circle" width="80"></a></p>
+          <p class="centered"><a href="profile.html"><img src="public/admin/assets/img/ola.jpg" class="img-circle" width="80"></a></p>
           <h5 class="centered">GNONLONFOUN Rafiath</h5>
          
           <li class="sub-menu">
@@ -245,9 +253,9 @@
               <span>Mes Taches</span>
               </a>
             <ul class="sub">
-              <li><a href="basic_table.html">Gerer Comptes</a></li>
+              <li><a href="/basic">Gerer Comptes</a></li>
               <li><a href="/responsive">Gerer offres</a></li>
-              <li><a href="advanced_table.html">Gerer demandes</a></li>
+              <li><a href="/advanced">Gerer demandes</a></li>
               <li><a href="advanced_table.html">Valider inscription</a></li>
             </ul>
           </li>
@@ -263,82 +271,91 @@
     <!--main content start-->
     <section id="main-content">
       <section class="wrapper">
-        
-        <div class="row mt">
-          <div class="col-lg-12">
-            <div class="content-panel">
-              <h4><i class="fa fa-angle-right"></i>Gestion des offres</h4>
-              <section id="unseen">
-                <div  style="text-align: center; margin-top:25px">
+        <h3><i class="fa fa-angle-right"></i> Gerer les demandes</h3>
+        <div class="row mb">
+          <!-- page start-->
+          <div class="content-panel">
+            <div class="adv-table">
+              <div  style="text-align: center; margin-top:25px">
 					
-                  <style>
-                    table {
-                      border-collapse: collapse;
-                      width: 100%;
-                      margin-bottom: 20px;
-                    }
+                <style>
+                  table {
+                    border-collapse: collapse;
+                    width: 100%;
+                    margin-bottom: 20px;
+                  }
+                
+                  th, td {
+                    padding: 8px;
+                    text-align: left;
+                    border-bottom: 1px solid #ddd;
+                  }
+                
+                  th {
+                    background-color: #f2f2f2;
+                  }
+                
+                  .action-buttons button {
+                    margin-right: 10px;
+                  }
+                  </style>
+                <h1 class="" style="text-align: center; margin-top:25px; background-color: rgb(228, 225, 72);">Les Offres</h1>
+          <?php
+          
+          
+          ?>
+                <table id="gestion" >
+                  <thead></thead>
+                  <tr>
+                  <th>Nom Entreprise</th>
+                  <th>Adresse</th>
+                  <th>Categories</th>
+                  <th>type</th>
+                  <th>titre</th>
+                  <th>date_expiration</th>
+                  <th>annee experience</th>
+                  <th>diplome</th>
+                  <th>Nombre de poste</th>
+                  <th>Activite pricipal</th>
+                  <th>Description</th>
+                  <th>Competence requise</th>
+                  <th></th>
+                  <th>Action
                   
-                    th, td {
-                      padding: 8px;
-                      text-align: left;
-                      border-bottom: 1px solid #ddd;
-                    }
-                  
-                    th {
-                      background-color: #f2f2f2;
-                    }
-                  
-                    .action-buttons button {
-                      margin-right: 10px;
-                    }
-                    </style>
-                  <h1 class="" style="text-align: center; margin-top:25px; background-color: rgb(150, 222, 135);">Les Offres</h1>
-            
-                  <table id="gestion" >
-                    <thead></thead>
-                    <tr>
-                    <th>Nom</th>
-                    <th>Prénom</th>
-                    <th>Adresse e-mail</th>
-                    <th>Numéro de téléphone</th>
-                    <th>Qualification</th>
-                    <th>Offre d'emploi</th>
-                    <th>Nom entreprise</th>
                     
-                    <th></th>
-                    <th>Action
-                    
+                  </th>
+                  </tr>
+                  
+                  <tr>
+                  <td>Pierre</td>
+                  <td>Leblanc</td>
+                  <td>pierre.leblanc@gmail.com</td>
+                  <td>06 11 22 33 44</td>
+                  <td>qualification</td>
+                  <td>titre</td>
+                  <td>titre</td>
+                  <td>titre</td>
+                  <td>titre</td>
+                  <td>titre</td>
+                  <td>titre</td>
+                  <td>titre</td>
+                  
+
+                 
+                  <td> <a href="/decrire"><input type="submit" value="voir plus" ></a></td>
+                    <td> <input type="submit" value="Envoyer" ></td>
+                                  <td> <input type="submit" value="Rejeter" ></td>
+      
                       
-                    </th>
-                    </tr>
-                    
-                    <tr>
-                    <td>Pierre</td>
-                    <td>Leblanc</td>
-                    <td>pierre.leblanc@gmail.com</td>
-                    <td>06 11 22 33 44</td>
-                    <td>qualification</td>
-                    <td>titre</td>
-                    <td>nom</td>
-                   
-                    <td> <a href="/decrire"><input type="submit" value="voir plus" ></a></td>
-                      <td> <input type="submit" value="Envoyer" ></td>
-                                    <td> <input type="submit" value="Rejeter" ></td>
-        
-                        
-                    
-                    </tr>
-                    
-                  </table>
-                </div>
-              </section>
+                  
+                  </tr>
+                  
+                </table>
+              </div>
             </div>
-            <!-- /content-panel -->
           </div>
-          <!-- /col-lg-4 -->
+          <!-- page end-->
         </div>
-        <!-- /row -->
-        
         <!-- /row -->
       </section>
       <!-- /wrapper -->
@@ -358,9 +375,9 @@
             Buy the pro version with working PHP/AJAX contact form: https://templatemag.com/dashio-bootstrap-admin-template/
             Licensing information: https://templatemag.com/license/
           -->
-          
+          Created with Dashio template by <a href="https://templatemag.com/">TemplateMag</a>
         </div>
-        <a href="/responsive" class="go-top">
+        <a href="advanced_table.html#" class="go-top">
           <i class="fa fa-angle-up"></i>
           </a>
       </div>
@@ -368,14 +385,78 @@
     <!--footer end-->
   </section>
   <!-- js placed at the end of the document so the pages load faster -->
-  <script src="asset/lib/jquery/jquery.min.js"></script>
-  <script src="asset/lib/bootstrap/js/bootstrap.min.js"></script>
-  <script class="asset/include" type="text/javascript" src="lib/jquery.dcjqaccordion.2.7.js"></script>
-  <script src="asset/lib/jquery.scrollTo.min.js"></script>
-  <script src="asset/lib/jquery.nicescroll.js" type="text/javascript"></script>
+  <script src="public/admin/assets/lib/jquery/jquery.min.js"></script>
+  <script type="text/javascript" language="javascript" src="public/admin/assets/lib/advanced-datatable/js/jquery.js"></script>
+  <script src="lib/bootstrap/js/bootstrap.min.js"></script>
+  <script class="include" type="text/javascript" src="public/admin/assets/lib/jquery.dcjqaccordion.2.7.js"></script>
+  <script src="public/admin/assets/lib/jquery.scrollTo.min.js"></script>
+  <script src="public/admin/assets/lib/jquery.nicescroll.js" type="text/javascript"></script>
+  <script type="text/javascript" language="javascript" src="public/admin/assets/lib/advanced-datatable/js/jquery.dataTables.js"></script>
+  <script type="text/javascript" src="public/admin/assets/lib/advanced-datatable/js/DT_bootstrap.js"></script>
   <!--common script for all pages-->
-  <script src="asset/lib/common-scripts.js"></script>
+  <script src="public/admin/assets/lib/common-scripts.js"></script>
   <!--script for this page-->
+  <script type="text/javascript">
+    /* Formating function for row details */
+    function fnFormatDetails(oTable, nTr) {
+      var aData = oTable.fnGetData(nTr);
+      var sOut = '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">';
+      sOut += '<tr><td>Rendering engine:</td><td>' + aData[1] + ' ' + aData[4] + '</td></tr>';
+      sOut += '<tr><td>Link to source:</td><td>Could provide a link here</td></tr>';
+      sOut += '<tr><td>Extra info:</td><td>And any further details here (images etc)</td></tr>';
+      sOut += '</table>';
+
+      return sOut;
+    }
+
+    $(document).ready(function() {
+      /*
+       * Insert a 'details' column to the table
+       */
+      var nCloneTh = document.createElement('th');
+      var nCloneTd = document.createElement('td');
+      nCloneTd.innerHTML = '<img src="public/admin/assets/lib/advanced-datatable/images/details_open.png">';
+      nCloneTd.className = "center";
+
+      $('#hidden-table-info thead tr').each(function() {
+        this.insertBefore(nCloneTh, this.childNodes[0]);
+      });
+
+      $('#hidden-table-info tbody tr').each(function() {
+        this.insertBefore(nCloneTd.cloneNode(true), this.childNodes[0]);
+      });
+
+      /*
+       * Initialse DataTables, with no sorting on the 'details' column
+       */
+      var oTable = $('#hidden-table-info').dataTable({
+        "aoColumnDefs": [{
+          "bSortable": false,
+          "aTargets": [0]
+        }],
+        "aaSorting": [
+          [1, 'asc']
+        ]
+      });
+
+      /* Add event listener for opening and closing details
+       * Note that the indicator for showing which row is open is not controlled by DataTables,
+       * rather it is done here
+       */
+      $('#hidden-table-info tbody td img').live('click', function() {
+        var nTr = $(this).parents('tr')[0];
+        if (oTable.fnIsOpen(nTr)) {
+          /* This row is already open - close it */
+          this.src = "public/admin/assets/lib/advanced-datatable/media/images/details_open.png";
+          oTable.fnClose(nTr);
+        } else {
+          /* Open this row */
+          this.src = "public/admin/assets/lib/advanced-datatable/images/details_close.png";
+          oTable.fnOpen(nTr, fnFormatDetails(oTable, nTr), 'details');
+        }
+      });
+    });
+  </script>
 </body>
 
 </html>

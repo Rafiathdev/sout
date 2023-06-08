@@ -48,10 +48,27 @@ else if ($route === '/decrire') {
 
 } 
 
+
 else if ($route === '/responsive') {
-    require_once 'app/dashioo/responsive.php';
+    require_once 'app/core/views/admin/responsive.php';
 
 } 
+
+else if ($route === '/advanced') {
+    require_once 'app/core/views/admin/advanced.php';
+
+} 
+
+else if ($route === '/payer') {
+    require_once 'app/core/controllers/payer.php';
+
+} 
+
+else if ($route === '/basic') {
+    require_once 'app/core/views/admin/basic.php';
+
+} 
+
 
 else if ($route === '/offre') {
     require_once 'app/core/views/offer_list.php';
@@ -90,6 +107,16 @@ else if ($route === '/login') {
     require_once 'app/core/views/offer.php';
 
 }
+ else if ($route === '/admin') {
+    require_once 'app/core/views/admin/home.php';
+
+}
+
+/*else if ($route === '/validecand') {
+    require_once 'app/core/views/admin/responsive.php';
+
+}*/
+
 
 else if ($route === '/consulter') {
     require_once 'app/core/controllers/offer.php';
@@ -105,6 +132,7 @@ else if ($route === '/consulter') {
     $target = $_GET['target']; // Exemple : récupère
     // Appel de la fonction de traitement de la décision
     $statut->processDecision($decision, $target);
+    echo '<script>alert("Candidature mis a jour !")</script>';
     header('location: /profile?actor=company&action=gestion');
 
 

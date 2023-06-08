@@ -144,38 +144,53 @@ public function read_filter_once($table, $field, $sfield, $value)
 		return $read_request;
 	}
 
-	public function read_joie()
+	public function candidature_non_traited()
 	{
-		// get and return a database object
-		// a réecrire
 		$db = $this->conn();
-		$read_request = $db->query('SELECT o.id as ido, e.id as id_emp, p.id as id_cand, c.id as idc, c.pdf_cv, c.nom_c, c.prenom_c, c.adresse, en.date_entretien, en.heure, c.pdf_cv, o.titre, p.date_cand, p.lettre_motiv,  p.decision, o.author FROM candidat c, offre o, candidature p, employeur e, entretien en WHERE c.id=p.id_candidat AND o.id = p.id_offre AND c.id=en.id_candidat AND author = '.$_SESSION["user_info"]["id"].'');
+		$read_request = $db->query('SELECT o.id as ido, p.id as id_cand, c.id as idc, c.pdf_cv, c.nom_c, c.prenom_c, c.adresse, c.pdf_cv, o.titre, p.date_cand, p.lettre_motiv,  p.decision, o.author FROM candidat c, offre o, candidature p WHERE c.id=p.id_candidat AND o.id = p.id_offre AND p.decision=0 AND author = '.$_SESSION["user_info"]["id"].'');
 		$data = $read_request->fetchAll();
-		///SELECT o.id as ido, c.id as idc, c.nom_c, c.prenom_c, c.adresse, c.pdf_cv, o.titre, p.date_cand, p.lettre_motiv, o.author, en.date_entretien, en.heure FROM candidat c, offre o, candidature p, entretien en WHERE c.id=p.id_candidat AND o.id = p.id_offre AND c.id=en.id_candidat
-		//SELECT o.id as ido, c.id as idc, c.nom_c, c.prenom_c, c.adresse, c.pdf_cv, o.titre, p.date_cand, p.lettre_motiv, en.date_entretien, en.heure FROM candidat c, offre o, candidature p, entretien en WHERE c.id=p.id_candidat AND o.id = p.id_offre AND c.id = en.id_candidat and o.author = 8
-		//SELECT o.id as ido, c.id as idc, c.nom_c, c.prenom_c, c.adresse, c.pdf_cv, o.titre, p.date_cand, p.lettre_motiv, o.author FROM candidat c, offre o, candidature p WHERE c.id=p.id_candidat AND o.id = p.id_offre AND o.author = 18
+		return $data;
+	}
+
+	public function candidature_refu()
+	{
+		$db = $this->conn();
+		$read_request = $db->query('SELECT o.id as ido, p.id as id_cand, c.id as idc, c.pdf_cv, c.nom_c, c.prenom_c, c.adresse, c.pdf_cv, o.titre, p.date_cand, p.lettre_motiv,  p.decision, o.author FROM candidat c, offre o, candidature p WHERE c.id=p.id_candidat AND o.id = p.id_offre AND p.decision=2 AND author = '.$_SESSION["user_info"]["id"].'');
+		$data = $read_request->fetchAll();
+		
 		return $data;
 	}
 
 
-	
+	public function candidature_accep()
+	{
+		$db = $this->conn();
+		$read_request = $db->query('SELECT o.id as ido, p.id as id_cand, c.id as idc, c.pdf_cv, c.nom_c, c.prenom_c, c.adresse, c.pdf_cv, o.titre, p.date_cand, p.lettre_motiv,  p.decision, o.author FROM candidat c, offre o, candidature p WHERE c.id=p.id_candidat AND o.id = p.id_offre AND p.decision=1 AND author = '.$_SESSION["user_info"]["id"].'');
+		$data = $read_request->fetchAll();
+		return $data;
+	}
 
 
-
-
-	
-	
-
-	/*public function read_jo()
+	public function read_cand()
 	{
 		// get and return a database object
 		$db = $this->conn();
-		$read_request = $db->query('SELECT  en.date_entretien, en.time, c.id as idc,o.id as ido, p.date_cand FROM candidat c, offre o, entretien en WHERE c.id=p.id_candidat AND o.id = p.id_offre');
+		$read_request = $db->query('SELECT o.id, o.titre,  e.nom_e,  o.adresse, p.date_cand FROM  offre o, employeur e, candidature p  WHERE o.id = p.id_offre AND e.user_id =o.author and p.id_candidat='.$_SESSION['id_cand']);
 		//$read_request->execute(array());
 		return $read_request;
-	}*/
+	}
 
-	
+
+
+	public function demande()
+	{
+		// get and return a database object
+		$db = $this->conn();
+		$read_request = $db->query('SELECT c.nom_c,c.prenom_c,c.niveau,c.qualification,u.email,u.telephone, o.id, o.titre,  e.nom_e,  o.adresse, p.date_cand FROM  offre o, employeur e, candidature p,candidat c,user u  WHERE o.id = p.id_offre AND e.user_id =o.author and p.id_candidat=c.id and u.id=c.user_id');
+		//$read_request->execute(array());
+		return $read_request;
+	}
+
 
 	
 

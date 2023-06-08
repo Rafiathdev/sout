@@ -1,10 +1,6 @@
 <!DOCTYPE html>
 
 <html lang="en">
-<!--<![endif]-->
-
-
-<!-- Mirrored from www.webstrot.com/html/jobpro/job_light/candidate_profile.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 03 Apr 2023 09:31:00 GMT -->
 
 <head>
 	<meta charset="utf-8" />
@@ -22,6 +18,8 @@
 	<link rel="stylesheet" href="public/assets/css/styl.css">
 	<link rel="stylesheet" type="text/css" href="public/assets/css/style_II.css" />
 	<link rel="stylesheet" type="text/css" href="public/assets/css/responsive2.css" />
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 	<!-- favicon links -->
 	<link rel="shortcut icon" type="image/png" href="images/header/favicon.ico" />
 </head>
@@ -167,7 +165,7 @@
 			<?php
 				require_once 'app/core/database/models.php';
 				$profile = new Model();
-				$offre = $profile->read_joie();
+				$offre = $profile->candidature_non_traited();
 				
 			
 				if ($_GET['action'] == 'gestion') {
@@ -201,52 +199,50 @@
 				<h1 style="text-align: center; margin-top:25px; background-color: burlywood;">Candidatures en attente</h1>
 				
 
-				<table >
+				<table>
 					<thead></thead>
 					<tr>
 						<th>Nom</th>
 						<th>Prénom</th>
 						<th>Adresse</th>
-						<th>Lettre de motivation</th>
 						<th>Offre d\'emploi</th>
 						<th>Date de candidature</th>
-						<th>CV</th>
+						<th>lettre de motivation</th>
+						<th>C.V.</th>
 						<th>État de la candidature</th>
 						
 						
 						<th>Action</th>
 					</tr>';
 					foreach ($offre as $company_info) :
-						if ($company_info['decision'] == 0){
+						
 						echo '<tr>
 							<td>' . $company_info['nom_c'] . '</td>
 							<td> ' . $company_info['prenom_c'] . '</td>
 							<td>' . $company_info['adresse'] . '</td>
-							<td> ' . $company_info['lettre_motiv'] . '</td>
 							<td> ' . $company_info['titre'] . '</td>
 							<td>' . $company_info['date_cand'] . '</td>
-							<td>' . $company_info['pdf_cv'] . '</td>
-							<td>En attente</td>
-							<td><a href="consulter?motiv=' . $company_info['lettre_motiv'] . '">Telecharger lettre de motivation</a><br><br>
-							<a href="consulter?motiv='. $company_info['pdf_cv'] . '">Telecharger CV</a>
-							</td>
-							<td>
+							<td> <a href="consulter?motiv=' . $company_info['lettre_motiv'] . '" style = "position: relative;
+								background-color: #ff9800;
+								font-size: 1rem;
+								color:white !important;
 							
-								<a href="/decision?action=1&target=' . $company_info['id_cand'] . '">Accepter</a>
+								border-radius: 10px;">Telecharger </a>
 							</td>
 							<td>
-								<form action="update_decision.php" method="post">
-									<input type="hidden" name="decision" value="reject">
-									<input type="hidden" name="candidatureId" value="' . $company_info['id_cand'] . '">
-									<button type="submit">Rejeter</button>
-								</form>
+							<a style="background-color: #ff9800; color:white;" href="consulter?motiv='. $company_info['pdf_cv'] . '">Telecharger CV</a>
 							</td>
-
-
-
+							<td>En attente</td>
+							
+							<td>
+								<a href="/decision?action=1&target=' . $company_info['id_cand'] . '"  style = "background-color: green;color:white">Accepter</a>
+								<a href="/decision?action=2&target=' . $company_info['id_cand'] . '"  style = "background-color: red;color:white">Refuser</a>
+							</td>
+							
+							</td>
 						</tr>
 						</div>
-						';}
+						';
 					endforeach;
 					echo '</table>';
 				}
@@ -254,7 +250,7 @@
 
 
 			
-			<br><br>
+				<br><br>
 			
 
 
@@ -263,7 +259,7 @@
 				<?php
 				require_once 'app/core/database/models.php';
 				$profile = new Model();
-				$offre1 = $profile->read_joie(); // a reecrire
+				$offre1 = $profile->candidature_accep(); // a reecrire
 				
 				if ($_GET['action'] == 'gestion') {
 
@@ -292,7 +288,7 @@
 						margin-right: 10px;
 					}
 				</style>
-				<h1 style="text-align: center; margin-top:25px; background-color: burlywood;">Candidature accepter</h1>
+				<h1 style="text-align: center; margin-top:25px; background-color: burlywood;">Candidature acceptée</h1>
 
 				<table id="tab-candidature">
 					<thead></thead>
@@ -306,19 +302,19 @@
 						<th>Statut</th>
 						<th></th>
 						<th>Action</th>
-					</tr>';
-					
-					 foreach ($offre as $company_info) : 
+					</tr>
+					<tr>';
+					 foreach ($offre1 as $company_info) : 
 						echo'
-						<td>< '.$company_info['nom_c'].'  </td>
+							<td>'.$company_info['nom_c'].'  </td>
 							<td> '.$company_info['prenom_c'].' </td>
 							<td> '.$company_info['adresse'].'  </td>
 							<td> '. $company_info['lettre_motiv'].' </td>
 							<td>  '.$company_info['titre'].' </td>
 							<td>  '.$company_info['date_cand'].' </td>
 							<td>Accepte</td>
-							<td> <a href="/entretien"><input type="submit" value="Interview"></a></td>
-							<td><button type="button" class="modal1" data-ido="'.$company_info['ido'] .' " data-idc="'.$company_info['idc'].'  ">Programme</button></td>
+							<td><a href="/entretien?id_offre='.$company_info['ido'].'&id_candidat='.$company_info['idc '].'"><input type="submit" value="Interview"></a></td>
+							<td><button type="button" class="modal1" data-target="#addEmployeeModal" data-ido="'.$company_info['ido'] .'" data-idc="'.$company_info['idc'].'">Programme</button></td>
 							<!-- Add Modal HTML -->
 							<div id="addEmployeeModal" class="modal fade">
 								<div class="modal-dialog">
@@ -366,68 +362,70 @@
 
 
 			
-				<h1 style="text-align: center; margin-top:25px; background-color: burlywood;">Interview Programmer</h1>
+				<h1 style="text-align: center; margin-top:25px; background-color: burlywood;">Candidature Refusée</h1>
 				<?php
 				require_once 'app/core/database/models.php';
 				$profile = new Model();
-				$offre2 = $profile->read_joie();
-				if ($_GET['action'] == 'interview') {
+				$offre2 = $profile->candidature_refu();
+				if ($_GET['action'] == 'gestion') {
 					echo '
 					<div id="interview" style="text-align: center; margin-top:25px">
 
-				<style>
-					table {
-						border-collapse: collapse;
-						width: 100%;
-						margin-bottom: 20px;
-					}
+					<style>
+						table {
+							border-collapse: collapse;
+							width: 100%;
+							margin-bottom: 20px;
+						}
 
-					th,
-					td {
-						padding: 8px;
-						text-align: left;
-						border-bottom: 1px solid #ddd;
-					}
+						th,
+						td {
+							padding: 8px;
+							text-align: left;
+							border-bottom: 1px solid #ddd;
+						}
 
-					th {
-						background-color: #f2f2f2;
-					}
+						th {
+							background-color: #f2f2f2;
+						}
 
-					.action-buttons button {
-						margin-right: 10px;
-					}
-				</style>
-					<table >
+						.action-buttons button {
+							margin-right: 10px;
+						}
+					</style>
+					<table id="tab-candidature">
 					<thead></thead>
 					<tr>
-						<th>Nom </th>
-						<th>Prenom</th>
-						<th>offre</th>
-						<th>Date Interview</th>
-						<th>Heure</th>
-						<th>Action
-
-						</th>
-
-					</tr>';
-						require_once 'app/utils/methods.php';
+						<th>Nom</th>
+						<th>Prénom</th>
+						<th>Adresse</th>
+						<th>CV</th>
+						<th>Offre d\'emploi</th>
+						<th>Date de candidature</th>
+						<th>Statut</th>
+						<th>Action</th>
+					</tr>
+					<tr>';
 					 foreach ($offre2 as $company_info) : 
-						echo '<tr>
-						
-							<td>'. $company_info['nom_c'] .' </td>
-							<td> '. $company_info['prenom_c'] .'  </td>
-							<td> '. $company_info['titre'] .'  </td>
-							<td>'.convert_date($company_info['date_entretien']) .'</td>
-							<td>'.$company_info['heure'].'  </td>
-							<td> <a href="/entretien"><input type="submit" value="Interview"></a></td>.
-
+						echo'
+							<td>  '.$company_info['nom_c'].'  </td>
+							<td>  '.$company_info['prenom_c'].' </td>
+							<td>  '.$company_info['adresse'].'  </td>
+							<td> <a style="background-color: #ff9800; color:white;" href="consulter?motiv='. $company_info['pdf_cv'] . '">Telecharger CV</a></td>
+							<td>  '.$company_info['titre'].' </td>
+							<td>  '.$company_info['date_cand'].' </td>
+							<td style="color:red">Refusé</td>
+							<td>
+								<a href="/decision?action=1&target=' . $company_info['id_cand'] . '"  style = "background-color: green;color:white">Accepter</a>
+							</td>
+							<!-- Add Modal HTML -->
+							
 						</tr>
-						';
+					<tr>	';
+							
 
-						
 					 endforeach; 
-
-				echo 	'</table>';
+				 	echo '</table>';
 				}
 				?>
 				
@@ -499,14 +497,10 @@
 
    
 		});
+
+
 	</script>
 
-
-	<!--main js file end-->
 </body>
-
-
-
-<!-- Mirrored from www.webstrot.com/html/jobpro/job_light/candidate_profile.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 03 Apr 2023 09:31:01 GMT -->
 
 </html>

@@ -199,13 +199,19 @@ session_start();
 						}
 					  </style>
 					<h1 class="" style="text-align: center; margin-top:25px; background-color: burlywood;">Suivre mes candidatures</h1>
-    
+						
+					<?php	
+					require_once 'app/core/database/models.php';
+					$profile = new Model();
+					$candidat = $profile->read_cand()->fetchAll();
+					
+					?>
 					<table>
 						<thead></thead>
 					  <tr>
-						<th>Nom</th>
-						<th>Prénom</th>
-						<th>Adresse e-mail</th>
+						<th>Nom de l'entreprise</th>
+						
+						<th>Adresse </th>
 						<th>Offre d'emploi</th>
 						<th>Date Candidature</th>
 						<th>État de la candidature</th>
@@ -215,17 +221,17 @@ session_start();
 							
 						</th>
 					  </tr>
-					  
+					  <?php foreach($candidat as $candidate): ?>
 					  <tr>
-						<td>Pierre</td>
-						<td>Leblanc</td>
-						<td>pierre.leblanc@gmail.com</td>
-						<td>Ingénieur logiciel</td>
-						<td>21-05-2023</td>
+					  <td><?php echo $candidate['nom_e']?></td>
+						
+						<td><?php echo $candidate['adresse']?></td>
+						<td><?php echo $candidate['titre']?></td>
+						<td><?php echo $candidate['date_cand']?></td>
 						<td>Acceptée</td>
 						
 					  </tr>
-					  
+					  <?php endforeach ?>
 					</table>
 				</div>
 				
