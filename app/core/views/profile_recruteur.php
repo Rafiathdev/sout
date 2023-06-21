@@ -37,14 +37,15 @@
 	<div class="jp_top_header_main_wrapper">
 		<div class="container-fluid">
 			<div class="row">
-				<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-					<div class="jp_top_header_left_wrapper">
-						<div class="jp_top_header_left_cont">
-							<p><i class="fa fa-phone"></i> &nbsp;Phone &nbsp;+229 00 00 00 00</p>
-							<p class=""><i class="fa fa-envelope"></i> &nbsp;Email :&nbsp;&nbsp;ishede@gmail.com<a href="#"><span class="__cf_email__"></span></a></p>
-						</div>
-					</div>
-				</div>
+			<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                    <div class="jp_top_header_left_wrapper">
+                        <div class="jp_top_header_left_cont">
+                            <p> &nbsp; &nbsp;</p>
+                            <p class=""> &nbsp; &nbsp;&nbsp;<a
+                       href="#"><span class="__cf_email__" ></span></a></p>
+                        </div>
+                    </div>
+                </div>
 				<div class="col-lg-2 col-md-2 col-sm-12 col-xs-12 hidden-sm hidden-xs">
 					<div class="jp_navi_right_btn_wrapper">
 						<ul>
@@ -92,7 +93,7 @@
 						<div class="jp_tittle_breadcrumb_main_wrapper">
 							<div class="jp_tittle_breadcrumb_wrapper">
 								<ul>
-									<li><a href="#">Home</a> <i class="fa fa-angle-right"></i></li>
+									<li><a href="/">Accueil</a> <i class="fa fa-angle-right"></i></li>
 									<li><a href="#">Pages</a> <i class="fa fa-angle-right"></i></li>
 									<li>Profil de l'employeur</li>
 								</ul>
@@ -166,7 +167,6 @@
 				require_once 'app/core/database/models.php';
 				$profile = new Model();
 				$offre = $profile->candidature_non_traited();
-				
 			
 				if ($_GET['action'] == 'gestion') {
 					
@@ -230,7 +230,7 @@
 								border-radius: 10px;">Telecharger </a>
 							</td>
 							<td>
-							<a style="background-color: #ff9800; color:white;" href="consulter?motiv='. $company_info['pdf_cv'] . '">Telecharger CV</a>
+							<a style="background-color: #ff9800; color:white;" href="consulter?motiv='. $company_info['pdf_cv'] . '">Telecharger</a>
 							</td>
 							<td>En attente</td>
 							
@@ -259,8 +259,8 @@
 				<?php
 				require_once 'app/core/database/models.php';
 				$profile = new Model();
-				$offre1 = $profile->candidature_accep(); // a reecrire
-				
+				$offre1 = $profile->candidature_accep(); 
+
 				if ($_GET['action'] == 'gestion') {
 
 					echo'
@@ -288,7 +288,7 @@
 						margin-right: 10px;
 					}
 				</style>
-				<h1 style="text-align: center; margin-top:25px; background-color: burlywood;">Candidature acceptée</h1>
+				<h1 style="text-align: center; margin-top:25px; background-color: burlywood;">Candidature acceptée </h1>
 
 				<table id="tab-candidature">
 					<thead></thead>
@@ -300,12 +300,12 @@
 						<th>Offre d\'emploi</th>
 						<th>Date de candidature</th>
 						<th>Statut</th>
-						<th></th>
+						
 						<th>Action</th>
 					</tr>
 					<tr>';
-					 foreach ($offre1 as $company_info) : 
-						echo'
+					 foreach ($offre1 as $company_info) {
+						echo '
 							<td>'.$company_info['nom_c'].'  </td>
 							<td> '.$company_info['prenom_c'].' </td>
 							<td> '.$company_info['adresse'].'  </td>
@@ -313,8 +313,8 @@
 							<td>  '.$company_info['titre'].' </td>
 							<td>  '.$company_info['date_cand'].' </td>
 							<td>Accepte</td>
-							<td><a href="/entretien?id_offre='.$company_info['ido'].'&id_candidat='.$company_info['idc '].'"><input type="submit" value="Interview"></a></td>
-							<td><button type="button" class="modal1" data-target="#addEmployeeModal" data-ido="'.$company_info['ido'] .'" data-idc="'.$company_info['idc'].'">Programme</button></td>
+							
+							<td><button type="button"  class="modal1" data-target="#addEmployeeModal" data-ido="'.$company_info['ido'] .'" data-idc="'.$company_info['idc'].'">Programmer RDV</button></td>
 							<!-- Add Modal HTML -->
 							<div id="addEmployeeModal" class="modal fade">
 								<div class="modal-dialog">
@@ -350,7 +350,7 @@
 					<tr>	';
 							
 
-					 endforeach; 
+					}  
 				echo '</table>';
 				}
 				?>
@@ -362,14 +362,14 @@
 
 
 			
-				<h1 style="text-align: center; margin-top:25px; background-color: burlywood;">Candidature Refusée</h1>
+				
 				<?php
 				require_once 'app/core/database/models.php';
 				$profile = new Model();
 				$offre2 = $profile->candidature_refu();
 				if ($_GET['action'] == 'gestion') {
 					echo '
-					<div id="interview" style="text-align: center; margin-top:25px">
+					<div id="refuser" style="text-align: center; margin-top:25px">
 
 					<style>
 						table {
@@ -393,6 +393,7 @@
 							margin-right: 10px;
 						}
 					</style>
+					<h1 style="text-align: center; margin-top:25px; background-color: burlywood;">Candidature Refusée</h1>
 					<table id="tab-candidature">
 					<thead></thead>
 					<tr>
@@ -429,6 +430,74 @@
 				}
 				?>
 				
+
+
+				<br><br>
+
+				<?php
+				require_once 'app/core/database/models.php';
+				$profile = new Model();
+				$offre2 = $profile->Entretien();
+				if ($_GET['action'] == 'interview') {
+					echo '
+					<div id="interview" style="text-align: center; margin-top:25px">
+
+					<style>
+					
+				<h1 style="text-align: center; margin-top:25px; background-color: burlywood;">Entretien Programmé</h1>
+						table {
+							border-collapse: collapse;
+							width: 100%;
+							margin-bottom: 20px;
+						}
+
+						th,
+						td {
+							padding: 8px;
+							text-align: left;
+							border-bottom: 1px solid #ddd;
+						}
+
+						th {
+							background-color: #f2f2f2;
+						}
+
+						.action-buttons button {
+							margin-right: 10px;
+						}
+					</style>
+					<table id="tab-candidature">
+					<thead></thead>
+					<tr>
+						<th>Nom</th>
+						<th>Prénom</th>
+						<th>Adresse</th>
+						<th>Offre d\'emploi</th>
+						<th>Date entretien</th>
+						<th>heure</th>
+						<th>Action</th>
+					</tr>
+					<tr>';
+					 foreach ($offre2 as $company_info) : 
+						echo'
+							<td>  '.$company_info['nom_c'].'  </td>
+							<td>  '.$company_info['prenom_c'].' </td>
+							<td>  '.$company_info['adresse'].'  </td>
+							<td>  '.$company_info['titre'].' </td>
+							<td>  '.$company_info['date_entretien'].' </td>
+							<td>  '.$company_info['heure'].' </td>
+							<td><a href="/entretien?id_offre='.$company_info['ido'].'&id_candidat='.$company_info['idc '].'"><input type="submit" value="Interview"></a></td>
+							
+							
+						</tr>
+					<tr>	';
+							
+
+					 endforeach; 
+				 	echo '</table>';
+				}
+				?>
+				
 			</div>
 
 
@@ -450,25 +519,8 @@
 		let ido = "";
 		let idc = "";
 
-		let candidature1 = document.getElementById('candidature1');
-		let btn_candidature1 = document.querySelector('.candidature1');
-		let candidature = document.getElementById('candidature');
-		let interview = document.getElementById('interview');
-		let btn_interview = document.querySelector('.interview');
-		btn_candidature1.addEventListener('click', function(e) {
-			candidature1.style.display = 'block';
-			candidature.style.display = 'block';
-			interview.style.display = 'none';
-		})
-		btn_interview.addEventListener('click', function(e) {
-			candidature1.style.display = 'none';
-			candidature.style.display = 'none';
-			interview.style.display = 'block';
-		});
-
-
-
-
+	
+		
 
 		$(document).on('click', '.modal1', function(e) {
 			$('#addEmployeeModal').modal('show');
@@ -497,6 +549,7 @@
 
    
 		});
+		document.getElementById("date").min = new Date().toISOString().split("T")[0];
 
 
 	</script>

@@ -54,6 +54,11 @@ else if ($route === '/responsive') {
 
 } 
 
+else if ($route === '/adminlog') {
+    require_once 'app/core/views/admin/login.php';
+
+} 
+
 else if ($route === '/advanced') {
     require_once 'app/core/views/admin/advanced.php';
 
@@ -65,6 +70,18 @@ else if ($route === '/payer') {
 } 
 
 else if ($route === '/basic') {
+    if($_GET['action']){
+        require_once 'app/core/database/models.php';
+        $profile = new Model();
+        $candidats = $profile->validate_candidat($_GET['action'],$_GET['target']);
+        header('Location:/basic');
+    }
+    if($_GET['actionemp']){
+        require_once 'app/core/database/models.php';
+        $profile = new Model();
+        $candidats = $profile->validate_employeur($_GET['actionemp'],$_GET['target']);
+        header('Location:/basic');
+    }
     require_once 'app/core/views/admin/basic.php';
 
 } 
@@ -111,6 +128,33 @@ else if ($route === '/login') {
     require_once 'app/core/views/admin/home.php';
 
 }
+
+else if ($route === '/liste_comptes') {
+    
+    require_once 'app/core/views/admin/liste_comptes.php';
+
+}
+
+else if ($route === '/liste_offres') {
+    require_once 'app/core/views/admin/liste_offres.php';
+
+}
+
+else if ($route === '/gerer_offres') {
+    if($_GET['action']){
+        require_once 'app/core/database/models.php';
+        $profile = new Model();
+        $candidats = $profile->validate_offre($_GET['action'],$_GET['target']);
+        header('Location:/gerer_offres');
+    }
+    require_once 'app/core/views/admin/gerer_offres.php';
+
+}
+
+
+
+
+
 
 /*else if ($route === '/validecand') {
     require_once 'app/core/views/admin/responsive.php';

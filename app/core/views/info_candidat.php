@@ -37,8 +37,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                     <div class="jp_top_header_left_wrapper">
                         <div class="jp_top_header_left_cont">
-                            <p><i class="fa fa-phone"></i> &nbsp;Phone &nbsp;+123456789</p>
-                            <p class=""><i class="fa fa-envelope"></i> &nbsp;Email :&nbsp;<a href="#"><span class="__cf_email__" data-cfemail="8bcee6eae2e7cbeef3eae6fbe7eea5e8e4e6">[email&#160;protected]</span></a></p>
+                            <p> &nbsp; &nbsp;</p>
+                            <p class=""> &nbsp; &nbsp;&nbsp;<a
+                       href="#"><span class="__cf_email__" ></span></a></p>
                         </div>
                     </div>
                 </div>
@@ -217,12 +218,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                             Form Group--
                                             <div class="form-group col-md-6 col-sm-6 col-xs-12">
                                                 <label for="">Password</label>
-                                                <input id="password" type="password" name="password" value="" onChange="onChange()" placeholder=" mot de pass" required>
+                                                <input id="password" type="password" name="password" value="" onChange="onChange()" placeholder=" mot de passe" required>
                                             </div>
                                             --Form Group--
                                             <div class="form-group col-md-6 col-sm-6 col-xs-12">
                                                 <label for="">Confirm Password</label>
-                                                <input type="password" name="confirm" value="" onChange="onChange()" placeholder="Confirmer mot de pass" required>
+                                                <input type="password" name="confirm" value="" onChange="onChange()" placeholder="Confirmer mot de passe" required>
                                             </div>
 
                                             --Form Group-->
@@ -238,7 +239,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                             </div>
                                             <div class="login_btn_wrapper register_btn_wrapper login_wrapper ">
                                                 <button type="submit" id="signupButton" name="btnAjouter" class="btn btn-primary login_btn" style="display:none">You cannot see me</button>
-                                                <span class="chipdeals-button btn btn-primary login_btn btn-block" amount="50" style="
+                                                <span class="chipdeals-button btn btn-primary login_btn btn-block" amount="3" style="
                                                     position: relative;
                                                     background-color: rgb(2, 123, 253);
                                                     font-size: 1rem;

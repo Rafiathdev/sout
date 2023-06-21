@@ -19,13 +19,7 @@
 </head>
 
 <body>
-    <!-- preloader Start
-    <div id="preloader">
-        <div id="status"><img src="public/assets/images/header/loadinganimation.gif" id="preloader_image" alt="loader">
-        </div>
-    </div> -->
-    <!-- Top Scroll End -->
-    <!-- Header Wrapper Start -->
+   
     
     <?php
  require 'app/core/views/partial/header.php'
@@ -73,12 +67,7 @@
             </div>
         </div>
     </div>
-    <!-- jp first sidebar Wrapper End -->
-    <!-- jp counter Wrapper Start -->
-    
-    <!-- jp counter Wrapper End -->
-    
-    <!-- jp Best deals Wrapper End -->
+  
     
     <?php
  require 'app/core/views/partial/footer.php';
@@ -90,5 +79,4 @@
 </body>
 
 
-<!-- Mirrored from www.webstrot.com/html/jobpro/job_light/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 03 Apr 2023 09:27:29 GMT -->
 </html>

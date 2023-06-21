@@ -31,11 +31,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <div class="jp_top_header_main_wrapper">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                     <div class="jp_top_header_left_wrapper">
                         <div class="jp_top_header_left_cont">
-                            <p><i class="fa fa-phone"></i> &nbsp;Phone &nbsp;+123456789</p>
-                            <p class=""><i class="fa fa-envelope"></i> &nbsp;Email :&nbsp;<a href="#"><span class="__cf_email__" data-cfemail="8bcee6eae2e7cbeef3eae6fbe7eea5e8e4e6">[email&#160;protected]</span></a></p>
+                            <p> &nbsp; &nbsp;</p>
+                            <p class=""> &nbsp; &nbsp;&nbsp;<a
+                       href="#"><span class="__cf_email__" ></span></a></p>
                         </div>
                     </div>
                 </div>
@@ -148,7 +149,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                             <div class="form-group col-md-6 col-sm-6 col-xs-12 custom_input" required>
                                                 <label for="">Profil</label>
                                                 <input type='file' name="photo" id="photo" onchange="readURL(this);" />
-                                                <div class="img-upload">
+                                                <div class="img-upload" required>
                                                     <img id="blah" src="/public/assets/images/content/base.png" alt="your logo" />
                                                 </div>
                                             </div>
@@ -176,7 +177,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                             <div class="form-group col-md-6 col-sm-6 col-xs-12">
                                             <label> Confirme Password :</label>
                                                 <input type="password" name="confirm" id="password" onChange="onChange()"
-                                                    placeholder="Confirmez mot de pass" required>
+                                                    placeholder="Confirmez mot de passe" required>
                                             </div>-->
                                             
                                             <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">

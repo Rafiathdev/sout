@@ -29,11 +29,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <div class="jp_top_header_main_wrapper">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                     <div class="jp_top_header_left_wrapper">
                         <div class="jp_top_header_left_cont">
-                            <p><i class="fa fa-phone"></i> &nbsp;Phone &nbsp;+123456789</p>
-                            <p class=""><i class="fa fa-envelope"></i> &nbsp;Email :&nbsp;<a href="#"><span class="__cf_email__" data-cfemail="8bcee6eae2e7cbeef3eae6fbe7eea5e8e4e6">[email&#160;protected]</span></a></p>
+                            <p> &nbsp; &nbsp;</p>
+                            <p class=""> &nbsp; &nbsp;&nbsp;<a
+                       href="#"><span class="__cf_email__" ></span></a></p>
                         </div>
                     </div>
                 </div>
@@ -70,7 +71,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         <div class="jp_tittle_breadcrumb_main_wrapper">
                             <div class="jp_tittle_breadcrumb_wrapper">
                                 <ul>
-                                    <li><a href="#">Home</a> <i class="fa fa-angle-right"></i></li>
+                                    <li><a href="/">Accueil</a> <i class="fa fa-angle-right"></i></li>
                                     <li><a href="#">Pages</a> <i class="fa fa-angle-right"></i></li>
                                     <li>Register</li>
                                 </ul>
@@ -180,7 +181,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                             <div class="form-group col-md-6 col-sm-6 col-xs-12">
                                             <label> Confirme Password :</label>
                                                 <input type="password" name="confirm" id="password" onChange="onChange()"
-                                                    placeholder="Confirmez mot de pass" required>
+                                                    placeholder="Confirmez mot de passe" required>
                                             </div>
                                             
                                             <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">

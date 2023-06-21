@@ -10,7 +10,7 @@
 <!-- Mirrored from www.webstrot.com/html/jobpro/job_light/listing_single.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 03 Apr 2023 09:30:58 GMT -->
 <head>
     <meta charset="utf-8" />
-    <title>Listing_single</title>
+    <title>Decrire</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <meta name="description" content="Job Pro" />
     <meta name="keywords" content="Job Pro" />
@@ -37,11 +37,11 @@
     <div class="jp_top_header_main_wrapper">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                     <div class="jp_top_header_left_wrapper">
                         <div class="jp_top_header_left_cont">
-                            <p><i class="fa fa-phone"></i> &nbsp;Phone &nbsp;+229 00 00 00 00</p>
-                            <p class=""><i class="fa fa-envelope"></i> &nbsp;Email :&nbsp;&nbsp;ishede@gmail.com<a
+                            <p> &nbsp; &nbsp;</p>
+                            <p class=""> &nbsp; &nbsp;&nbsp;<a
                        href="#"><span class="__cf_email__" ></span></a></p>
                         </div>
                     </div>
@@ -77,8 +77,8 @@
                         <div class="jp_tittle_breadcrumb_main_wrapper">
                             <div class="jp_tittle_breadcrumb_wrapper">
                                 <ul>
-                                    <li><a href="#">Home</a> <i class="fa fa-angle-right"></i></li>
-                                    <li><a href="#">Jobs</a> <i class="fa fa-angle-right"></i></li>
+                                    <li><a href="#">Accueil</a> <i class="fa fa-angle-right"></i></li>
+                                    <li><a href="#">Offre</a> <i class="fa fa-angle-right"></i></li>
                                     
                                 </ul>
                             </div>
@@ -134,7 +134,7 @@
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div class="jp_rightside_job_categories_wrapper jp_rightside_listing_single_wrapper">
                                 <div class="jp_rightside_job_categories_heading">
-                                    <h4>Job Overview</h4>
+                                    
                                 </div>
                                 <div class="jp_jop_overview_img_wrapper">
                                     <div class="jp_jop_overview_img">
@@ -161,7 +161,7 @@
                                         <div class="jp_listing_right_bar_btn">
                                             <ul>
                                                 
-                                                <li><a href="/candidature"><i class="fa fa-plus-circle"></i> &nbsp;Postuler</a></li>
+                                                <li><a href="/candidature?id=<?php echo $id?>"><i class="fa fa-plus-circle"></i> &nbsp;Postuler</a></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -202,6 +202,4 @@
     </script>
 </body>
 
-
-<!-- Mirrored from www.webstrot.com/html/jobpro/job_light/listing_single.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 03 Apr 2023 09:30:58 GMT -->
 </html>

@@ -1,4 +1,20 @@
+
+
+<?php
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    require 'app/core/controllers/user.php';
+    $user = new User();
+    $user-> login($_POST['email'], $_POST['password']);
+  
+// Les variables pour récupérer les infos envoyées
+}
+?>
+
+
 <!DOCTYPE html>
+
+
 <html lang="en">
 
 <head>
@@ -7,7 +23,7 @@
   <meta name="description" content="">
   <meta name="author" content="Dashboard">
   <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
-  <title>Dashio - Bootstrap Admin Template</title>
+  <title>Administrateur</title>
 
   <!-- Favicons -->
   <link href="public/admin/assets/img/favicon.png" rel="icon">
@@ -30,27 +46,22 @@
       *********************************************************************************************************************************************************** -->
   <div id="login-page">
     <div class="container">
-      <form class="form-login" action="index.html">
+      <form class="form-login" action="" method="POST">
         <h2 class="form-login-heading">sign in now</h2>
         <div class="login-wrap">
-          <input type="text" class="form-control" placeholder="User ID" autofocus>
+          <input type="email" name="email" class="form-control" placeholder="Email" autofocus>
           <br>
-          <input type="password" class="form-control" placeholder="Password">
+          <input type="password" name="password" class="form-control" placeholder="Password">
           <label class="checkbox">
             <input type="checkbox" value="remember-me"> Remember me
             <span class="pull-right">
             <a data-toggle="modal" href="login.html#myModal"> Forgot Password?</a>
             </span>
             </label>
-          <button class="btn btn-theme btn-block" href="index.html" type="submit"><i class="fa fa-lock"></i> SIGN IN</button>
+          <button class="btn btn-theme btn-block"  type="submit"><i class="fa fa-lock"></i> SIGN IN</button>
           <hr>
          
-          <div class="registration">
-            Don't have an account yet?<br/>
-            <a class="" href="#">
-              Create an account
-              </a>
-          </div>
+          
         </div>
         <!-- Modal -->
         <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="myModal" class="modal fade">
@@ -62,7 +73,7 @@
               </div>
               <div class="modal-body">
                 <p>Enter your e-mail address below to reset your password.</p>
-                <input type="text" name="email" placeholder="Email" autocomplete="off" class="form-control placeholder-no-fix">
+                <input type="text" name="emailrecover" placeholder="Email" autocomplete="off" class="form-control placeholder-no-fix">
               </div>
               <div class="modal-footer">
                 <button data-dismiss="modal" class="btn btn-default" type="button">Cancel</button>

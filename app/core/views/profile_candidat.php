@@ -39,15 +39,15 @@ session_start();
     <div class="jp_top_header_main_wrapper">
 		<div class="container-fluid">
 			<div class="row">
-				<div class="col-lg-6 col-md-6 col-sm-8 col-xs-12 hidden-xs">
-					<div class="jp_top_header_left_wrapper">
-						<div class="jp_top_header_left_cont">
-							<p><i class="fa fa-phone"></i> &nbsp;Phone &nbsp;+229 00 00 00 00</p>
-							<p class=""><i class="fa fa-envelope"></i> &nbsp;Email :&nbsp;<a href="#"><span class="__cf_email__" data-cfemail="9cd9f1fdf5f0dcf9e4fdf1ecf0f9b2fff3f1">Ishede@gmail.com</span></a>
-							</p>
-						</div>
-					</div>
-				</div>
+			<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                    <div class="jp_top_header_left_wrapper">
+                        <div class="jp_top_header_left_cont">
+                            <p> &nbsp; &nbsp;</p>
+                            <p class=""> &nbsp; &nbsp;&nbsp;<a
+                       href="#"><span class="__cf_email__" ></span></a></p>
+                        </div>
+                    </div>
+                </div>
 				
 			</div>
 		</div>
@@ -89,7 +89,7 @@ session_start();
                         <div class="jp_tittle_breadcrumb_main_wrapper">
                             <div class="jp_tittle_breadcrumb_wrapper">
                                 <ul>
-                                    <li><a href="#">Home</a> <i class="fa fa-angle-right"></i></li>
+                                    <li><a href="/">Accueil</a> <i class="fa fa-angle-right"></i></li>
                                     <li><a href="#">Pages</a> <i class="fa fa-angle-right"></i></li>
                                     <li>Profil du candidat</li>
                                 </ul>
@@ -174,8 +174,21 @@ session_start();
 				</div>
 			</div>
 		
+
+			<?php	
+					require_once 'app/core/database/models.php';
+					$profile = new Model();
+					$candidat = $profile->read_cand()->fetchAll();
+					
+					?>
+
+					<?php	
+					require_once 'app/core/database/models.php';
+					$profile = new Model();
+					$offre2 = $profile->Entretien();
 				
-				<div  style="text-align: center; margin-top:25px">
+					echo'
+				<div id=gestion style="text-align: center; margin-top:25px">
 					
 					<style>
 						table {
@@ -200,41 +213,121 @@ session_start();
 					  </style>
 					<h1 class="" style="text-align: center; margin-top:25px; background-color: burlywood;">Suivre mes candidatures</h1>
 						
-					<?php	
-					require_once 'app/core/database/models.php';
-					$profile = new Model();
-					$candidat = $profile->read_cand()->fetchAll();
 					
-					?>
 					<table>
 						<thead></thead>
 					  <tr>
-						<th>Nom de l'entreprise</th>
+						<th>Nom de l\'entreprise</th>
 						
 						<th>Adresse </th>
-						<th>Offre d'emploi</th>
+						<th>Offre d\'emploi</th>
 						<th>Date Candidature</th>
 						<th>État de la candidature</th>
+						
 						<th></th>
 						
 						
 							
 						</th>
-					  </tr>
-					  <?php foreach($candidat as $candidate): ?>
+					  </tr>';
+					   foreach($candidat as $candidate): 
+						echo'
 					  <tr>
-					  <td><?php echo $candidate['nom_e']?></td>
+					  <td>'.$candidate['nom_e'].'</td>
 						
-						<td><?php echo $candidate['adresse']?></td>
-						<td><?php echo $candidate['titre']?></td>
-						<td><?php echo $candidate['date_cand']?></td>
-						<td>Acceptée</td>
+						<td>'.$candidate['adresse'].'</td>
+						<td>'.$candidate['titre'].'</td>
+						<td>'.$candidate['date_cand']?></td>
+						<td>
+							<?php
+								if ($candidate['decision'] == 0) {
+									echo "en attente";
+								} else if($candidate['decision'] == 1) {
+									echo "acceptée";
+								}
+								else {
+									echo "refusée";
+								}	
+								
+							?>
+						</td>
 						
-					  </tr>
-					  <?php endforeach ?>
-					</table>
+					  </tr>'
+					  <?php endforeach;
+							echo'
+					</table>';
+					?>
 				</div>
 				
+				<br><br>
+				
+				<?php	
+					require_once 'app/core/database/models.php';
+					$profile = new Model();
+					$candidat = $profile->RDV()->fetchAll();
+					
+					echo'
+				<div id="rdv" style="text-align: center; margin-top:25px">
+				
+					
+					<style>
+						table {
+						  border-collapse: collapse;
+						  width: 100%;
+						  margin-bottom: 20px;
+						}
+				  
+						th, td {
+						  padding: 8px;
+						  text-align: left;
+						  border-bottom: 1px solid #ddd;
+						}
+				  
+						th {
+						  background-color: #f2f2f2;
+						}
+				  
+						.action-buttons button {
+						  margin-right: 10px;
+						}
+					  </style>
+					<h1 class="" style="text-align: center; margin-top:25px; background-color: burlywood;">Mes RDV</h1>
+						
+					
+					
+
+					
+					<table>
+						<thead></thead>
+					  <tr>
+						<th>Nom de l\'entreprise</th>
+						
+						<th>Adresse </th>
+						<th>Offre d\'emploi</th>
+						<th>Date d\'entretien</th>
+						<th>Heure</th>
+						
+						<th></th>
+						
+						</th>
+					  </tr>';
+					   foreach($candidat as $candidate):
+						echo'
+					  <tr>
+					  <td>'.$candidate['nom_e'].'</td>
+						
+						<td>'.$candidate['adresse'].'</td>
+						<td>'.$candidate['titre'].'</td>
+						<td>'.$candidate['date_entretien'].'</td>
+						<td>'.$candidate['heure'].'</td>
+						
+					  </tr>';
+					   endforeach ;
+					   echo'
+					</table>';
+					?>
+				</div>
+
 			</div>
 		</div>
 		

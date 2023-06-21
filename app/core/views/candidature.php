@@ -40,11 +40,11 @@
 	<div class="jp_top_header_main_wrapper">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                 <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                     <div class="jp_top_header_left_wrapper">
                         <div class="jp_top_header_left_cont">
-                            <p><i class="fa fa-phone"></i> &nbsp;Phone &nbsp;+229 00 00 00 00</p>
-                            <p class=""><i class="fa fa-envelope"></i> &nbsp;Email :&nbsp;&nbsp;ishede@gmail.com<a
+                            <p> &nbsp; &nbsp;</p>
+                            <p class=""> &nbsp; &nbsp;&nbsp;<a
                        href="#"><span class="__cf_email__" ></span></a></p>
                         </div>
                     </div>
@@ -139,7 +139,7 @@
                                                     </form>
                                                 </li>
                                                 <li class="has-children">
-                                                    <a href="#">Acceuil</a>
+                                                    <a href="#">Accueil</a>
 
                                                     
                                                     
@@ -236,12 +236,6 @@
 </div>
 </div>
 
-    
-   
-    <!-- jp Tittle Wrapper End -->
-    <!-- jp blog_cate section Wrapper Start -->
-    
-   
     <div class="jp_downlord_main_wrapper">
         <div class=""></div>
         <style>
@@ -287,45 +281,53 @@
         </style>
 	<?php
                 
+                	
+				require_once 'app/core/database/models.php';
+				$profile = new Model();
+				$offres = $profile->read_cand_id()->fetchAll();
+                $id_offre = $_GET['id'];
+                foreach ($offres as $offre) {
+                    if($id_offre==$offre['id']){
+                        echo '<script>alert("Vous avez deja postulé a cette offre")</script>'; 
+                        $xxx=true;          
+                    }                     
+                }     
+
                 if(isset($_POST['send'])) {
 
 
                     $nomFichierLettreMotivation = $_FILES['lettre_motiv']['name'];
                     $id_offre = $_GET['id'];
-                   /*   echo "<pre>";
-                   // print_r($_SESSION['id_cand']);
-                    print_r($_SESSION['id_offre']);
-                   
-                    print_r($_SERVER);
-                    print_r($_SERVER['QUERY_STRING']);
-                  <?php echo $_SERVER['PHP_SELF']?>
-                    echo "</pre>";
-                    die();*/
-
-                        //$id = $_SESSION['id'];
-                        //$id_cand = $_SESSION['id_cand'];
+                  
                     require 'app/core/controllers/offer.php';
                         //$_SESSION['id'];
                         //$_SESSION['id_cand'];
                         $user = new Offer();
                         $user-> candidature($_FILES['lettre_motiv'], $_SESSION['id_cand'], $id_offre);
 
-                       // $user-> candidature($_FILES['lettre_motiv'], $_SESSION['id_cand'], $_SESSION['id']);
-                       // echo $_SESSION["id"]." ".$_SESSION["id_cand"];
-                    //echo "<h1>".$_SESSION["id"]." ".$_SESSION["id_cand"]."</h1>";
+                       
                 }
-                ?>
-	<h1>Formulaire de candidature</h1>
-   
-   
-  
+
+    ?>
+
+
 	<form action="" method="POST" enctype="multipart/form-data">
         
 		
-		<label for="lettre">Lettre de motivation (pdf requise) :</label>
-		<input type="file" name="lettre_motiv" accept=".pdf" >
-		<br>
-		<input type="submit" value="Envoyer" name="send">
+        <?php
+        if($xxx==true){
+            echo '
+            <h3 style="color:red">Vous avez deja postuler a cette offre</h3>';
+        }
+        else {
+            echo '
+             <label for="lettre">Lettre de motivation (pdf requis) :</label>
+             <input type="file" name="lettre_motiv" accept=".pdf" >
+             <br>
+
+             <input type="submit"  value="Envoyer" name="send">';
+        }                   
+        ?>
 	</form>
 
 
@@ -357,5 +359,4 @@
 </body>
 
 
-<!-- Mirrored from www.webstrot.com/html/jobpro/job_light/blog_left.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 03 Apr 2023 09:31:07 GMT -->
 </html>

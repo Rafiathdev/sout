@@ -35,11 +35,11 @@
 	<div class="jp_top_header_main_wrapper">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+               <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                     <div class="jp_top_header_left_wrapper">
                         <div class="jp_top_header_left_cont">
-                            <p><i class="fa fa-phone"></i> &nbsp;Phone &nbsp;+229 00 00 00 00</p>
-                            <p class=""><i class="fa fa-envelope"></i> &nbsp;Email :&nbsp;&nbsp;ishede@gmail.com<a
+                            <p> &nbsp; &nbsp;</p>
+                            <p class=""> &nbsp; &nbsp;&nbsp;<a
                        href="#"><span class="__cf_email__" ></span></a></p>
                         </div>
                     </div>
@@ -71,7 +71,7 @@
                         <div class="jp_job_heading_wrapper">
                             <div class="jp_job_heading">
                                 <h1><span>+ de 3000</span> Offres</h1>
-                                <p>Trouver un emploie, Recruter & Réaliser vos rêves</p>
+                                <p>Consulter la liste des offres ci dessous</p>
                             </div>
                         </div>
                     </div>
@@ -89,7 +89,8 @@
                 </div>
                 <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
                     <div class="row">
-                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div class="jp_listing_tabs_wrapper">
                                 
                                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
@@ -97,7 +98,7 @@
                                         <div class="gc_causes_view_tabs">
                                             <ul class="nav nav-pills">
                                                 
-                                                <li><a data-toggle="pill" href="#list"><i class="fa fa-list"></i></a></li>
+                                                <li></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -105,6 +106,7 @@
                                 
                             </div>
                         </div>
+                        
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div class="tab-content">
                             <?php
@@ -113,7 +115,7 @@
 									$company_infos = $profile->read_joind();
 								?>
                                
-                             <div id="list" class="tab-pane fade">
+                             <div id="list" class="">
                                 <div class="row">
                                     <?php foreach($company_infos as $company_info): ?>
                                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -156,6 +158,7 @@
                                 </div>
                             </div>
                         </div>
+                        
                     </div>
                 </div>
                

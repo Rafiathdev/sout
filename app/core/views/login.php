@@ -43,8 +43,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                     <div class="jp_top_header_left_wrapper">
                         <div class="jp_top_header_left_cont">
-                            <p><i class="fa fa-phone"></i> &nbsp;Phone &nbsp;+229 00 00 00 00</p>
-                            <p class=""><i class="fa fa-envelope"></i> &nbsp;Email :&nbsp;<a href="#"><span class="__cf_email__" data-cfemail="f9bc94989095b99c81989489959cd79a9694">[ISHEDE@gmail.com]</span></a></p>
+                            <p> &nbsp; &nbsp;</p>
+                            <p class=""> &nbsp; &nbsp;&nbsp;<a
+                       href="#"><span class="__cf_email__" ></span></a></p>
                         </div>
                     </div>
                 </div>
@@ -66,14 +67,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="jp_tittle_heading_wrapper">
                         <div class="jp_tittle_heading">
-                            <h2>Login</h2>
+                            <h2>Connexion</h2>
                         </div>
                         <div class="jp_tittle_breadcrumb_main_wrapper">
                             <div class="jp_tittle_breadcrumb_wrapper">
                                 <ul>
-                                    <li><a href="Acceuil.php">Acceuil</a> <i class="fa fa-angle-right"></i></li>
+                                    <li><a href="/">Accueil</a> <i class="fa fa-angle-right"></i></li>
                                     <li><a href="#">Pages</a> <i class="fa fa-angle-right"></i></li>
-                                    <li>Login</li>
+                                    <li>Connexion</li>
                                 </ul>
                             </div>
                         </div>
@@ -112,7 +113,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 									<span class="control__indicator"></span>
 								</label>
 								<a href="#" class="forget_password">
-									Mot de pass oublier
+									mot de passe oublié
 								</a>
 							</div>
 							<div class="login_btn_wrapper">

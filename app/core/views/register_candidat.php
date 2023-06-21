@@ -33,11 +33,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <div class="jp_top_header_main_wrapper">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                     <div class="jp_top_header_left_wrapper">
                         <div class="jp_top_header_left_cont">
-                            <p><i class="fa fa-phone"></i> &nbsp;Phone &nbsp;+123456789</p>
-                            <p class=""><i class="fa fa-envelope"></i> &nbsp;Email :&nbsp;<a href="#"><span class="__cf_email__" data-cfemail="8bcee6eae2e7cbeef3eae6fbe7eea5e8e4e6">[email&#160;protected]</span></a></p>
+                            <p> &nbsp; &nbsp;</p>
+                            <p class=""> &nbsp; &nbsp;&nbsp;<a
+                       href="#"><span class="__cf_email__" ></span></a></p>
                         </div>
                     </div>
                 </div>
@@ -45,8 +46,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     <div class="jp_top_header_right_wrapper">
                         <div class="jp_top_header_right_cont">
                             <ul>
-                                <li><a href="register.html"><i class="fa fa-user"></i>&nbsp; SIGN UP</a></li>
-                                <li><a href="login.html"><i class="fa fa-sign-in"></i>&nbsp; LOGIN</a></li>
+                                <li><a href="/register"><i class="fa fa-user"></i>&nbsp; INSCRIPTION</a></li>
+                                <li><a href="/login"><i class="fa fa-sign-in"></i>&nbsp; CONNEXION</a></li>
                             </ul>
                         </div>
                         
@@ -69,14 +70,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="jp_tittle_heading_wrapper">
                         <div class="jp_tittle_heading">
-                            <h2>Register</h2>
+                            <h2>Inscription</h2>
                         </div>
                         <div class="jp_tittle_breadcrumb_main_wrapper">
                             <div class="jp_tittle_breadcrumb_wrapper">
                                 <ul>
-                                    <li><a href="#">Home</a> <i class="fa fa-angle-right"></i></li>
+                                    <li><a href="/">Accueil</a> <i class="fa fa-angle-right"></i></li>
                                     <li><a href="#">Pages</a> <i class="fa fa-angle-right"></i></li>
-                                    <li>Register</li>
+                                    <li>Inscription</li>
                                 </ul>
                             </div>
                         </div>
@@ -129,12 +130,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                             <!--Form Group-->
                                             <div class="form-group col-md-6 col-sm-6 col-xs-12">
                                                 <label for="">Password</label>
-                                                <input id="password" type="password" name="password" value="" onChange="onChange()" placeholder=" mot de pass" required>
+                                                <input id="password" type="password" name="password" value="" onChange="onChange()" placeholder=" mot de passe" required>
                                             </div>
                                             <!--Form Group-->
                                             <div class="form-group col-md-6 col-sm-6 col-xs-12">
                                                 <label for="">Confirm Password</label>
-                                                <input type="password" name="confirm" value="" onChange="onChange()" placeholder="Confirmer mot de pass" required>
+                                                <input type="password" name="confirm" value="" onChange="onChange()" placeholder="Confirmer mot de passe" required>
                                             </div>
 
                                             <!--Form Group-->

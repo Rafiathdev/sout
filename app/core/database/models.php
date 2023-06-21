@@ -30,6 +30,13 @@ class Model
 		
 	}
 
+	public function update_programmed($idOffre,$idCandidat){
+		$db = $this->conn();
+		$create_request = $db->prepare("UPDATE candidature  SET programmed = 1 WHERE  id_offre=? and id_candidat = ? ");
+		$create_request->execute(array($idOffre,$idCandidat));
+		
+	}
+
 	public function addEntretien($date_entretien, $heure, $id_offre, $id_candidat)
 	{
 		// create and save a database object
@@ -155,7 +162,8 @@ public function read_filter_once($table, $field, $sfield, $value)
 	public function candidature_refu()
 	{
 		$db = $this->conn();
-		$read_request = $db->query('SELECT o.id as ido, p.id as id_cand, c.id as idc, c.pdf_cv, c.nom_c, c.prenom_c, c.adresse, c.pdf_cv, o.titre, p.date_cand, p.lettre_motiv,  p.decision, o.author FROM candidat c, offre o, candidature p WHERE c.id=p.id_candidat AND o.id = p.id_offre AND p.decision=2 AND author = '.$_SESSION["user_info"]["id"].'');
+		$read_request = $db->query('SELECT o.id as ido, p.id as id_cand, c.id as idc, c.pdf_cv, c.nom_c, c.prenom_c, c.adresse, c.pdf_cv, o.titre, p.date_cand, p.lettre_motiv,  p.decision, o.author FROM candidat c, offre o, candidature p WHERE c.id=p.id_candidat AND o.id = p.id_offre AND p.decision=2 AND 
+		author = '.$_SESSION["user_info"]["id"].'');
 		$data = $read_request->fetchAll();
 		
 		return $data;
@@ -165,9 +173,20 @@ public function read_filter_once($table, $field, $sfield, $value)
 	public function candidature_accep()
 	{
 		$db = $this->conn();
-		$read_request = $db->query('SELECT o.id as ido, p.id as id_cand, c.id as idc, c.pdf_cv, c.nom_c, c.prenom_c, c.adresse, c.pdf_cv, o.titre, p.date_cand, p.lettre_motiv,  p.decision, o.author FROM candidat c, offre o, candidature p WHERE c.id=p.id_candidat AND o.id = p.id_offre AND p.decision=1 AND author = '.$_SESSION["user_info"]["id"].'');
+		$read_request = $db->query('SELECT o.id as ido, p.id as id_cand, c.id as idc, c.pdf_cv, c.nom_c, c.prenom_c, c.adresse, c.pdf_cv, o.titre, p.date_cand, p.lettre_motiv,  p.decision, o.author FROM candidat c, offre o, candidature p WHERE c.id=p.id_candidat AND o.id = p.id_offre AND p.decision=1 and p.programmed=0 AND author = '.$_SESSION["user_info"]["id"].'');
 		$data = $read_request->fetchAll();
 		return $data;
+	}
+
+
+
+	public function read_cand_id()
+	{
+		// get and return a database object
+		$db = $this->conn();
+		$read_request = $db->query('SELECT o.id FROM  offre o, employeur e, candidature p  WHERE o.id = p.id_offre AND e.user_id =o.author');
+		//$read_request->execute(array());
+		return $read_request;
 	}
 
 
@@ -175,7 +194,7 @@ public function read_filter_once($table, $field, $sfield, $value)
 	{
 		// get and return a database object
 		$db = $this->conn();
-		$read_request = $db->query('SELECT o.id, o.titre,  e.nom_e,  o.adresse, p.date_cand FROM  offre o, employeur e, candidature p  WHERE o.id = p.id_offre AND e.user_id =o.author and p.id_candidat='.$_SESSION['id_cand']);
+		$read_request = $db->query('SELECT o.id,  o.titre,p.decision,	  e.nom_e,  o.adresse, p.date_cand FROM  offre o, employeur e, candidature p  WHERE o.id = p.id_offre AND e.user_id =o.author and p.id_candidat='.$_SESSION['id_cand']);
 		//$read_request->execute(array());
 		return $read_request;
 	}
@@ -192,7 +211,114 @@ public function read_filter_once($table, $field, $sfield, $value)
 	}
 
 
+	public function Entretien()
+	{
+		// get and return a database object
+		$db = $this->conn();
+		$read_request = $db->query('SELECT c.nom_c,c.prenom_c, c.adresse, o.id, o.titre, e.date_entretien, e.heure FROM offre o, entretien e, candidat c WHERE o.id = e.id_offre and e.id_candidat=c.id and o.author = '.$_SESSION["user_info"]["id"]);
+		//$read_request->execute(array());
+		// var_dump($read_request->fetchAll());die();
+		return $read_request;
+	}
+
+
+
+	public function RDV()
+	{
+		// get and return a database object
+		$db = $this->conn();
+		$read_request = $db->query('SELECT o.id,  o.titre,p.heure,e.nom_e,  o.adresse, p.date_entretien FROM  offre o, employeur e, entretien p  WHERE o.id = p.id_offre AND e.user_id =o.author and p.id_candidat='.$_SESSION['id_cand']);
+		//$read_request->execute(array());
+		return $read_request;
+	}
+
+
+	/*-----------------------------------------------------admin fonctions--------------------------------------------------------------- */
+
+
+
+	public function liste_candidats()
+	{
+		// get and return a database object
+		$db = $this->conn();
+		$read_request = $db->query('SELECT * from candidat');
+		return $read_request;
+	}
+
+
 	
+
+	public function liste_candidats_by(string $status)
+	{
+		// get and return a database object
+		$db = $this->conn();
+		$read_request = $db->query('SELECT * from candidat where isValidated = ' . $status);
+		return $read_request;
+	}
+
+
+	public function liste_employes()
+	{
+		// get and return a database object
+		$db = $this->conn();
+		$read_request = $db->query('SELECT * from employeur');
+		return $read_request;
+	}
+
+	public function liste_employes_by(string $status)
+	{
+		// get and return a database object
+		$db = $this->conn();
+		$read_request = $db->query('SELECT * from employeur where isValidated = ' . $status);
+		return $read_request;
+	}
+
+
+	public function validate_candidat($decision, $target){
+		$db = $this->conn();
+		$create_request = $db->prepare("UPDATE candidat  SET isValidated = ? WHERE  id = ? ");
+		$create_request->execute(array($decision, $target));
+		
+	}
+
+
+	public function validate_employeur($decision, $target){
+		$db = $this->conn();
+		$create_request = $db->prepare("UPDATE employeur  SET isValidated = ? WHERE  id = ? ");
+		$create_request->execute(array($decision, $target));
+		
+	}
+
+
+	public function liste_offres()
+	{
+		// get and return a database object
+		$db = $this->conn();
+		$read_request = $db->query('SELECT * from offre,categories,employeur WHERE offre.categories_id=categories.id and offre.author=employeur.user_id;');
+		return $read_request;
+	}
+
+
+	
+
+	public function liste_offres_by(string $status)
+	{
+		// get and return a database object
+		$db = $this->conn();
+		$read_request = $db->query('SELECT o.id as id, e.nom_e as nom_e,libelle,titre,date_exp,description,o.isValidated as isVal from offre o,categories c,employeur e WHERE o.categories_id=c.id and o.author=e.user_id and o.isValidated =' . $status);
+		return $read_request;
+	}
+
+
+	public function validate_offre($decision, $target){
+		$db = $this->conn();
+		$create_request = $db->prepare("UPDATE offre  SET isValidated = ? WHERE  id = ? ");
+		$create_request->execute(array($decision, $target));
+		
+	}
+
+
+
 
 }
 // author @kemi

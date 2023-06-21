@@ -34,14 +34,14 @@
         <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
       </div>
       <!--logo start-->
-      <a href="index.html" class="logo"><b>ADM<span>IN</span></b></a>
+      <a href="" class="logo"><b>ADM<span>IN</span></b></a>
       <!--logo end-->
       <div class="nav notify-row" id="top_menu">
         <!--  notification start -->
         <ul class="nav top-menu">
           <!-- settings start -->
           <li class="dropdown">
-            <a data-toggle="dropdown" class="dropdown-toggle" href="index.html#">
+            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
               <i class="fa fa-tasks"></i>
               <span class="badge bg-theme">4</span>
               </a>
@@ -51,7 +51,7 @@
                 <p class="green">You have 4 pending tasks</p>
               </li>
               <li>
-                <a href="index.html#">
+                <a href="#">
                   <div class="task-info">
                     <div class="desc">Dashio Admin Panel</div>
                     <div class="percent">40%</div>
@@ -64,7 +64,7 @@
                 </a>
               </li>
               <li>
-                <a href="index.html#">
+                <a href="#">
                   <div class="task-info">
                     <div class="desc">Database Update</div>
                     <div class="percent">60%</div>
@@ -77,7 +77,7 @@
                 </a>
               </li>
               <li>
-                <a href="index.html#">
+                <a href="#">
                   <div class="task-info">
                     <div class="desc">Product Development</div>
                     <div class="percent">80%</div>
@@ -90,7 +90,7 @@
                 </a>
               </li>
               <li>
-                <a href="index.html#">
+                <a href="#">
                   <div class="task-info">
                     <div class="desc">Payments Sent</div>
                     <div class="percent">70%</div>
@@ -110,7 +110,7 @@
           <!-- settings end -->
           <!-- inbox dropdown start-->
           <li id="header_inbox_bar" class="dropdown">
-            <a data-toggle="dropdown" class="dropdown-toggle" href="index.html#">
+            <a data-toggle="dropdown" class="dropdown-toggle" href="">
               <i class="fa fa-envelope-o"></i>
               <span class="badge bg-theme">5</span>
               </a>
@@ -120,7 +120,7 @@
                 <p class="green">You have 5 new messages</p>
               </li>
               <li>
-                <a href="index.html#">
+                <a href="#">
                   <span class="photo"><img alt="avatar" src="public/admin/assets/img/ui-zac.jpg"></span>
                   <span class="subject">
                   <span class="from">Zac Snider</span>
@@ -132,7 +132,7 @@
                   </a>
               </li>
               <li>
-                <a href="index.html#">
+                <a href="#">
                   <span class="photo"><img alt="avatar" src="public/admin/assets/img/ui-divya.jpg"></span>
                   <span class="subject">
                   <span class="from">Divya Manian</span>
@@ -144,7 +144,7 @@
                   </a>
               </li>
               <li>
-                <a href="index.html#">
+                <a href="#">
                   <span class="photo"><img alt="avatar" src="public/admin/assets/img/ui-danro.jpg"></span>
                   <span class="subject">
                   <span class="from">Dan Rogers</span>
@@ -156,7 +156,7 @@
                   </a>
               </li>
               <li>
-                <a href="index.html#">
+                <a href="#">
                   <span class="photo"><img alt="avatar" src="public/admin/assets/img/ui-sherman.jpg"></span>
                   <span class="subject">
                   <span class="from">Dj Sherman</span>
@@ -168,14 +168,14 @@
                   </a>
               </li>
               <li>
-                <a href="index.html#">See all messages</a>
+                <a href="#">See all messages</a>
               </li>
             </ul>
           </li>
           <!-- inbox dropdown end -->
           <!-- notification dropdown start-->
           <li id="header_notification_bar" class="dropdown">
-            <a data-toggle="dropdown" class="dropdown-toggle" href="index.html#">
+            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
               <i class="fa fa-bell-o"></i>
               <span class="badge bg-warning">7</span>
               </a>
@@ -185,35 +185,35 @@
                 <p class="yellow">You have 7 new notifications</p>
               </li>
               <li>
-                <a href="index.html#">
+                <a href="#">
                   <span class="label label-danger"><i class="fa fa-bolt"></i></span>
                   Server Overloaded.
                   <span class="small italic">4 mins.</span>
                   </a>
               </li>
               <li>
-                <a href="index.html#">
+                <a href="#">
                   <span class="label label-warning"><i class="fa fa-bell"></i></span>
                   Memory #2 Not Responding.
                   <span class="small italic">30 mins.</span>
                   </a>
               </li>
               <li>
-                <a href="index.html#">
+                <a href="#">
                   <span class="label label-danger"><i class="fa fa-bolt"></i></span>
                   Disk Space Reached 85%.
                   <span class="small italic">2 hrs.</span>
                   </a>
               </li>
               <li>
-                <a href="index.html#">
+                <a href="#">
                   <span class="label label-success"><i class="fa fa-plus"></i></span>
                   New User Registered.
                   <span class="small italic">3 hrs.</span>
                   </a>
               </li>
               <li>
-                <a href="index.html#">See all notifications</a>
+                <a href="#">See all notifications</a>
               </li>
             </ul>
           </li>

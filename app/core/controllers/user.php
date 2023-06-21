@@ -145,19 +145,19 @@ class User
                         authenticate($info);
                         header('Location: /profile');
                         echo '<script>alert("Bienvenue '.$user_info['prenom_c'].'")</script>';
-                    }/*else{
-                        $table = 'candidat';
-                        $fields = 'nom_c, prenom_c';
+                    }else{
+                        $table = 'admin';
+                        $fields = 'nom, prenom, adresse';
                         $sfield = 'user_id';
                         $data = array($pass['id']);
                         $query = $database->read_filter_once($table, $fields, $sfield, $data);
                         $user_info =  $query->fetch();
                         require_once 'app/utils/methods.php';
-                        $info = array('email' => $email, 'phone' => $pass['telephone'], 'id' => $pass['id'], 'name' => $user_info['prenom_c'] . ' ' . $user_info['nom_c'], 'type' => $pass['type']);
+                        $info = array('email' => $email, 'phone' => $pass['telephone'], 'id' => $pass['id'], 'name' => $user_info['prenom'] . ' ' . $user_info['nom'], 'type' => $pass['type']);
                         authenticate($info);
-                        header('Location: /profile');
-                        echo '<script>alert("Bienvenue '.$user_info['prenom_c'].'")</script>';
-                    }*/
+                        header('Location: /admin');
+                       
+                    }
 
 
 

@@ -50,8 +50,8 @@ $table1 = '<!-- Header Wrapper Start -->
 									   
 										<li class="parent"><a href="/offre?id='.$_SESSION['user_info']['id'].'">Mes offres</a></li>
 										<li class="parent"><a href="/profile?actor=company&action=gestion" >Voir candidature</a>
-										<li class="parent"><a href="/profile?actor=company&action=interview" class="interview">Entretien Programmer</a></li>
-										<li class="parent"><a href="candidate_profile.html">Mise a jour</a></li>
+										<li class="parent"><a href="/profile?actor=company&action=interview" class="interview">Entretien Programmé</a></li>
+										<li class="parent"><a href="">Mise a jour</a></li>
 									   
 										   
 									</ul>
@@ -62,7 +62,7 @@ $table1 = '<!-- Header Wrapper Start -->
 									
 								</li>
 							   
-								<li class="gc_main_navigation parent"><a href="contact.html" class="gc_main_navigation">Contact</a></li>
+								<li class="gc_main_navigation parent"><a href="#" class="gc_main_navigation">Contact</a></li>
 							</ul>
 						</div>
 						<!-- mainmenu end -->
@@ -134,9 +134,9 @@ $table2 .= '<!-- Header Wrapper Start -->
 									<!-- sub menu start -->
 									<ul>
 									   
-										<li class="parent"><a href="company_listing.html">Voir mes candidatures</a></li>
+										<li class="parent"><a href="/profile?&action=gestion">Voir mes candidatures</a></li>
 										<li class="parent"><a href="/liste">Voir les offres</a></li>
-										<li class="parent"><a href="candidate_listing.html">Mise a jour</a></li>
+										<li class="parent"><a href="/profile?&action=rdv">Mes RDV</a></li>
 										
 									   
 										   

@@ -76,7 +76,7 @@
 							</div>
 							
 							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-								<h2><p><span style="color: red">ISHEDE</span>  est un plateforme de recrutement et de publication d'offres. Elle permet au citoyens en chomage de trouver un emploie au plus vite
+								<h2><p><span style="color: red">ISHEDE</span>  est une plateforme de recrutement et de publication d'offres. Elle permet au citoyens en chomage de trouver un emploie au plus vite
 								possible afin d'éviter d'écrire les lettres de demande sans suite  et au recruteur de trouver des employers correspondant à leur attentes et aussi d'éviter l'emmagasinage des documents </p></h2>
 								
 							</div>
@@ -203,11 +203,7 @@
 	</div>
 	<!-- jp recent jobs Wrapper End -->
 	<!-- jp best deal Wrapper Start -->
-	<?php
-		require_once 'app/core/controllers/offer.php';
-		$CV = new Offer();
-		$CV_infos = $CV->recup_CV();
-	?>
+	
 	<div class="jp_best_deal_main_wrapper">
 		<div class="jp_counter_loverlay"></div>
 		<div class="container">
@@ -217,16 +213,16 @@
 						<div class="jp_hiring_slider_wrapper">
 							<div class="owl-carousel owl-theme">
 
-								<?php foreach($CV_infos as $CV): ?>
+								
 									<div class="item">
 										<div class="jp_hiring_content_main_wrapper">
 											<div class="jp_hiring_content_wrapper">
-												<img src="<?php echo $CV['pdf_cv']?>">
+												<img src="/public/assets/images/1.jpg" style="height: 150px; width: 30px;">
 											</div>
 											
 										</div>
 									</div>
-								<?php endforeach ;?>
+							
 
 							</div>
 						</div>
@@ -268,7 +264,7 @@
 						<div class="pricing_btn_wrapper">
 							<div class="pricing_btn1">
 								<ul>
-									<li><a href="inscription.php"> Commencer</a>
+									<li><a href="/register"> Commencer</a>
 									</li>
 								</ul>
 							</div>
@@ -292,7 +288,7 @@
 						<div class="pricing_btn_wrapper">
 							<div class="pricing_btn1">
 								<ul>
-									<li><a href="inscription.php"> Commencer</a>
+									<li><a href="/register"> Commencer</a>
 									</li>
 								</ul>
 							</div>
@@ -316,7 +312,7 @@
 						<div class="pricing_btn_wrapper">
 							<div class="pricing_btn1">
 								<ul>
-									<li><a href="inscription.php"> Commencer</a>
+									<li><a href="/register"> Commencer</a>
 									</li>
 								</ul>
 							</div>
