@@ -233,7 +233,7 @@
         <div class=""></div>
         <video id="localVideo" autoplay></video>
         <video id="remoteVideo" autoplay></video>
-        <button id="startButton" style="background-color: green;">Démarrer l'appel</button>
+        <button id="startButton" style="background-color: green; border-radius: 20px; width: 200px">Démarrer l'appel</button>
         <button id="hangupButton" style="background-color: red;">Raccrocher</button>
         <script>
           const startButton = document.getElementById("startButton");

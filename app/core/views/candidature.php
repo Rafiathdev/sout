@@ -1,5 +1,5 @@
 <?php
-	session_start()
+	session_start();
      
 	?> 
 <!DOCTYPE html>
@@ -11,7 +11,7 @@
 <!-- Mirrored from www.webstrot.com/html/jobpro/job_light/blog_left.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 03 Apr 2023 09:31:02 GMT -->
 <head>
     <meta charset="utf-8" />
-    <title>Entretien</title>
+    <title>Candidature</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <meta name="description" content="Job Pro" />
     <meta name="keywords" content="Job Pro" />
@@ -326,6 +326,7 @@
              <br>
 
              <input type="submit"  value="Envoyer" name="send">';
+             header('Location:/profile');
         }                   
         ?>
 	</form>

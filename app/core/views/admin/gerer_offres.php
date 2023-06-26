@@ -10,7 +10,7 @@
   <title></title>
 
   <!-- Favicons -->
-  <link href="public/admin/assets/img/favicon.png" rel="icon">
+  <link href="public/admin/assets/img/" rel="icon">
   <link href="public/admin/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Bootstrap core CSS -->
@@ -92,13 +92,14 @@
                       <?php
                         if ($offre['isVal'] == 0) {
                           echo "en attente";
-                        } else if($candidate['isVal'] == 1) {
+                        } else if($offre['isVal'] == 1) {
                           echo "acceptée";
                         }
                         else {
                           echo "refusée";
                         }	
                         
+                       
                       ?>
                     </td>
 
@@ -107,7 +108,7 @@
                       <a href="?action=2&target=<?=$offre['id'] ?>" class="btn btn-danger">Refuser</a>
                     </td>
                   
-                    
+                
                     </tr>
                   <?php endforeach ?>
                 </tbody>
@@ -126,7 +127,7 @@
     <footer class="site-footer">
       <div class="text-center">
         <p>
-          &copy; Copyrights <strong>Dashio</strong>. All Rights Reserved
+          &copy; Copyrights <strong>ADMIN</strong>. All Rights Reserved
         </p>
         <div class="credits">
           <!--
@@ -135,7 +136,7 @@
             Buy the pro version with working PHP/AJAX contact form: https://templatemag.com/dashio-bootstrap-admin-template/
             Licensing information: https://templatemag.com/license/
           -->
-          Created with Dashio template by <a href="https://templatemag.com/">TemplateMag</a>
+          
         </div>
         <a href="basic_table.html#" class="go-top">
           <i class="fa fa-angle-up"></i>

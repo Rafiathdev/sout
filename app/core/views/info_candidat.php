@@ -326,6 +326,26 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   }
 */
         });
+
+
+           /*document.getElementById("date_n").setAttribute("min", "1900-01-01");
+document.getElementById("date_n").setAttribute("max", "2010-12-31");
+
+
+     let max = new Date();
+max.setFullYear(2010);
+document.getElementById("date_n").setAttribute("max", "2010-01-01");
+document.getElementById("date_n").setAttribute("max", new Date().toISOString().split("T")[0]);
+
+
+document.getElementById("date_n").setAttribute("max", max.toISOString().split("T")[0]);*/
+
+
+       // let max = new Date();
+            //max.setFullYear(2010);
+
+
+        document.getElementById("date_n").max = new Date().toISOString().split("T")[0];
     </script>
 
 

@@ -444,7 +444,6 @@
 
 					<style>
 					
-				<h1 style="text-align: center; margin-top:25px; background-color: burlywood;">Entretien Programmé</h1>
 						table {
 							border-collapse: collapse;
 							width: 100%;
@@ -466,6 +465,9 @@
 							margin-right: 10px;
 						}
 					</style>
+
+					
+				<h1 style="text-align: center; margin-top:25px; background-color: burlywood;">Entretien Programmé</h1>
 					<table id="tab-candidature">
 					<thead></thead>
 					<tr>

@@ -13,12 +13,12 @@
 </head>
 
 <body>
-	<!-- preloader Start 
+	<!-- preloader Start
 	<div id="preloader">
 		<div id="status">
 			<img src="public/assets/images/header/loadinganimation.gif" id="preloader_image" alt="loader">
 		</div>
-	</div>-->
+	</div>--> 
 	<!-- Top Scroll End -->
 	<!-- Top Header Wrapper Start -->
 	<div class="jp_top_header_main_wrapper">

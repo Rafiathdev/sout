@@ -66,10 +66,8 @@ else{
 
                 <div class="col-lg-6 col-md-6 col-sm-8 col-xs-12 hidden-xs">
 					<div class="jp_top_header_right_wrapper">
-						<div class="jp_top_header_left_cont">
-							<a href="/profile?actor=company"><input type="submit" value="Retour" style="background-color:white ;"></a>
-							
-						</div>
+						
+						
 					</div>
                 </div>
 			</div>
@@ -162,7 +160,7 @@ else{
 
                         <div class="jp_adp_form_wrapper">
                         <label for="">Date d'expiration</label>
-                            <input type="date" name="date_exp" id="date_exp" placeholder="date d'expiration de l'offre">
+                            <input type="date" name="date_exp" id="date_exp" placeholder="date d'expiration de l'offre" class="">
                         </div>
 
                     </div>
@@ -239,6 +237,11 @@ else{
     <script src="public/assets/js/jquery.magnific-popup.js"></script>
     <script src="public/assets/js/custom_II.js"></script>
     <!--main js file end-->
+
+    <script>
+
+document.getElementById("date_exp").min = new Date().toISOString().split("T")[0];
+    </script>
 </body>
 
 

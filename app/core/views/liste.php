@@ -46,10 +46,7 @@
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-8 col-xs-12 hidden-xs">
 					<div class="jp_top_header_right_wrapper">
-						<div class="jp_top_header_left_cont">
-							<a href="/profile?actor=company"><input type="submit" value="Retour" style="background-color:white ;"></a>
-							
-						</div>
+						
 					</div>
                 </div>
             </div>

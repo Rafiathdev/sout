@@ -146,7 +146,7 @@ public function read_filter_once($table, $field, $sfield, $value)
 		// a reecrire
 		// get and return a database object
 		$db = $this->conn();
-		$read_request = $db->query('SELECT o.id, e.photo, o.titre, o.annee_exp, e.nom_e, o.type, o.adresse, o.date_exp FROM  offre o, employeur e WHERE o.author = e.user_id');
+		$read_request = $db->query('SELECT o.id, e.photo, o.titre, o.annee_exp, e.nom_e, o.type, o.adresse, o.date_exp FROM  offre o, employeur e WHERE o.author = e.user_id AND o.isValidated = 1');
 		//$read_request->execute(array());
 		return $read_request;
 	}
@@ -294,7 +294,9 @@ public function read_filter_once($table, $field, $sfield, $value)
 	{
 		// get and return a database object
 		$db = $this->conn();
-		$read_request = $db->query('SELECT * from offre,categories,employeur WHERE offre.categories_id=categories.id and offre.author=employeur.user_id;');
+		$read_request = $db->query('SELECT * from offre,categories,employeur WHERE offre.categories_id=categories.id and offre.author=employeur.user_id');
+		//var_dump($read_request->fetchAll());
+		//die();
 		return $read_request;
 	}
 
@@ -305,7 +307,7 @@ public function read_filter_once($table, $field, $sfield, $value)
 	{
 		// get and return a database object
 		$db = $this->conn();
-		$read_request = $db->query('SELECT o.id as id, e.nom_e as nom_e,libelle,titre,date_exp,description,o.isValidated as isVal from offre o,categories c,employeur e WHERE o.categories_id=c.id and o.author=e.user_id and o.isValidated =' . $status);
+		$read_request = $db->query('SELECT o.id as id, e.nom_e as nom_e,libelle,titre,date_exp,description,o.isValidated as isVal from offre o,categories c,employeur e WHERE o.categories_id=c.id and o.author=e.user_id and o.isValidated = ' . $status);
 		return $read_request;
 	}
 

@@ -26,7 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   <title>Administrateur</title>
 
   <!-- Favicons -->
-  <link href="public/admin/assets/img/favicon.png" rel="icon">
+  <link href="public/admin/assets/img/" rel="icon">
   <link href="public/admin/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Bootstrap core CSS -->
