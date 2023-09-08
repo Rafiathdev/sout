@@ -294,7 +294,7 @@ public function read_filter_once($table, $field, $sfield, $value)
 	{
 		// get and return a database object
 		$db = $this->conn();
-		$read_request = $db->query('SELECT * from offre,categories,employeur WHERE offre.categories_id=categories.id and offre.author=employeur.user_id');
+		$read_request = $db->query('SELECT libelle,titre,date_exp,description,nom_e,offre.isValidated as status from offre,categories,employeur WHERE offre.categories_id=categories.id and offre.author=employeur.user_id');
 		//var_dump($read_request->fetchAll());
 		//die();
 		return $read_request;

@@ -86,11 +86,11 @@
                     <td><?php echo $offre['nom_e']?></td>
                     <td>
                       <?php 
-            var_dump($offre);
+                       // var_dump($offre);
                         
-                        if ($offre['isValidated'] == 0) {
+                        if ($offre['status'] == 0) {
                           echo "en attente";
-                        } else if($offre['isValidated'] == 1) {
+                        } else if($offre['status'] == 1) {
                           echo "acceptée";
                         }
                         else {

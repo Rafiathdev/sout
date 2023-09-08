@@ -78,7 +78,7 @@
 							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 								<h2><p><span style="color: red">ISHEDE</span>  est une plateforme de recrutement et de publication d'offres. Elle permet au citoyens en chomage de trouver un emploie au plus vite
 								possible afin d'éviter d'écrire les lettres de demande sans suite  et au recruteur de trouver des employers correspondant à leur attentes et aussi d'éviter l'emmagasinage des documents </p></h2>
-								
+	
 							</div>
 						</div>
 					</div>
